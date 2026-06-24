@@ -1,0 +1,1019 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaravanaKumar ❤️ Sivashankari | SS Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --maroon:#7a0c20;
+    --gold:#d4af37;
+    --green:#124734;
+    --cream:#fff9f0;
+    --card:rgba(255,255,255,0.12);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+        radial-gradient(circle at top,#a30d2c 0%,#5d0718 45%,#29040b 100%);
+    color:white;
+    overflow-x:hidden;
+    font-family:'DM Sans',sans-serif;
+}
+
+h1,h2,h3{
+    font-family:'Cormorant Garamond',serif;
+}
+
+.progress{
+    position:fixed;
+    top:0;
+    left:0;
+    height:5px;
+    background:linear-gradient(90deg,var(--gold),#ffe28a);
+    width:0%;
+    z-index:9999;
+}
+
+/* Floating Petals */
+
+.petals{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+}
+
+.petal{
+    position:absolute;
+    color:#ffd86b;
+    opacity:.8;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-120px) rotate(0deg);
+    }
+    to{
+        transform:translateY(120vh) rotate(360deg);
+    }
+}
+
+.music-btn{
+    position:fixed;
+    top:20px;
+    right:20px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    border:none;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(10px);
+    color:white;
+    cursor:pointer;
+    font-size:22px;
+    z-index:999;
+}
+
+section{
+    width:min(1200px,92%);
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.rangoli{
+    font-size:55px;
+    margin-bottom:20px;
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+.hero h1{
+    font-size:5rem;
+    color:#fff;
+}
+
+.hero .amp{
+    color:var(--gold);
+}
+
+.hero p{
+    margin-top:15px;
+    font-size:1.2rem;
+}
+
+.date-card{
+    margin-top:30px;
+    padding:18px 35px;
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:20px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+}
+
+.subtitle{
+    color:#f9d97c;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+}
+
+.heading{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.heading h2{
+    font-size:3rem;
+    color:var(--gold);
+}
+
+.events{
+    padding:80px 0;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:25px;
+    backdrop-filter:blur(15px);
+    padding:25px;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(0,0,0,.3);
+}
+
+.card h3{
+    color:var(--gold);
+    font-size:2rem;
+}
+
+.card p{
+    margin-top:10px;
+    line-height:1.7;
+}
+
+.countdown{
+    padding:80px 0;
+}
+
+.timer{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.time-box{
+    text-align:center;
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,.09);
+    backdrop-filter:blur(15px);
+}
+
+.time-box span{
+    display:block;
+    font-size:3rem;
+    color:var(--gold);
+    font-weight:bold;
+}
+
+.secret{
+    padding:80px 0;
+}
+
+.clue-card{
+    margin-bottom:25px;
+    padding:25px;
+    border-radius:20px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+}
+
+.clue-card input{
+    width:100%;
+    margin-top:15px;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+}
+
+.clue-card button{
+    margin-top:12px;
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    background:var(--gold);
+    color:black;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.reveal{
+    max-height:0;
+    overflow:hidden;
+    transition:.8s;
+    color:#ffe18a;
+    font-size:1.1rem;
+}
+
+.reveal.show{
+    max-height:150px;
+    margin-top:15px;
+    padding:15px;
+    border-radius:12px;
+    background:rgba(255,215,0,.15);
+    box-shadow:0 0 25px rgba(255,215,0,.5);
+}
+
+.footer{
+    padding:100px 0;
+    text-align:center;
+}
+
+.footer-message{
+    max-width:850px;
+    margin:auto;
+    font-size:1.15rem;
+    line-height:1.9;
+}
+
+.signature{
+    margin-top:25px;
+    color:var(--gold);
+    font-size:2rem;
+    font-family:'Cormorant Garamond',serif;
+}
+
+.animate{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s;
+}
+
+.animate.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.particle{
+    position:absolute;
+    font-size:20px;
+    pointer-events:none;
+    animation:burst 1.5s forwards;
+}
+
+@keyframes burst{
+    from{
+        opacity:1;
+        transform:translate(0,0) scale(1);
+    }
+    to{
+        opacity:0;
+        transform:translate(var(--x),var(--y)) scale(2);
+    }
+}
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:3rem;
+}
+
+.timer{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.heading h2{
+    font-size:2.3rem;
+}
+}
+
+/* ---------- BACKGROUND SLIDESHOW ---------- */
+
+.slideshow{
+    position:fixed;
+    inset:0;
+    z-index:-5;
+}
+
+.slide{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity 2s ease-in-out;
+    background-size:cover;
+    background-position:center;
+}
+
+.slide::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        rgba(122,12,32,.70),
+        rgba(18,71,52,.70)
+    );
+}
+
+.slide:nth-child(1){
+    background-image:url('images/photo1.jpg');
+}
+
+.slide:nth-child(2){
+    background-image:url('images/photo2.jpg');
+}
+
+.slide:nth-child(3){
+    background-image:url('images/photo3.jpg');
+}
+
+.slide.active{
+    opacity:1;
+}
+
+.slide{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity 2s ease-in-out;
+}
+
+.slide.active{
+    opacity:1;
+}
+
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.slide::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        rgba(122,12,32,.65),
+        rgba(18,71,52,.65)
+    );
+}
+
+/* ---------- SCRATCH CARD ---------- */
+
+.scratch-wrapper{
+    position:relative;
+    width:100%;
+    max-width:550px;
+    height:180px;
+    margin-top:20px;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 0 30px rgba(212,175,55,.6);
+}
+
+.hidden{
+    display:none;
+}
+
+.scratch-message{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    padding:20px;
+
+    font-size:1.1rem;
+    font-weight:600;
+
+    background:
+    linear-gradient(
+        135deg,
+        #7a0c20,
+        #124734
+    );
+
+    color:#fff;
+}
+
+.rsvp{
+    padding:80px 0;
+}
+
+.rsvp-card{
+    max-width:700px;
+    margin:auto;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+
+    border-radius:25px;
+    padding:35px;
+
+    border:1px solid rgba(255,255,255,.15);
+}
+
+.rsvp form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.rsvp input,
+.rsvp select,
+.rsvp textarea{
+
+    width:100%;
+    padding:15px;
+
+    border:none;
+    border-radius:12px;
+
+    background:rgba(255,255,255,.12);
+
+    color:white;
+    font-size:1rem;
+}
+
+.rsvp input::placeholder,
+.rsvp textarea::placeholder{
+    color:rgba(255,255,255,.7);
+}
+
+.rsvp select option{
+    color:black;
+}
+
+.rsvp button{
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:linear-gradient(
+        135deg,
+        #d4af37,
+        #ffe18a
+    );
+
+    color:black;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.rsvp button:hover{
+    transform:translateY(-3px);
+}
+
+.rsvp-success{
+
+    display:none;
+
+    margin-top:20px;
+
+    text-align:center;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    background:rgba(212,175,55,.2);
+
+    color:#ffe18a;
+}
+
+.scratch-card{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    cursor:crosshair;
+    touch-action:none;
+}
+</style>
+</head>
+<body>
+
+    <div class="slideshow">
+    <div class="slide active"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+</div>
+
+<div class="progress"></div>
+
+<button class="music-btn" id="musicBtn">🎵</button>
+
+<div class="petals" id="petals"></div>
+
+<section class="hero">
+    <div class="rangoli">🌼 ✨ 🪔 ✨ 🌼</div>
+
+    <div class="subtitle">SS Wedding Invitation</div>
+
+    <h1>
+        SaravanaKumar
+        <span class="amp">&</span>
+        Sivashankari
+    </h1>
+
+    <div class="date-card">
+        <p><strong>24th October 2026</strong></p>
+        <p>07:05 AM</p>
+        <p>Alayamani Mahal, Perundurai Road, Erode</p>
+    </div>
+</section>
+
+<section class="events animate">
+    <div class="heading">
+        <h2>Wedding Events</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>🎉 Reception</h3>
+            <p>
+                Date: 24th October 2026<br>
+                Time: 07:00 PM<br>
+                Venue: Alayamani Mahal, Perundurai Road, Erode
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>💍 Muhurtham</h3>
+            <p>
+                Date: 25th October 2026<br>
+                Time: 07:05 AM<br>
+                Venue: Alayamani Mahal, Perundurai Road, Erode
+            </p>
+        </div>
+
+
+    </div>
+</section>
+
+<section class="countdown animate">
+    <div class="heading">
+        <h2>Countdown To Forever</h2>
+    </div>
+
+    <div class="timer">
+        <div class="time-box">
+            <span id="days">00</span>
+            Days
+        </div>
+
+        <div class="time-box">
+            <span id="hours">00</span>
+            Hours
+        </div>
+
+        <div class="time-box">
+            <span id="minutes">00</span>
+            Minutes
+        </div>
+
+        <div class="time-box">
+            <span id="seconds">00</span>
+            Seconds
+        </div>
+    </div>
+</section>
+
+<section class="secret animate">
+    <div class="heading">
+        <h2>Secret Keys Game</h2>
+    </div>
+
+    <div class="clue-card">
+
+    <p>
+    🌼 What flower is considered sacred in Maharashtrian weddings?
+    </p>
+
+    <input id="c1">
+
+    <button onclick="unlockScratch('c1','marigold','scratch1')">
+    Unlock Scratch Card
+    </button>
+
+    <div class="scratch-wrapper hidden" id="scratch1">
+
+    <div class="scratch-message">
+    Two souls, one journey — blessed by the golden bloom of togetherness! 🌼
+    </div>
+
+    <canvas class="scratch-card"></canvas>
+
+    </div>
+
+    <div class="clue-card">
+        <p>💐 What is the traditional Marathi word for the wedding ritual where the couple exchanges garlands?</p>
+        <input id="c2">
+        <button onclick="unlock('c2','varmala','r2',event)">Unlock</button>
+        <div id="r2" class="reveal">
+            In every garland exchanged, a thousand promises bloom forever! 💐
+        </div>
+    </div>
+
+    <div class="clue-card">
+        <p>🍯 Which sweet dish is a must at every Maharashtrian celebration?</p>
+        <input id="c3">
+        <button onclick="unlock('c3','puranpoli','r3',event)">Unlock</button>
+        <div id="r3" class="reveal">
+            Life with you is sweeter than every puranpoli ever made! 🍯
+        </div>
+    </div>
+
+    <div class="clue-card">
+        <p>🎺 What instrument is played at the entrance of a Marathi groom?</p>
+        <input id="c4">
+        <button onclick="unlock('c4','tutari','r4',event)">Unlock</button>
+        <div id="r4" class="reveal">
+            Let the tutari echo — a new chapter begins today! 🎺
+        </div>
+    </div>
+
+</section>
+
+<section class="footer animate">
+    <div class="heading">
+        <h2>With Love</h2>
+    </div>
+
+    <div class="footer-message">
+        "We are beyond grateful to have you as part of our special day.
+        Your presence turns this celebration into a lifelong memory.
+        Come, eat, dance, and bless us as we begin our forever together!"
+    </div>
+
+    <section class="rsvp animate">
+
+    <div class="heading">
+        <h2>RSVP</h2>
+        <p>We would be delighted to celebrate with you</p>
+    </div>
+
+    <div class="rsvp-card">
+
+        <form id="rsvpForm">
+
+            <input type="text"
+                   id="guestName"
+                   placeholder="Your Name"
+                   required>
+
+            <input type="number"
+                   id="guestCount"
+                   placeholder="Number of Guests"
+                   min="1"
+                   required>
+
+            <select id="attendance" required>
+                <option value="">Will you attend?</option>
+                <option value="Yes">Yes, I'll be there</option>
+                <option value="No">Sorry, can't make it</option>
+            </select>
+
+            <textarea id="message"
+                      placeholder="Blessings / Message for the couple"
+                      rows="4"></textarea>
+
+            <button type="submit">
+                Send RSVP ❤️
+            </button>
+
+        </form>
+
+        <div id="rsvpSuccess" class="rsvp-success">
+            🎉 Thank you for your response!
+        </div>
+
+    </div>
+
+</section>
+
+    <div class="signature">
+        SaravanaKumar & Sivashankari ❤️
+    </div>
+</section>
+
+<script>
+
+/* Scroll Progress */
+window.addEventListener('scroll',()=>{
+    const winScroll=document.documentElement.scrollTop;
+    const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+    document.querySelector('.progress').style.width=(winScroll/height)*100+"%";
+});
+
+/* Countdown */
+const weddingDate=new Date("October 24, 2026 07:05:00").getTime();
+
+setInterval(()=>{
+    const now=new Date().getTime();
+    const distance=weddingDate-now;
+
+    document.getElementById("days").innerText=Math.floor(distance/(1000*60*60*24));
+    document.getElementById("hours").innerText=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+    document.getElementById("minutes").innerText=Math.floor((distance%(1000*60*60))/(1000*60));
+    document.getElementById("seconds").innerText=Math.floor((distance%(1000*60))/1000);
+},1000);
+
+/* Reveal Animation */
+function unlock(inputId,key,revealId,e){
+
+    const value=document.getElementById(inputId).value.trim().toLowerCase();
+
+    if(value===key){
+        document.getElementById(revealId).classList.add("show");
+
+        for(let i=0;i<25;i++){
+
+            const p=document.createElement("div");
+            p.className="particle";
+            p.innerHTML=["✨","🌼","💛"][Math.floor(Math.random()*3)];
+
+            p.style.left=e.pageX+"px";
+            p.style.top=e.pageY+"px";
+
+            p.style.setProperty('--x',(Math.random()*250-125)+'px');
+            p.style.setProperty('--y',(Math.random()*250-125)+'px');
+
+            document.body.appendChild(p);
+
+            setTimeout(()=>p.remove(),1500);
+        }
+    }else{
+        alert("Incorrect key. Try again!");
+    }
+}
+
+/* Intersection Animations */
+const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+        }
+    });
+},{threshold:0.15});
+
+document.querySelectorAll(".animate").forEach(el=>{
+    observer.observe(el);
+});
+
+/* Floating Petals */
+const petals=document.getElementById("petals");
+
+for(let i=0;i<40;i++){
+
+    const p=document.createElement("div");
+    p.className="petal";
+    p.innerHTML=["🌼","✨","🪔","🌺"][Math.floor(Math.random()*4)];
+
+    p.style.left=Math.random()*100+"%";
+    p.style.fontSize=(15+Math.random()*20)+"px";
+    p.style.animationDuration=(8+Math.random()*12)+"s";
+    p.style.animationDelay=Math.random()*10+"s";
+
+    petals.appendChild(p);
+}
+
+/* Music Toggle Visual */
+let music=false;
+document.getElementById("musicBtn").addEventListener("click",()=>{
+    music=!music;
+    document.getElementById("musicBtn").innerHTML=music?"🔊":"🎵";
+});
+</script>
+
+<script>
+
+/* ---------- BACKGROUND SLIDESHOW ---------- */
+
+const slides=document.querySelectorAll('.slide');
+
+let currentSlide=0;
+
+setInterval(()=>{
+
+slides[currentSlide].classList.remove('active');
+
+currentSlide=
+(currentSlide+1)%slides.length;
+
+slides[currentSlide].classList.add('active');
+
+},5000);
+
+/* ---------- SCRATCH CARD ---------- */
+
+function unlockScratch(inputId,key,scratchId){
+
+const value=
+document.getElementById(inputId)
+.value
+.trim()
+.toLowerCase();
+
+if(value!==key){
+
+alert("Incorrect key. Try again!");
+
+return;
+}
+
+const wrapper=
+document.getElementById(scratchId);
+
+wrapper.classList.remove('hidden');
+
+const canvas=
+wrapper.querySelector('canvas');
+
+initScratchCard(canvas);
+}
+
+function initScratchCard(canvas){
+
+if(canvas.dataset.ready) return;
+
+canvas.dataset.ready=true;
+
+const rect=
+canvas.parentElement.getBoundingClientRect();
+
+canvas.width=rect.width;
+canvas.height=rect.height;
+
+const ctx=
+canvas.getContext('2d');
+
+const gradient=
+ctx.createLinearGradient(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+gradient.addColorStop(0,'#d4af37');
+gradient.addColorStop(.5,'#fff2b0');
+gradient.addColorStop(1,'#b8860b');
+
+ctx.fillStyle=gradient;
+
+ctx.fillRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+ctx.fillStyle='#7a0c20';
+
+ctx.font='bold 30px serif';
+
+ctx.textAlign='center';
+
+ctx.fillText(
+'✨ Scratch Here ✨',
+canvas.width/2,
+canvas.height/2
+);
+
+let scratching=false;
+
+function position(e){
+
+const r=
+canvas.getBoundingClientRect();
+
+return{
+x:
+(e.touches?e.touches[0].clientX:e.clientX)
+-r.left,
+
+y:
+(e.touches?e.touches[0].clientY:e.clientY)
+-r.top
+};
+}
+
+function scratch(e){
+
+if(!scratching) return;
+
+const pos=position(e);
+
+ctx.globalCompositeOperation='destination-out';
+
+ctx.beginPath();
+
+ctx.arc(
+pos.x,
+pos.y,
+28,
+0,
+Math.PI*2
+);
+
+ctx.fill();
+}
+
+canvas.addEventListener(
+'mousedown',
+()=>scratching=true
+);
+
+canvas.addEventListener(
+'mouseup',
+()=>scratching=false
+);
+
+canvas.addEventListener(
+'mousemove',
+scratch
+);
+
+canvas.addEventListener(
+'touchstart',
+()=>scratching=true
+);
+
+canvas.addEventListener(
+'touchend',
+()=>scratching=false
+);
+
+canvas.addEventListener(
+'touchmove',
+scratch
+);
+}
+
+</script>
+
+<form
+action="https://docs.google.com/forms/d/127tNV73Cz2ssHSy5VtHpAcntj96KsQYK4s0ZD0Ww2lI/edit"
+method = "post"
+target="_blank">
+</form>
+
+</body>
+</html>
