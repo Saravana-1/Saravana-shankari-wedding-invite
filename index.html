@@ -38,6 +38,20 @@ h1,h2,h3{
     font-family:'Cormorant Garamond',serif;
 }
 
+#tapHint{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(0,0,0,.6);
+    color:#fff;
+    padding:10px 20px;
+    border-radius:25px;
+    font-size:14px;
+    z-index:9999;
+    animation:pulse 2s infinite;
+}
+
 .progress{
     position:fixed;
     top:0;
@@ -560,6 +574,9 @@ section{
 </style>
 </head>
 <body>
+    <audio id="bgMusic" preload="auto" loop>
+        <source src="music/wedding_invite_audio.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="slideshow">
     <div class="slide active"></div>
@@ -585,7 +602,7 @@ section{
     </h1>
 
     <div class="date-card">
-        <p><strong>24th October 2026</strong></p>
+        <p><strong>25th October 2026</strong></p>
         <p>07:05 AM</p>
         <p>Alayamani Mahal, Perundurai Road, Erode</p>
     </div>
@@ -656,12 +673,12 @@ section{
     <div class="clue-card">
 
     <p>
-    🌼 What flower is considered sacred in Maharashtrian weddings?
+    🌼 Which year is it?
     </p>
 
     <input id="c1">
 
-    <button onclick="unlockScratch('c1','marigold','scratch1')">
+    <button onclick="unlockScratch('c1','2026','scratch1')">
     Unlock Scratch Card
     </button>
 
@@ -673,24 +690,6 @@ section{
 
     <canvas class="scratch-card"></canvas>
 
-    </div>
-
-    <div class="clue-card">
-        <p>💐 What is the traditional Marathi word for the wedding ritual where the couple exchanges garlands?</p>
-        <input id="c2">
-        <button onclick="unlock('c2','varmala','r2',event)">Unlock</button>
-        <div id="r2" class="reveal">
-            In every garland exchanged, a thousand promises bloom forever! 💐
-        </div>
-    </div>
-
-    <div class="clue-card">
-        <p>🍯 Which sweet dish is a must at every Maharashtrian celebration?</p>
-        <input id="c3">
-        <button onclick="unlock('c3','puranpoli','r3',event)">Unlock</button>
-        <div id="r3" class="reveal">
-            Life with you is sweeter than every puranpoli ever made! 🍯
-        </div>
     </div>
 
     <div class="clue-card">
@@ -710,15 +709,17 @@ section{
     </div>
 
     <div class="footer-message">
+        <h3>
         "We are beyond grateful to have you as part of our special day.
         Your presence turns this celebration into a lifelong memory.
         Come, eat, dance, and bless us as we begin our forever together!"
+        </h3>
     </div>
 
     <section class="rsvp animate">
 
     <div class="venue-section">
-        <h3>📍 Venue: Alayamani Mahal</h3>
+        <h2>📍 Venue: Alayamani Mahal</h2>
         <a href="https://maps.app.goo.gl/dB3QYPMdqQ3eAYWR9"
                 target="_blank"
                 class="map-btn">
@@ -777,6 +778,10 @@ section{
         Sivashankari ❤️ SaravanaKumar 
     </div>
 </section>
+
+<div id="tapHint">
+    🎵 Tap anywhere to begin the wedding experience
+</div>
 
 <script>
 
@@ -860,14 +865,100 @@ for(let i=0;i<40;i++){
 }
 
 /* Music Toggle Visual */
-let music=false;
-document.getElementById("musicBtn").addEventListener("click",()=>{
-    music=!music;
-    document.getElementById("musicBtn").innerHTML=music?"🔊":"🎵";
-});
-</script>
+// let music=false;
+// document.getElementById("musicBtn").addEventListener("click",()=>{
+//     music=!music;
+//     document.getElementById("musicBtn").innerHTML=music?"🔊":"🎵";
+// });
 
-<script>
+
+// const bgMusic = document.getElementById("bgMusic");
+// const musicBtn = document.getElementById("musicBtn");
+
+// musicBtn.addEventListener("click", async () => {
+
+//     try {
+
+//         if (bgMusic.paused) {
+
+//             await bgMusic.play();
+//             musicBtn.innerHTML = "🔊";
+
+//         } else {
+
+//             bgMusic.pause();
+//             musicBtn.innerHTML = "🎵";
+
+//         }
+
+//     } catch (err) {
+
+//         console.error("Music error:", err);
+
+//     }
+
+// });
+
+// document.addEventListener("pointerdown", function () {
+
+//     bgMusic.play().catch(err => console.log(err));
+
+// }, { once: true });
+
+/* ==============================
+   Background Music
+============================== */
+
+const bgMusic = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+let musicStarted = false;
+
+// Starts music once after first user interaction
+async function startMusic() {
+
+    if (musicStarted) return;
+
+    try {
+
+        await bgMusic.play();
+
+        musicStarted = true;
+        const hint = document.getElementById("tapHint");
+        if (hint) {
+            hint.style.display = "none";
+}
+        musicBtn.innerHTML = "🔊";
+
+    } catch (err) {
+
+        console.log("Music blocked:", err);
+
+    }
+
+}
+
+// Works on desktop and mobile
+document.addEventListener("pointerdown", startMusic, { once: true });
+
+document.addEventListener("keydown", startMusic, { once: true });
+
+// Toggle button
+musicBtn.addEventListener("click", async () => {
+
+    if (bgMusic.paused) {
+
+        await bgMusic.play();
+        musicBtn.innerHTML = "🔊";
+
+    } else {
+
+        bgMusic.pause();
+        musicBtn.innerHTML = "🎵";
+
+    }
+
+});
 
 /* ---------- BACKGROUND SLIDESHOW ---------- */
 
