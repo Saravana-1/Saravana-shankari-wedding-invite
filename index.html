@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sivashankari ❤️ SaravanaKumar | SS Wedding Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -36,20 +36,6 @@ body{
 
 h1,h2,h3{
     font-family:'Cormorant Garamond',serif;
-}
-
-#tapHint{
-    position:fixed;
-    bottom:20px;
-    left:50%;
-    transform:translateX(-50%);
-    background:rgba(0,0,0,.6);
-    color:#fff;
-    padding:10px 20px;
-    border-radius:25px;
-    font-size:14px;
-    z-index:9999;
-    animation:pulse 2s infinite;
 }
 
 .progress{
@@ -148,7 +134,9 @@ section{
 }
 
 .hero h1{
-    font-size:5rem;
+    font-family:'Great Vibes', cursive;
+    font-size:6rem;
+    font-weight:400;
     color:#fff;
 }
 
@@ -172,9 +160,12 @@ section{
 
 .subtitle{
     color:#f9d97c;
-    letter-spacing:3px;
-    text-transform:uppercase;
+    letter-spacing:2px;
     margin-bottom:15px;
+    font-family:'Love Ya Like A Sister', cursive;
+    text-shadow: 4px 4px 4px #aaa;
+    font-size:3.5rem;
+    font-weight:400;
 }
 
 .heading{
@@ -185,10 +176,11 @@ section{
 .heading h2{
     font-size:3rem;
     color:var(--gold);
+    font-family:'Great Vibes', cursive;
 }
 
 .events{
-    padding:80px 0;
+    padding:90px 0 80px;
 }
 
 .grid{
@@ -222,7 +214,7 @@ section{
 }
 
 .countdown{
-    padding:80px 0;
+    padding:40px 0;
 }
 
 .timer{
@@ -239,6 +231,67 @@ section{
     backdrop-filter:blur(15px);
 }
 
+/* Individual questions should NOT have their own card */
+.question-block {
+    width: 100%;
+}
+
+/* Space between the two questions */
+.question-divider {
+    height: 1px;
+
+    margin: 30px 0;
+
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Question text */
+.question-block p {
+    margin-bottom: 15px;
+
+    color: white;
+
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* Input */
+.question-block input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 15px;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    margin-bottom: 15px;
+}
+
+/* Button */
+.question-block button {
+    padding: 14px 22px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #d9ae2f;
+    color: #000;
+
+    font-weight: bold;
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.question-block button:hover {
+    transform: translateY(-2px);
+}
+
 .time-box span{
     display:block;
     font-size:3rem;
@@ -247,7 +300,7 @@ section{
 }
 
 .secret{
-    padding:80px 0;
+    padding:40px 0 40px;
 }
 
 .clue-card{
@@ -278,25 +331,8 @@ section{
     font-weight:bold;
 }
 
-.reveal{
-    max-height:0;
-    overflow:hidden;
-    transition:.8s;
-    color:#ffe18a;
-    font-size:1.1rem;
-}
-
-.reveal.show{
-    max-height:150px;
-    margin-top:15px;
-    padding:15px;
-    border-radius:12px;
-    background:rgba(255,215,0,.15);
-    box-shadow:0 0 25px rgba(255,215,0,.5);
-}
-
 .footer{
-    padding:100px 0;
+    padding:40px 0 100px;
     text-align:center;
 }
 
@@ -323,13 +359,6 @@ section{
 .animate.visible{
     opacity:1;
     transform:translateY(0);
-}
-
-.particle{
-    position:absolute;
-    font-size:20px;
-    pointer-events:none;
-    animation:burst 1.5s forwards;
 }
 
 @keyframes burst{
@@ -402,73 +431,67 @@ section{
     opacity:1;
 }
 
-.slide{
-    position:absolute;
-    inset:0;
-    opacity:0;
-    transition:opacity 2s ease-in-out;
-}
-
-.slide.active{
-    opacity:1;
-}
-
 .slide img{
     width:100%;
     height:100%;
     object-fit:cover;
 }
 
-.slide::after{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:
-    linear-gradient(
-        rgba(122,12,32,.65),
-        rgba(18,71,52,.65)
-    );
-}
-
 /* ---------- SCRATCH CARD ---------- */
 
-.scratch-wrapper{
-    position:relative;
-    width:100%;
-    max-width:550px;
-    height:180px;
-    margin-top:20px;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 0 30px rgba(212,175,55,.6);
+.scratch-wrapper {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    margin-top: 20px;
+
+    border-radius: 15px;
+    overflow: hidden;
 }
 
-.hidden{
-    display:none;
+.scratch-wrapper.hidden {
+    display: none;
 }
 
-.scratch-message{
-    position:absolute;
-    inset:0;
+/* The actual answer underneath */
+.scratch-message {
+    position: absolute;
+    inset: 0;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    z-index: 1;
 
-    text-align:center;
-    padding:20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    font-size:1.1rem;
-    font-weight:600;
+    padding: 25px;
 
-    background:
-    linear-gradient(
-        135deg,
-        #7a0c20,
-        #124734
-    );
+    text-align: center;
 
-    color:#fff;
+    background: #fff8dc;
+    color: #8a6500;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* The GOLD scratch layer */
+.scratch-card {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+
+    display: block;
+
+    cursor: crosshair;
+
+    touch-action: none;
 }
 
 .rsvp{
@@ -571,10 +594,255 @@ section{
     cursor:crosshair;
     touch-action:none;
 }
+
+/* ---------- DOOR OPENING INTRO (with garland & bells) ---------- */
+
+#doorOverlay{
+    position:fixed;
+    top:0; left:0; right:0; bottom:0;
+    width:100%;
+    height:100%;
+    height:100dvh;
+    z-index:100000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#1a0308;
+    perspective:2200px;
+}
+
+.door-archway{
+    position:relative;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+.door-leaf{
+    position:absolute;
+    top:0;
+    width:50%;
+    height:100%;
+    background:
+        repeating-linear-gradient(90deg,#5d0916,#5d0916 26px,#6d0d1c 26px,#6d0d1c 30px),
+        linear-gradient(180deg,#7a0c20,#4a0713);
+    transition:transform 1.6s cubic-bezier(.76,0,.2,1);
+    transform-style:preserve-3d;
+    box-shadow:inset 0 0 90px rgba(0,0,0,.55);
+}
+
+.door-leaf .panel{
+    position:absolute;
+    left:12%;
+    right:12%;
+    border:3px solid var(--gold);
+    border-radius:8px;
+    box-shadow:inset 0 0 25px rgba(212,175,55,.35),0 0 15px rgba(0,0,0,.4);
+    background:rgba(212,175,55,.05);
+}
+
+.door-leaf .panel.top{ top:18%; height:32%; }
+.door-leaf .panel.bottom{ top:54%; height:32%; }
+
+.door-leaf .motif{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    font-size:2rem;
+    filter:drop-shadow(0 0 8px rgba(212,175,55,.6));
+}
+
+.door-leaf.left{ left:0; transform-origin:left center; border-right:2px solid rgba(212,175,55,.6); }
+.door-leaf.right{ right:0; transform-origin:right center; border-left:2px solid rgba(212,175,55,.6); }
+
+.door-handle{
+    position:absolute;
+    top:50%;
+    width:16px; height:16px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 35%,#fff2b0,var(--gold) 60%,#8a6a1c);
+    box-shadow:0 0 12px rgba(212,175,55,.8);
+    transform:translateY(-50%);
+}
+
+.door-leaf.left .door-handle{ right:6%; }
+.door-leaf.right .door-handle{ left:6%; }
+
+/* garland & bells hanging across the door threshold */
+.door-garland{
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(92vw,720px);
+    z-index:20;
+    pointer-events:none;
+    filter:drop-shadow(0 6px 16px rgba(0,0,0,.5));
+}
+
+.door-garland img{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+#doorOverlay.unlocking .door-leaf.left{ transform:rotateY(-108deg); }
+#doorOverlay.unlocking .door-leaf.right{ transform:rotateY(108deg); }
+
+#doorOverlay.unlocking .door-garland{
+    transition:opacity .6s ease, transform .8s ease;
+    opacity:0;
+    transform:translateX(-50%) translateY(-40px);
+}
+
+#doorOverlay.hide-overlay{
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .6s ease .3s;
+}
+
+.door-scroll-hint{
+    position:absolute;
+    bottom:6%;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:20;
+    color:#f9d97c;
+    font-size:.85rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    text-align:center;
+    animation:doorPulse 2s infinite;
+}
+
+@keyframes doorPulse{
+    0%,100%{ opacity:.55; }
+    50%{ opacity:1; }
+}
+
+.thoranam{
+    position:fixed;
+    object-position: top;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    height:100dvh;   /* mobile-safe fallback */
+    margin:0;
+    z-index:1;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.thoranam img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+#doorOverlay.unlocking .door-scroll-hint{ opacity:0; }
+
+.ambaari{
+    position:relative;
+    width:min(88vw,770px);
+    margin:0 auto 26px;
+    border-radius:16px;
+    overflow:hidden;
+}
+
+.ambaari img{
+    display:block;
+    width:100%;
+    height:200px;
+}
+
+/* ---------- ILLUSTRATED COUPLE PORTRAIT ---------- */
+
+.hero-portrait{
+    position:relative;
+    width:min(88vw,720px);
+    margin:0 auto 26px;
+    border-radius:16px;
+    overflow:hidden;
+    /* border:2px solid var(--gold);
+    box-shadow:0 12px 34px rgba(0,0,0,.45),0 0 0 6px rgba(212,175,55,.12); */
+}
+
+.hero-portrait img{
+    display:block;
+    width:100%;
+    height:auto;
+
+    -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+    mask-image: radial-gradient(circle, rgba(0,0,0,1) 37%, rgba(0,0,0,0) 90%);
+}
+
+/* ---------- SAVE THE DATE CALENDAR ---------- */
+
+.save-date{
+    padding:15px 20px 70px;
+    text-align:center;
+}
+
+    .save-date .calendar-card{
+    max-width:500px;
+    margin:30px auto 0;
+    background:transparent;
+    border:none;
+    border-radius:0;
+    padding:0;
+    box-shadow:none;
+}
+
+.calendar-img{
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
+}
+
+.save-date .heading h2,
+.countdown .heading h2,
+.secret .heading h2,
+.footer .heading h2{
+    font-size:3.5rem;
+}
+
+.rsvp .heading h2{
+    font-family:'Cormorant Garamond', serif;
+}
+
+.with-love-heading{
+    margin-top:40px;
+}
+
 </style>
 </head>
 <body>
-    <audio id="bgMusic" preload="auto" loop>
+    <div id="doorOverlay">
+        <div class="door-archway">
+            <div class="door-leaf left">
+                <div class="panel top"><span class="motif">🌼</span></div>
+                <div class="panel bottom"><span class="motif">🪔</span></div>
+                <div class="door-handle"></div>
+            </div>
+            <div class="door-leaf right">
+                <div class="panel top"><span class="motif">🌼</span></div>
+                <div class="panel bottom"><span class="motif">🪔</span></div>
+                <div class="door-handle"></div>
+            </div>
+        </div>
+        <div class="door-garland">
+            <img src="Images/garland-bells.png" alt="">
+        </div>
+        <div class="door-scroll-hint">Scroll to open the doors</div>
+    </div>
+
+    <audio id="bgMusic" preload="auto">
         <source src="music/wedding_invite_audio.mp3" type="audio/mpeg">
     </audio>
 
@@ -590,20 +858,36 @@ section{
 
 <div class="petals" id="petals"></div>
 
-<section class="hero">
-    <div class="rangoli">🌼 ✨ 🪔 ✨ 🌼</div>
+<section class="thoranam">
+    <div class="thoranam">
+        <img src="Images\thoranam.png" alt="garland">
+    </div>
+</section>
 
-    <div class="subtitle">SS Wedding Invitation</div>
+<section class="hero">
+
+    <div class="ambaari">
+        <img src="Images\ambaari.png" alt="SaravanaKumar and Sivashankari">
+    </div>
+
+    <!-- <div class="rangoli">🪔 ✨ 🧡 ✨ 🪔</div> -->
+    <!-- <div class="rangoli">🧡</div> -->
+
+    <div class="subtitle">Wedding Invitation</div>
 
     <h1>
-        Sivashankari
-        <span class="amp">&</span>
         SaravanaKumar
+        <span class="amp">&</span>
+        Sivashankari
     </h1>
+
+    <div class="hero-portrait">
+        <img src="Images\Temple bg edited.jpg" alt="SaravanaKumar and Sivashankari">
+    </div>
 
     <div class="date-card">
         <p><strong>25th October 2026</strong></p>
-        <p>07:05 AM</p>
+        <p>07:05 AM Onwards</p>
         <p>Alayamani Mahal, Perundurai Road, Erode</p>
     </div>
 </section>
@@ -612,14 +896,12 @@ section{
     <div class="heading">
         <h2>Wedding Events</h2>
     </div>
-
     <div class="grid">
-
         <div class="card">
             <h3>🎉 Reception</h3>
             <p>
-                Date: 24th October 2026<br>
-                Time: 07:00 PM<br>
+                Date: 24th October 2026 (Saturday)<br>
+                Time: 07:00 PM Onwards<br>
                 Venue: Alayamani Mahal, Perundurai Road, Erode
             </p>
         </div>
@@ -627,13 +909,21 @@ section{
         <div class="card">
             <h3>💍 Muhurtham</h3>
             <p>
-                Date: 25th October 2026<br>
-                Time: 07:05 AM<br>
+                Date: 25th October 2026 (Sunday)<br>
+                Time: 07:05 AM Onwards<br>
                 Venue: Alayamani Mahal, Perundurai Road, Erode
             </p>
         </div>
+    </div>
+</section>
 
+<section class="save-date animate"> 
+    <div class="heading">
+        <h2>Save The Date</h2>
+    </div>
 
+    <div class="calendar-card">
+        <img src="Images\October 2026.png" alt="October 2026 — 24th Reception, 25th Muhurtham" class="calendar-img">
     </div>
 </section>
 
@@ -666,58 +956,72 @@ section{
 </section>
 
 <section class="secret animate">
+
     <div class="heading">
-        <h2>Secret Keys Game</h2>
+        <h2>Event Revealer</h2>
     </div>
 
+    <!-- ONE SINGLE BOX -->
     <div class="clue-card">
 
-    <p>
-    🌼 Which year is it?
-    </p>
+        <!-- Bride -->
+        <div class="question-block">
 
-    <input id="c1">
+            <p> ❈ What is the nickname of the Bride? ❈</p>
 
-    <button onclick="unlockScratch('c1','2026','scratch1')">
-    Unlock Scratch Card
-    </button>
+            <input id="c1">
 
-    <div class="scratch-wrapper hidden" id="scratch1">
+            <button onclick="unlockScratch('c1',['Papa', 'Paapa', 'Sankari', 'Shankari', 'Sivashankari'], 'scratch1')">
+                Unlock Scratch Card
+            </button>
 
-    <div class="scratch-message">
-    Two souls, one journey — blessed by the golden bloom of togetherness! 🌼
-    </div>
+            <div class="scratch-wrapper hidden" id="scratch1">
 
-    <canvas class="scratch-card"></canvas>
+                <!-- Hidden answer -->
+                <div class="scratch-message">
+                    Two souls, one journey — blessed by the golden bloom of togetherness! 🌼
+                </div>
 
-    </div>
+                <!-- Scratch surface -->
+                <canvas class="scratch-card"></canvas>
 
-    <div class="clue-card">
-        <p>🎺 What instrument is played at the entrance of a Marathi groom?</p>
-        <input id="c4">
-        <button onclick="unlock('c4','tutari','r4',event)">Unlock</button>
-        <div id="r4" class="reveal">
-            Let the tutari echo — a new chapter begins today! 🎺
+            </div>
+
         </div>
+
+        <div class="question-divider"></div>
+
+        <!-- Groom -->
+        <div class="question-block">
+
+            <p>❈ What is the nickname of the Groom? ❈</p>
+
+            <input id="c4">
+
+            <button onclick="unlockScratch('c4', ['Saro', 'Saravana', 'Kumar'], 'scratch4')">
+                Unlock Scratch Card
+            </button>
+
+            <div class="scratch-wrapper hidden" id="scratch4">
+
+                <!-- Hidden answer -->
+                <div class="scratch-message">
+                    Two souls, one journey — blessed by the golden bloom of togetherness! 🌼
+                </div>
+
+                <!-- Scratch surface -->
+                <canvas class="scratch-card"></canvas>
+
+            </div>
+
+        </div>
+
     </div>
 
 </section>
 
 <section class="footer animate">
-    <div class="heading">
-        <h2>With Love</h2>
-    </div>
-
-    <div class="footer-message">
-        <h3>
-        "We are beyond grateful to have you as part of our special day.
-        Your presence turns this celebration into a lifelong memory.
-        Come, eat, dance, and bless us as we begin our forever together!"
-        </h3>
-    </div>
-
     <section class="rsvp animate">
-
     <div class="venue-section">
         <h2>📍 Venue: Alayamani Mahal</h2>
         <a href="https://maps.app.goo.gl/dB3QYPMdqQ3eAYWR9"
@@ -772,16 +1076,24 @@ section{
 
     </div>
 
-</section>
+    </section>
+
+    <div class="heading with-love-heading">
+        <h2>With Love</h2>
+    </div>
+
+    <div class="footer-message">
+        <h3>
+        "We are beyond grateful to have you as part of our special day.
+        Your presence turns this celebration into a lifelong memory.
+        Come, eat, dance, and bless us as we begin our forever together!"
+        </h3>
+    </div>
 
     <div class="signature">
         Sivashankari ❤️ SaravanaKumar 
     </div>
 </section>
-
-<div id="tapHint">
-    🎵 Tap anywhere to begin the wedding experience
-</div>
 
 <script>
 
@@ -805,35 +1117,6 @@ setInterval(()=>{
     document.getElementById("seconds").innerText=Math.floor((distance%(1000*60))/1000);
 },1000);
 
-/* Reveal Animation */
-function unlock(inputId,key,revealId,e){
-
-    const value=document.getElementById(inputId).value.trim().toLowerCase();
-
-    if(value===key){
-        document.getElementById(revealId).classList.add("show");
-
-        for(let i=0;i<25;i++){
-
-            const p=document.createElement("div");
-            p.className="particle";
-            p.innerHTML=["✨","🌼","💛"][Math.floor(Math.random()*3)];
-
-            p.style.left=e.pageX+"px";
-            p.style.top=e.pageY+"px";
-
-            p.style.setProperty('--x',(Math.random()*250-125)+'px');
-            p.style.setProperty('--y',(Math.random()*250-125)+'px');
-
-            document.body.appendChild(p);
-
-            setTimeout(()=>p.remove(),1500);
-        }
-    }else{
-        alert("Incorrect key. Try again!");
-    }
-}
-
 /* Intersection Animations */
 const observer=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
@@ -854,7 +1137,7 @@ for(let i=0;i<40;i++){
 
     const p=document.createElement("div");
     p.className="petal";
-    p.innerHTML=["🌼","✨","🪔","🌺"][Math.floor(Math.random()*4)];
+    p.innerHTML=["🌼","✨","🌺"][Math.floor(Math.random()*3)];
 
     p.style.left=Math.random()*100+"%";
     p.style.fontSize=(15+Math.random()*20)+"px";
@@ -870,7 +1153,6 @@ for(let i=0;i<40;i++){
 //     music=!music;
 //     document.getElementById("musicBtn").innerHTML=music?"🔊":"🎵";
 // });
-
 
 // const bgMusic = document.getElementById("bgMusic");
 // const musicBtn = document.getElementById("musicBtn");
@@ -906,6 +1188,51 @@ for(let i=0;i<40;i++){
 // }, { once: true });
 
 /* ==============================
+   Door Opening Intro
+============================== */
+
+let doorsOpened = false;
+
+function openDoors(){
+
+    if(doorsOpened) return;
+    doorsOpened = true;
+
+    const overlay = document.getElementById("doorOverlay");
+
+    overlay.classList.add("unlocking");
+    if (typeof startMusic === "function") startMusic();
+
+    setTimeout(()=>{
+        overlay.classList.add("hide-overlay");
+        document.body.style.overflow = "auto";
+    }, 1400);
+
+    setTimeout(()=>{
+        overlay.style.display = "none";
+    }, 2200);
+}
+
+function handleDoorScrollIntent(e){
+    if(doorsOpened) return;
+    e.preventDefault();
+    openDoors();
+}
+
+document.body.style.overflow = "hidden";
+
+window.addEventListener("wheel", handleDoorScrollIntent, { passive:false });
+window.addEventListener("touchmove", handleDoorScrollIntent, { passive:false });
+
+window.addEventListener("keydown", (e)=>{
+    if(["ArrowDown","PageDown"," ","Spacebar"].includes(e.key)){
+        handleDoorScrollIntent(e);
+    }
+});
+
+document.getElementById("doorOverlay").addEventListener("click", openDoors);
+
+/* ==============================
    Background Music
 ============================== */
 
@@ -939,7 +1266,7 @@ async function startMusic() {
 }
 
 // Works on desktop and mobile
-document.addEventListener("pointerdown", startMusic, { once: true });
+// document.addEventListener("pointerdown", startMusic, { once: true });
 
 document.addEventListener("keydown", startMusic, { once: true });
 
@@ -979,157 +1306,149 @@ slides[currentSlide].classList.add('active');
 
 /* ---------- SCRATCH CARD ---------- */
 
-function unlockScratch(inputId,key,scratchId){
+function unlockScratch(inputId, correctAnswers, scratchId) {
 
-const value=
-document.getElementById(inputId)
-.value
-.trim()
-.toLowerCase();
+    const input = document.getElementById(inputId);
 
-if(value!==key){
+    const userAnswer = input.value.trim().toLowerCase();
 
-alert("Incorrect key. Try again!");
+    const acceptedAnswers = correctAnswers.map(answer =>
+        answer.trim().toLowerCase()
+    );
 
-return;
+    if (!acceptedAnswers.includes(userAnswer)) {
+        alert("Incorrect key. Try again!");
+        return;
+    }
+
+    // Correct answer
+    const wrapper = document.getElementById(scratchId);
+
+    // Show scratch card
+    wrapper.classList.remove("hidden");
+
+    // Wait until browser renders the wrapper
+    setTimeout(() => {
+        initializeScratchCard(wrapper);
+    }, 50);
 }
 
-const wrapper=
-document.getElementById(scratchId);
+function initializeScratchCard(wrapper) {
 
-wrapper.classList.remove('hidden');
+    const canvas = wrapper.querySelector(".scratch-card");
 
-const canvas=
-wrapper.querySelector('canvas');
+    const ctx = canvas.getContext("2d");
 
-initScratchCard(canvas);
-}
+    // Get actual displayed size
+    const width = wrapper.clientWidth;
+    const height = wrapper.clientHeight;
 
-function initScratchCard(canvas){
+    canvas.width = width;
+    canvas.height = height;
 
-if(canvas.dataset.ready) return;
+    // ------------------------------------------------
+    // GOLD SCRATCH SURFACE
+    // ------------------------------------------------
 
-canvas.dataset.ready=true;
+    ctx.globalCompositeOperation = "source-over";
 
-const rect=
-canvas.parentElement.getBoundingClientRect();
+    ctx.fillStyle = "#D4AF37";
 
-canvas.width=rect.width;
-canvas.height=rect.height;
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
 
-const ctx=
-canvas.getContext('2d');
+    // ------------------------------------------------
+    // TEXT ON SCRATCH CARD
+    // ------------------------------------------------
 
-const gradient=
-ctx.createLinearGradient(
-0,
-0,
-canvas.width,
-canvas.height
-);
+    ctx.fillStyle = "#ffffff";
 
-gradient.addColorStop(0,'#d4af37');
-gradient.addColorStop(.5,'#fff2b0');
-gradient.addColorStop(1,'#b8860b');
+    ctx.font = "bold 20px Arial";
 
-ctx.fillStyle=gradient;
+    ctx.textAlign = "center";
 
-ctx.fillRect(
-0,
-0,
-canvas.width,
-canvas.height
-);
+    ctx.textBaseline = "middle";
 
-ctx.fillStyle='#7a0c20';
+    ctx.fillText(
+        "✨ Scratch here to reveal ✨",
+        canvas.width / 2,
+        canvas.height / 2
+    );
 
-ctx.font='bold 30px serif';
+    // ------------------------------------------------
+    // SCRATCHING
+    // ------------------------------------------------
 
-ctx.textAlign='center';
+    let isScratching = false;
 
-ctx.fillText(
-'✨ Scratch Here ✨',
-canvas.width/2,
-canvas.height/2
-);
+    function getPosition(event) {
 
-let scratching=false;
+        const rect = canvas.getBoundingClientRect();
 
-function position(e){
+        return {
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top
+        };
+    }
 
-const r=
-canvas.getBoundingClientRect();
+    function scratch(event) {
 
-return{
-x:
-(e.touches?e.touches[0].clientX:e.clientX)
--r.left,
+        if (!isScratching) {
+            return;
+        }
 
-y:
-(e.touches?e.touches[0].clientY:e.clientY)
--r.top
-};
-}
+        const position = getPosition(event);
 
-function scratch(e){
+        ctx.globalCompositeOperation = "destination-out";
 
-if(!scratching) return;
+        ctx.beginPath();
 
-const pos=position(e);
+        ctx.arc(
+            position.x,
+            position.y,
+            25,
+            0,
+            Math.PI * 2
+        );
 
-ctx.globalCompositeOperation='destination-out';
+        ctx.fill();
+    }
 
-ctx.beginPath();
+    // Mouse / touch / pen
+    canvas.addEventListener("pointerdown", function(event) {
 
-ctx.arc(
-pos.x,
-pos.y,
-28,
-0,
-Math.PI*2
-);
+        isScratching = true;
 
-ctx.fill();
-}
+        canvas.setPointerCapture(event.pointerId);
 
-canvas.addEventListener(
-'mousedown',
-()=>scratching=true
-);
+        scratch(event);
 
-canvas.addEventListener(
-'mouseup',
-()=>scratching=false
-);
+    });
 
-canvas.addEventListener(
-'mousemove',
-scratch
-);
+    canvas.addEventListener("pointermove", function(event) {
 
-canvas.addEventListener(
-'touchstart',
-()=>scratching=true
-);
+        scratch(event);
 
-canvas.addEventListener(
-'touchend',
-()=>scratching=false
-);
+    });
 
-canvas.addEventListener(
-'touchmove',
-scratch
-);
+    canvas.addEventListener("pointerup", function() {
+
+        isScratching = false;
+
+    });
+
+    canvas.addEventListener("pointercancel", function() {
+
+        isScratching = false;
+
+    });
 }
 
 </script>
-
-<form
-action="https://docs.google.com/forms/d/127tNV73Cz2ssHSy5VtHpAcntj96KsQYK4s0ZD0Ww2lI/edit"
-method = "post"
-target="_blank">
-</form>
 
 </body>
 </html>
