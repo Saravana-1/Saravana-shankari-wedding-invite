@@ -102,6 +102,32 @@ h1,h2,h3{
     margin:15px auto;
 }
 
+.venue-reveal{
+    padding:60px 0;
+}
+
+.venue-section{
+    max-width:600px;
+    margin:auto;
+    text-align:center;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+
+    border-radius:25px;
+    padding:35px;
+
+    border:1px solid rgba(255,255,255,.15);
+}
+
+.venue-section h2{
+    font-family:'DM Sans', sans-serif;
+    font-weight:600;
+    font-size:1.4rem;
+    color:var(--gold);
+    margin-bottom:15px;
+}
+
 section{
     width:min(1200px,92%);
     margin:auto;
@@ -494,11 +520,11 @@ section{
     touch-action: none;
 }
 
-.rsvp{
+.wishes{
     padding:80px 0;
 }
 
-.rsvp-card{
+.wishes-card{
     max-width:700px;
     margin:auto;
 
@@ -511,15 +537,15 @@ section{
     border:1px solid rgba(255,255,255,.15);
 }
 
-.rsvp form{
+.wishes form{
     display:flex;
     flex-direction:column;
     gap:15px;
 }
 
-.rsvp input,
-.rsvp select,
-.rsvp textarea{
+.wishes input,
+.wishes select,
+.wishes textarea{
 
     width:100%;
     padding:15px;
@@ -531,18 +557,19 @@ section{
 
     color:white;
     font-size:1rem;
+    font-family:inherit;
 }
 
-.rsvp input::placeholder,
-.rsvp textarea::placeholder{
+.wishes input::placeholder,
+.wishes textarea::placeholder{
     color:rgba(255,255,255,.7);
 }
 
-.rsvp select option{
+.wishes select option{
     color:black;
 }
 
-.rsvp button{
+.wishes button{
 
     padding:15px;
 
@@ -565,7 +592,7 @@ section{
     transition:.3s;
 }
 
-.rsvp button:hover{
+.wishes button:hover{
     transform:translateY(-3px);
 }
 
@@ -584,6 +611,105 @@ section{
     background:rgba(212,175,55,.2);
 
     color:#ffe18a;
+}
+
+/* ---------- Selfie upload prompt (shown when guest can't attend) ---------- */
+.selfie-block{
+    padding:20px;
+    border-radius:14px;
+    background:rgba(212,175,55,.12);
+    border:1px dashed rgba(212,175,55,.5);
+    text-align:center;
+}
+
+.selfie-block p{
+    margin-bottom:12px;
+    line-height:1.6;
+}
+
+.selfie-btn{
+    display:inline-block;
+    padding:13px 22px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#d4af37,#ffe18a);
+    color:black;
+    font-weight:bold;
+    text-decoration:none;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.selfie-btn:hover{
+    transform:translateY(-3px);
+}
+
+.selfie-filename{
+    margin-top:10px;
+    font-size:.9rem;
+    color:rgba(255,255,255,.8);
+}
+
+.selfie-status{
+    margin-top:10px;
+    font-size:.9rem;
+    font-weight:bold;
+}
+
+.selfie-status.uploading{
+    color:#ffe18a;
+}
+
+.selfie-status.success{
+    color:#8fd694;
+}
+
+.selfie-status.error{
+    color:#e88a8a;
+}
+
+/* ---------- Live streaming card ---------- */
+.live-card{
+    max-width:700px;
+    margin:35px auto 0;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+
+    border-radius:25px;
+    padding:30px 35px;
+
+    border:1px solid rgba(255,255,255,.15);
+    text-align:center;
+}
+
+.live-card h3{
+    color:var(--gold);
+    font-size:1.6rem;
+    margin-bottom:10px;
+}
+
+.live-card p{
+    line-height:1.7;
+}
+
+.live-btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:14px 24px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#7a0c20,#a30d2c);
+    color:white;
+    font-weight:bold;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.live-btn:hover{
+    transform:translateY(-3px);
+}
+
+.hidden{
+    display:none !important;
 }
 
 .scratch-card{
@@ -808,12 +934,9 @@ section{
 .save-date .heading h2,
 .countdown .heading h2,
 .secret .heading h2,
+.wishes .heading h2,
 .footer .heading h2{
     font-size:3.5rem;
-}
-
-.rsvp .heading h2{
-    font-family:'Cormorant Garamond', serif;
 }
 
 .with-love-heading{
@@ -927,6 +1050,20 @@ section{
     </div>
 </section>
 
+<section class="venue-reveal animate">
+    <div class="venue-section">
+        <h2>📍 Venue: Alayamani Mahal</h2>
+        <a href="https://maps.app.goo.gl/dB3QYPMdqQ3eAYWR9"
+                target="_blank"
+                class="map-btn">
+                Open in Google Maps
+                </a>
+        <img src="Images/wedding_venue_qr.png"
+            alt="Venue QR Code"
+            class="venue-qr">
+    </div>
+</section>
+
 <section class="countdown animate">
     <div class="heading">
         <h2>Countdown To Forever</h2>
@@ -1021,59 +1158,66 @@ section{
 </section>
 
 <section class="footer animate">
-    <section class="rsvp animate">
-    <div class="venue-section">
-        <h2>📍 Venue: Alayamani Mahal</h2>
-        <a href="https://maps.app.goo.gl/dB3QYPMdqQ3eAYWR9"
-                target="_blank"
-                class="map-btn">
-                Open in Google Maps
-                </a>
-        <img src="Images/wedding_venue_qr.png"
-            alt="Venue QR Code"
-            class="venue-qr">
-    </div>
+    <section class="wishes animate">
 
     <div class="heading">
-        <h2>RSVP</h2>
-        <p>We would be delighted to celebrate with you</p>
+        <h2>Wedding Guestbook</h2>
+        <p>Leave your blessings for us — near or far, you're part of our story</p>
     </div>
 
-    <div class="rsvp-card">
+    <div class="wishes-card">
 
-        <form id="rsvpForm">
+        <form id="wishesForm">
 
             <input type="text"
                    id="guestName"
                    placeholder="Your Name"
                    required>
 
-            <input type="number"
-                   id="guestCount"
-                   placeholder="Number of Guests"
-                   min="1"
-                   required>
-
-            <select id="attendance" required>
-                <option value="">Will you attend?</option>
-                <option value="Yes">Yes, I'll be there</option>
-                <option value="No">Sorry, can't make it</option>
-            </select>
+            <input type="email"
+                   id="guestEmail"
+                   placeholder="Your Email (optional)">
 
             <textarea id="message"
-                      placeholder="Blessings / Message for the couple"
-                      rows="4"></textarea>
+                      placeholder="Your wishes for the couple"
+                      rows="4"
+                      required></textarea>
+
+            <textarea id="favoriteMemory"
+                      placeholder="A favorite memory with the couple (optional)"
+                      rows="3"></textarea>
+
+            <div class="selfie-block">
+                <p>📸 Have a selfie or video wish for the couple? Add it here — totally optional.</p>
+                <label for="selfieFile" class="selfie-btn">
+                    Choose a Photo or Video
+                </label>
+                <input type="file"
+                       id="selfieFile"
+                       accept="image/*,video/*"
+                       class="hidden">
+                <p id="selfieFileName" class="selfie-filename"></p>
+                <p id="selfieStatus" class="selfie-status hidden"></p>
+            </div>
 
             <button type="submit">
-                Send RSVP
+                Send Wishes
             </button>
 
         </form>
 
-        <div id="rsvpSuccess" class="rsvp-success">
-            🎉 Thank you for your response!
+        <div id="wishesSuccess" class="rsvp-success">
+            🎉 Thank you for your beautiful wishes!
         </div>
 
+    </div>
+
+    <div class="live-card">
+        <h3>📺 Wedding Live Stream</h3>
+        <p id="liveText">Can't be there in person? The live streaming link will appear here closer to the big day — check back soon!</p>
+        <a id="liveBtn" href="#" target="_blank" class="live-btn hidden">
+            ▶️ Watch Live on YouTube
+        </a>
     </div>
 
     </section>
@@ -1096,6 +1240,150 @@ section{
 </section>
 
 <script>
+
+/* ==============================
+   DIGITAL WISHES — CONFIG
+   Edit these three lines as your plans firm up. Everything below
+   reacts automatically to whatever you set here.
+============================== */
+
+// A place for guests who can't attend to drop a selfie or short video —
+// saved via a Google Apps Script Web App running under your own account,
+// so guests never need to sign in. Set MAX_BYTES to match the cap you
+// set in the script itself (default there is 15MB).
+const SELFIE_UPLOAD_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzkJsG4wkyhmiwY8IYeWR2W0TdRhrmzbsq_x7Qlj3VIyf7a1uPZ3BFdbfzfFYgMt2FXcQ/exec";
+const MAX_BYTES = 15 * 1024 * 1024;
+
+// Paste your YouTube live link here once you have it. Leave empty ("")
+// until then — the section will show a "coming soon" message instead.
+const YOUTUBE_LIVE_LINK = "";
+
+// Wishes are saved by silently submitting to this Google Form, which is
+// linked to a Google Sheet — so every wish lands in the Sheet automatically.
+// The selfie/video file is handled separately, uploaded straight to Drive
+// via the Apps Script backend configured above.
+const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSemrN049pG2Kt9s_1f0MohI6k2Hx-ZF75E3SIi0Pl2U-mRO9A/formResponse";
+const ENTRY_NAME = "entry.1704613668";
+const ENTRY_EMAIL = "entry.644863349";
+const ENTRY_MESSAGE = "entry.1734902209";
+const ENTRY_FAVORITE_MEMORY = "entry.1526010609";
+
+/* Selfie/video file picker — shows the chosen filename */
+const selfieFileInput = document.getElementById("selfieFile");
+const selfieFileName = document.getElementById("selfieFileName");
+const selfieStatus = document.getElementById("selfieStatus");
+
+selfieFileInput.addEventListener("change", () => {
+    const file = selfieFileInput.files[0];
+    selfieFileName.textContent = file ? `Selected: ${file.name}` : "";
+    selfieStatus.classList.add("hidden");
+});
+
+/* Reads the chosen file and uploads it to the Apps Script backend.
+   Returns true/false so the caller knows whether it actually saved. */
+function readFileAsDataURL(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+    });
+}
+
+async function uploadSelfie(file, guestName) {
+    selfieStatus.classList.remove("hidden", "success", "error");
+    selfieStatus.classList.add("uploading");
+    selfieStatus.textContent = "Uploading...";
+
+    if (file.size > MAX_BYTES) {
+        selfieStatus.classList.remove("uploading");
+        selfieStatus.classList.add("error");
+        selfieStatus.textContent = "File is too large (max 15MB) — wish still sent without it.";
+        return false;
+    }
+
+    try {
+        const dataUrl = await readFileAsDataURL(file);
+        const response = await fetch(SELFIE_UPLOAD_SCRIPT_URL, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify({
+                filename: file.name,
+                mimeType: file.type,
+                data: dataUrl,
+                guestName: guestName
+            })
+        });
+        const result = await response.json();
+
+        selfieStatus.classList.remove("uploading");
+        if (result.status === "ok") {
+            selfieStatus.classList.add("success");
+            selfieStatus.textContent = "Uploaded! 🎉";
+            return true;
+        } else {
+            selfieStatus.classList.add("error");
+            selfieStatus.textContent = `Upload failed: ${result.message || "unknown error"} — wish still sent.`;
+            return false;
+        }
+    } catch (err) {
+        selfieStatus.classList.remove("uploading");
+        selfieStatus.classList.add("error");
+        selfieStatus.textContent = "Upload failed — wish still sent without it.";
+        console.error("Selfie upload error:", err);
+        return false;
+    }
+}
+
+/* Live stream section reacts to YOUTUBE_LIVE_LINK above */
+const liveBtn = document.getElementById("liveBtn");
+const liveText = document.getElementById("liveText");
+
+if (YOUTUBE_LIVE_LINK) {
+    liveBtn.href = YOUTUBE_LIVE_LINK;
+    liveBtn.classList.remove("hidden");
+    liveText.textContent = "We're live! Tap below to join us as we begin our forever.";
+}
+
+/* Wishes form submit — saves text to the Sheet, and the file (if any) to Drive */
+document.getElementById("wishesForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const guestName = document.getElementById("guestName").value;
+    const selectedFile = selfieFileInput.files[0];
+    let selfieUploaded = null; // null = no file chosen, true/false = attempted
+
+    if (selectedFile) {
+        selfieUploaded = await uploadSelfie(selectedFile, guestName);
+    }
+
+    const formData = new URLSearchParams();
+    formData.append(ENTRY_NAME, guestName);
+    formData.append(ENTRY_EMAIL, document.getElementById("guestEmail").value);
+    formData.append(ENTRY_MESSAGE, document.getElementById("message").value);
+    formData.append(ENTRY_FAVORITE_MEMORY, document.getElementById("favoriteMemory").value);
+
+    try {
+        await fetch(GOOGLE_FORM_ACTION_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: formData
+        });
+    } catch (err) {
+        console.error("Could not save wish:", err);
+    }
+
+    const successBox = document.getElementById("wishesSuccess");
+    if (selfieUploaded === false) {
+        successBox.textContent = "🎉 Thank you for your beautiful wishes! (Your photo/video couldn't be uploaded — but your message was saved.)";
+    } else {
+        successBox.textContent = "🎉 Thank you for your beautiful wishes!";
+    }
+
+    document.getElementById("wishesForm").style.display = "none";
+    successBox.style.display = "block";
+});
 
 /* Scroll Progress */
 window.addEventListener('scroll',()=>{
