@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sivashankari ❤️ SaravanaKumar | SS Wedding Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&family=Great+Vibes&family=Aguafina+Script&family=Betania+Patmos&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -77,16 +77,39 @@ h1,h2,h3{
     position:fixed;
     top:20px;
     right:20px;
-    width:55px;
-    height:55px;
+    width:56px;
+    height:56px;
+    padding:12px;
     border-radius:50%;
-    border:none;
-    background:rgba(255,255,255,.15);
-    backdrop-filter:blur(10px);
-    color:white;
+    border:2px solid rgba(212,175,55,.75);
+    background-color:#2c0812;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d4af37' d='M9 3v10.55A4 4 0 1 0 11 17V7h6V3H9z'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:46%;
+    box-shadow:0 6px 16px rgba(0,0,0,.45);
     cursor:pointer;
-    font-size:22px;
     z-index:999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:box-shadow .3s ease, border-color .3s ease;
+}
+
+.music-btn.playing{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='6' y='4' width='4' height='16' rx='1' fill='%23d4af37'/%3E%3Crect x='14' y='4' width='4' height='16' rx='1' fill='%23d4af37'/%3E%3C/svg%3E");
+    border-color:var(--gold);
+    animation:musicPulse 1.4s ease-in-out infinite, musicRotate 4s linear infinite;
+}
+
+@keyframes musicPulse{
+    0%,100%{ box-shadow:0 6px 16px rgba(0,0,0,.45); }
+    50%{ box-shadow:0 6px 22px rgba(212,175,55,.65); }
+}
+
+@keyframes musicRotate{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
 }
 
 .venue-qr{
@@ -192,6 +215,19 @@ section{
     text-shadow: 4px 4px 4px #aaa;
     font-size:3.5rem;
     font-weight:400;
+}
+
+.hero-logo{
+    width:min(110px,28vw);
+    margin:0 auto 18px;
+    animation:float 4s ease-in-out infinite;
+}
+
+.hero-logo img{
+    display:block;
+    width:100%;
+    height:auto;
+    filter:drop-shadow(0 4px 12px rgba(0,0,0,.35));
 }
 
 .heading{
@@ -406,7 +442,7 @@ section{
 
 .hero{
     justify-content:flex-start;
-    padding-top:210px;
+    padding-top:110px;
 }
 
 .timer{
@@ -458,6 +494,10 @@ section{
     background-image:url('Images/photo3.jpg');
 }
 
+.slide:nth-child(4){
+    background-image:url('Images/photo4.jpg');
+}
+
 .slide.active{
     opacity:1;
 }
@@ -473,8 +513,8 @@ section{
 .scratch-wrapper {
     position: relative;
     width: 90vw;
-    max-width: 500px;
-    aspect-ratio: 4 / 3;
+    max-width: 420px;
+    aspect-ratio: 3 / 4;
     height: auto;
     margin: 20px auto 0;
     border-radius: 15px;
@@ -485,11 +525,11 @@ section{
     display: none;
 }
 
-/* Mobile-first: both bride and groom reveal cards use the same 4:3 size.
+/* Mobile-first: both bride and groom reveal cards use the same portrait 3:4 size.
    The width follows the phone screen while remaining capped on larger screens. */
 @media (min-width: 769px) {
     .scratch-wrapper {
-        width: min(90vw, 500px);
+        width: min(90vw, 420px);
     }
 }
 
@@ -515,15 +555,44 @@ section{
     font-weight: bold;
 }
 
-/* Photo variant of the scratch reveal */
+/* Photo variant of the scratch reveal — now a swipeable gallery */
 .scratch-message.photo{
     padding:0;
+    overflow:hidden;
 }
 
-.scratch-message.photo img{
+.photo-scroll{
+    display:flex;
     width:100%;
     height:100%;
-    object-fit:cover;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+}
+
+.photo-scroll img{
+    flex:0 0 100%;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    background:#fff9f0;
+    scroll-snap-align:center;
+}
+
+.photo-scroll-hint{
+    position:absolute;
+    bottom:8px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:.7rem;
+    letter-spacing:1px;
+    color:rgba(255,255,255,.85);
+    background:rgba(0,0,0,.35);
+    padding:3px 10px;
+    border-radius:10px;
+    pointer-events:none;
+    z-index:2;
 }
 
 /* The GOLD scratch layer */
@@ -746,7 +815,7 @@ section{
     touch-action:none;
 }
 
-/* ---------- ENVELOPE OPENING INTRO ---------- */
+/* ---------- VIDEO OPENING INTRO ---------- */
 
 #doorOverlay{
     position:fixed;
@@ -759,157 +828,54 @@ section{
     align-items:center;
     justify-content:center;
     background:#1a0308;
-    perspective:2200px;
+    overflow:hidden;
 }
 
-.envelope{
-    position:relative;
-    width:min(80vw,380px);
-    height:min(76vh,640px);
-    max-height:640px;
-}
-
-.envelope-glow{
-    position:absolute;
-    left:50%;
-    top:50%;
-    width:40%;
-    height:40%;
-    transform:translate(-50%,-50%) scale(.4);
-    border-radius:50%;
-    background:radial-gradient(circle,rgba(255,214,140,.95) 0%,rgba(255,180,90,.55) 35%,transparent 70%);
-    opacity:0;
-    z-index:2;
-    filter:blur(2px);
-    transition:opacity .9s ease, transform 1.6s ease;
-}
-
-#doorOverlay.unlocking .envelope-glow{
-    opacity:1;
-    transform:translate(-50%,-50%) scale(3.2);
-}
-
-.envelope-flap{
+.intro-video{
     position:absolute;
     inset:0;
-    background:
-        linear-gradient(rgba(255,255,255,.15),rgba(255,255,255,.15)),
-        url('Images/envelope-cover.jpg');
-    background-size:cover;
-    background-position:center;
-    box-shadow:inset 0 0 0 1px rgba(212,175,55,.55), inset 0 0 25px rgba(122,12,32,.06);
-    transform-style:preserve-3d;
-    transition:transform 1.3s cubic-bezier(.76,0,.2,1);
-    z-index:3;
-    animation:seamGlow 2.4s ease-in-out infinite;
-}
-
-.envelope-flap.top{
-    clip-path:polygon(0 0,100% 0,50% 50%);
-    transform-origin:top center;
-    transition:transform 1.2s cubic-bezier(.76,0,.2,1) .2s;
-    z-index:3;
-}
-
-.envelope-flap.bottom{
-    clip-path:polygon(0 100%,100% 100%,50% 50%);
-    transform-origin:bottom center;
-}
-
-.envelope-flap.left{
-    clip-path:polygon(0 0,0 100%,50% 50%);
-    transform-origin:left center;
-}
-
-.envelope-flap.right{
-    clip-path:polygon(100% 0,100% 100%,50% 50%);
-    transform-origin:right center;
-}
-
-@keyframes seamGlow{
-    0%,100%{ box-shadow:inset 0 0 0 1px rgba(212,175,55,.35), inset 0 0 25px rgba(122,12,32,.06); }
-    50%{ box-shadow:inset 0 0 0 1px rgba(212,175,55,.85), inset 0 0 25px rgba(122,12,32,.06); }
-}
-
-#doorOverlay.unlocking .envelope-flap{
-    animation:none;
-    box-shadow:inset 0 0 0 1px rgba(212,175,55,.85), inset 0 0 25px rgba(122,12,32,.06);
-}
-
-#doorOverlay.unlocking .envelope-flap.top{ transform:rotateX(-175deg); }
-
-.wax-seal{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    width:110px;
-    height:110px;
-    z-index:7;
-    filter:drop-shadow(0 6px 14px rgba(0,0,0,.5));
-    transition:transform .5s ease .1s,opacity .5s ease .1s;
-}
-
-.wax-seal img{
-    display:block;
     width:100%;
     height:100%;
-    object-fit:contain;
+    object-fit:cover;
 }
 
-#doorOverlay.unlocking .wax-seal{
-    transform:translate(-50%,-50%) scale(.3) rotate(30deg);
-    opacity:0;
-}
-
-.seal-lightning{
+/* Solid white layer sitting on top of the video. The instant the doors
+   start to part, this fades in to cover the video's plain interior, so
+   visitors never see a mismatched/blank frame - just a clean white flash
+   that then gives way to the real site. */
+.white-flash{
     position:absolute;
-    left:50%;
-    top:50%;
-    width:240px;
-    height:240px;
-    transform:translate(-50%,-50%);
-    z-index:8;
-    pointer-events:none;
-    overflow:visible;
-}
-
-.seal-lightning .bolt{
-    fill:none;
-    stroke:#ffe18a;
-    stroke-width:2.5;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-    filter:drop-shadow(0 0 5px rgba(255,225,140,.95)) drop-shadow(0 0 12px rgba(212,175,55,.75));
-    stroke-dasharray:100;
-    stroke-dashoffset:100;
+    inset:0;
+    background:#fff9f0;
     opacity:0;
+    z-index:5;
+    pointer-events:none;
+    transition:opacity .45s ease;
 }
 
-#doorOverlay.unlocking .seal-lightning .bolt{
-    animation:boltStrike 2.4s ease-out forwards;
-}
-
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(2){ animation-delay:.08s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(3){ animation-delay:.16s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(4){ animation-delay:.05s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(5){ animation-delay:.2s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(6){ animation-delay:.1s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(7){ animation-delay:.24s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(8){ animation-delay:.13s; }
-
-@keyframes boltStrike{
-    0%{ stroke-dashoffset:100; opacity:1; }
-    75%{ stroke-dashoffset:0; opacity:1; }
-    90%{ opacity:.8; }
-    100%{ stroke-dashoffset:0; opacity:0; }
+#doorOverlay.flash-white .white-flash{
+    opacity:1;
 }
 
 #doorOverlay.hide-overlay{
     opacity:0;
     visibility:hidden;
     pointer-events:none;
-    transition:opacity .6s ease .5s, visibility .6s ease .5s;
+    transition:opacity .6s ease, visibility .6s ease;
+}
+
+/* ---- The actual website content: fades cleanly into view once the
+   white flash has covered the video, instead of sliding up from below ---- */
+#siteReveal{
+    position:relative;
+    z-index:3;
+    opacity:0;
+    transition:opacity .9s ease;
+    will-change:opacity;
+}
+
+#siteReveal.revealed{
+    opacity:1;
 }
 
 .door-scroll-hint{
@@ -919,9 +885,11 @@ section{
     transform:translateX(-50%);
     z-index:20;
     color:#f9d97c;
-    font-size:.85rem;
-    letter-spacing:3px;
-    text-transform:uppercase;
+    font-family:'Aguafina Script',cursive;
+    font-size:1.5rem;
+    font-weight:400;
+    letter-spacing:.5px;
+    text-transform:none;
     text-align:center;
     animation:doorPulse 2s infinite;
 }
@@ -933,26 +901,24 @@ section{
 
 .thoranam{
     position:fixed;
-    object-position: top;
     top:0;
     left:0;
     width:100vw;
     height:100vh;
     height:100dvh;   /* mobile-safe fallback */
     margin:0;
-    z-index:1;
+    z-index:6;
     pointer-events:none;
     overflow:hidden;
+    background-image:url('Images/thoranam.png');
+    background-repeat:no-repeat;
+    background-position:top center;
+    background-size:100% auto;
+    opacity:0.5;
 }
 
-.thoranam img{
-    display:block;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-#doorOverlay.unlocking .door-scroll-hint{ opacity:0; }
+#doorOverlay.unlocking .door-scroll-hint,
+#doorOverlay.flash-white .door-scroll-hint{ opacity:0; transition:opacity .3s ease; }
 
 .ambaari{
     position:relative;
@@ -1031,26 +997,11 @@ section{
 </head>
 <body>
     <div id="doorOverlay">
-        <div class="envelope">
-            <div class="envelope-glow"></div>
-            <div class="envelope-flap top"></div>
-            <div class="envelope-flap bottom"></div>
-            <div class="envelope-flap left"></div>
-            <div class="envelope-flap right"></div>
-            <div class="wax-seal"><img src="Images/plate_logo_only.png" alt="S&amp;S monogram seal"></div>
-
-            <svg class="seal-lightning" viewBox="-100 -100 200 200" xmlns="http://www.w3.org/2000/svg">
-                <polyline class="bolt" pathLength="100" transform="rotate(0)"   points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(45)"  points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(90)"  points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(135)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(180)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(225)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(270)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(315)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-            </svg>
-        </div>
-        <div class="door-scroll-hint">Tap or scroll to open your invitation</div>
+        <video id="introVideo" class="intro-video" autoplay muted playsinline preload="auto">
+            <source src="video/door-intro.mp4" type="video/mp4">
+        </video>
+        <div class="white-flash"></div>
+        <div class="door-scroll-hint" id="introSkipHint">Tap to skip</div>
     </div>
 
     <audio id="bgMusic" preload="auto">
@@ -1061,24 +1012,27 @@ section{
     <div class="slide active"></div>
     <div class="slide"></div>
     <div class="slide"></div>
+    <div class="slide"></div>
 </div>
 
 <div class="progress"></div>
 
-<button class="music-btn" id="musicBtn">🎵</button>
+<button class="music-btn" id="musicBtn" aria-label="Play background music"></button>
 
 <div class="petals" id="petals"></div>
 
-<section class="thoranam">
-    <div class="thoranam">
-        <img src="Images\thoranam.png" alt="garland">
-    </div>
-</section>
+<section class="thoranam"></section>
+
+<div id="siteReveal">
 
 <section class="hero">
 
     <!-- <div class="rangoli">🪔 ✨ 🧡 ✨ 🪔</div> -->
     <!-- <div class="rangoli">🧡</div> -->
+
+    <div class="hero-logo">
+        <img src="Images/ss logo.png" alt="SaravanaKumar & Sivashankari Logo">
+    </div>
 
     <div class="subtitle">Wedding Invitation</div>
 
@@ -1204,7 +1158,17 @@ section{
 
                 <!-- Hidden answer -->
                 <div class="scratch-message photo">
-                    <img src="Images/Bride reveal/sankari-1.jpeg" alt="Bride reveal photo">
+                    <div class="photo-scroll">
+                        <img src="Images/Bride reveal/sankari-1.jpeg" alt="Bride reveal photo 1">
+                        <img src="Images/Bride reveal/sankari-2.jpeg" alt="Bride reveal photo 2">
+                        <img src="Images/Bride reveal/sankari-3.jpeg" alt="Bride reveal photo 3">
+                        <img src="Images/Bride reveal/sankari-4.jpeg" alt="Bride reveal photo 4">
+                        <img src="Images/Bride reveal/sankari-5.jpeg" alt="Bride reveal photo 5">
+                        <img src="Images/Bride reveal/sankari-6.jpeg" alt="Bride reveal photo 6">
+                        <img src="Images/Bride reveal/sankari-7.jpeg" alt="Bride reveal photo 7">
+                        <img src="Images/Bride reveal/sankari-8.jpeg" alt="Bride reveal photo 8">
+                    </div>
+                    <span class="photo-scroll-hint">Swipe for more →</span>
                 </div>
 
                 <!-- Scratch surface -->
@@ -1231,7 +1195,12 @@ section{
 
                 <!-- Hidden answer -->
                 <div class="scratch-message photo">
-                    <img src="Images/Groom reveal/saro-1.jpg" alt="Groom reveal photo">
+                    <div class="photo-scroll">
+                        <img src="Images/Groom reveal/saro-1.jpg" alt="Groom reveal photo 1">
+                        <img src="Images/Groom reveal/saro-2.jpg" alt="Groom reveal photo 2">
+                        <img src="Images/Groom reveal/saro-3.jpg" alt="Groom reveal photo 3">
+                    </div>
+                    <span class="photo-scroll-hint">Swipe for more →</span>
                 </div>
 
                 <!-- Scratch surface -->
@@ -1326,6 +1295,7 @@ section{
         Sivashankari ❤️ SaravanaKumar 
     </div>
 </section>
+</div>
 
 <script>
 
@@ -1564,7 +1534,7 @@ for(let i=0;i<40;i++){
 // }, { once: true });
 
 /* ==============================
-   Door Opening Intro
+   Video Opening Intro
 ============================== */
 
 let doorsOpened = false;
@@ -1575,38 +1545,60 @@ function openDoors(){
     doorsOpened = true;
 
     const overlay = document.getElementById("doorOverlay");
+    const video = document.getElementById("introVideo");
 
-    overlay.classList.add("unlocking");
     if (typeof startMusic === "function") startMusic();
 
-    setTimeout(()=>{
-        overlay.classList.add("hide-overlay");
+    // Step 1: the instant the doors start to part, flash to a clean white
+    // screen. This covers the video's plain interior so visitors never see
+    // a mismatched frame behind the doors.
+    overlay.classList.add("flash-white");
+    overlay.classList.add("unlocking");
+
+    // Step 2: once the white flash has fully covered the video, swap in
+    // the real site (fading in) and start fading the whole overlay away.
+    setTimeout(() => {
+        video.pause();
         document.body.style.overflow = "auto";
-    }, 2900);
+        document.getElementById("siteReveal").classList.add("revealed");
+        overlay.classList.add("hide-overlay");
 
-    setTimeout(()=>{
-        overlay.style.display = "none";
-    }, 4000);
-}
-
-function handleDoorScrollIntent(e){
-    if(doorsOpened) return;
-    e.preventDefault();
-    openDoors();
+        setTimeout(() => {
+            overlay.style.display = "none";
+        }, 700);
+    }, 450);
 }
 
 document.body.style.overflow = "hidden";
 
-window.addEventListener("wheel", handleDoorScrollIntent, { passive:false });
-window.addEventListener("touchmove", handleDoorScrollIntent, { passive:false });
+const introVideo = document.getElementById("introVideo");
+const introSkipHint = document.getElementById("introSkipHint");
 
-window.addEventListener("keydown", (e)=>{
-    if(["ArrowDown","PageDown"," ","Spacebar"].includes(e.key)){
-        handleDoorScrollIntent(e);
+// Reveal the site right as the doors begin to part - before any of the
+// video's baked-in background/text becomes visible through the gap.
+introVideo.addEventListener("timeupdate", () => {
+    if (introVideo.currentTime >= 12.4) openDoors();
+});
+introVideo.addEventListener("ended", openDoors);
+
+// If autoplay is blocked by the browser, show a tap-to-play prompt
+// instead of leaving the visitor stuck on a frozen frame.
+const playAttempt = introVideo.play();
+if (playAttempt && typeof playAttempt.catch === "function") {
+    playAttempt.catch(() => {
+        introSkipHint.textContent = "Tap to begin";
+        introSkipHint.style.opacity = "1";
+    });
+}
+
+// Let visitors skip the intro early with a tap.
+document.getElementById("doorOverlay").addEventListener("click", () => {
+    if (introVideo.paused) {
+        introVideo.play().catch(()=>{});
+    } else {
+        openDoors();
     }
 });
-
-document.getElementById("doorOverlay").addEventListener("click", openDoors);
 
 /* ==============================
    Background Music
@@ -1631,7 +1623,8 @@ async function startMusic() {
         if (hint) {
             hint.style.display = "none";
 }
-        musicBtn.innerHTML = "🔊";
+        musicBtn.classList.add("playing");
+        musicBtn.setAttribute("aria-label", "Pause background music");
 
     } catch (err) {
 
@@ -1646,18 +1639,25 @@ async function startMusic() {
 
 document.addEventListener("keydown", startMusic, { once: true });
 
-// Toggle button
+// Toggle button — tap to spin the disc and play, tap again to stop it
 musicBtn.addEventListener("click", async () => {
 
     if (bgMusic.paused) {
 
-        await bgMusic.play();
-        musicBtn.innerHTML = "🔊";
+        try {
+            await bgMusic.play();
+            musicStarted = true;
+            musicBtn.classList.add("playing");
+            musicBtn.setAttribute("aria-label", "Pause background music");
+        } catch (err) {
+            console.log("Music blocked:", err);
+        }
 
     } else {
 
         bgMusic.pause();
-        musicBtn.innerHTML = "🎵";
+        musicBtn.classList.remove("playing");
+        musicBtn.setAttribute("aria-label", "Play background music");
 
     }
 

@@ -746,7 +746,7 @@ section{
     touch-action:none;
 }
 
-/* ---------- ENVELOPE OPENING INTRO ---------- */
+/* ---------- DOOR OPENING INTRO (with garland & bells) ---------- */
 
 #doorOverlay{
     position:fixed;
@@ -762,154 +762,95 @@ section{
     perspective:2200px;
 }
 
-.envelope{
+.door-archway{
     position:relative;
-    width:min(80vw,380px);
-    height:min(76vh,640px);
-    max-height:640px;
-}
-
-.envelope-glow{
-    position:absolute;
-    left:50%;
-    top:50%;
-    width:40%;
-    height:40%;
-    transform:translate(-50%,-50%) scale(.4);
-    border-radius:50%;
-    background:radial-gradient(circle,rgba(255,214,140,.95) 0%,rgba(255,180,90,.55) 35%,transparent 70%);
-    opacity:0;
-    z-index:2;
-    filter:blur(2px);
-    transition:opacity .9s ease, transform 1.6s ease;
-}
-
-#doorOverlay.unlocking .envelope-glow{
-    opacity:1;
-    transform:translate(-50%,-50%) scale(3.2);
-}
-
-.envelope-flap{
-    position:absolute;
-    inset:0;
-    background:
-        linear-gradient(rgba(255,255,255,.15),rgba(255,255,255,.15)),
-        url('Images/envelope-cover.jpg');
-    background-size:cover;
-    background-position:center;
-    box-shadow:inset 0 0 0 1px rgba(212,175,55,.55), inset 0 0 25px rgba(122,12,32,.06);
-    transform-style:preserve-3d;
-    transition:transform 1.3s cubic-bezier(.76,0,.2,1);
-    z-index:3;
-    animation:seamGlow 2.4s ease-in-out infinite;
-}
-
-.envelope-flap.top{
-    clip-path:polygon(0 0,100% 0,50% 50%);
-    transform-origin:top center;
-    transition:transform 1.2s cubic-bezier(.76,0,.2,1) .2s;
-    z-index:3;
-}
-
-.envelope-flap.bottom{
-    clip-path:polygon(0 100%,100% 100%,50% 50%);
-    transform-origin:bottom center;
-}
-
-.envelope-flap.left{
-    clip-path:polygon(0 0,0 100%,50% 50%);
-    transform-origin:left center;
-}
-
-.envelope-flap.right{
-    clip-path:polygon(100% 0,100% 100%,50% 50%);
-    transform-origin:right center;
-}
-
-@keyframes seamGlow{
-    0%,100%{ box-shadow:inset 0 0 0 1px rgba(212,175,55,.35), inset 0 0 25px rgba(122,12,32,.06); }
-    50%{ box-shadow:inset 0 0 0 1px rgba(212,175,55,.85), inset 0 0 25px rgba(122,12,32,.06); }
-}
-
-#doorOverlay.unlocking .envelope-flap{
-    animation:none;
-    box-shadow:inset 0 0 0 1px rgba(212,175,55,.85), inset 0 0 25px rgba(122,12,32,.06);
-}
-
-#doorOverlay.unlocking .envelope-flap.top{ transform:rotateX(-175deg); }
-
-.wax-seal{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    width:110px;
-    height:110px;
-    z-index:7;
-    filter:drop-shadow(0 6px 14px rgba(0,0,0,.5));
-    transition:transform .5s ease .1s,opacity .5s ease .1s;
-}
-
-.wax-seal img{
-    display:block;
     width:100%;
     height:100%;
-    object-fit:contain;
+    overflow:hidden;
 }
 
-#doorOverlay.unlocking .wax-seal{
-    transform:translate(-50%,-50%) scale(.3) rotate(30deg);
-    opacity:0;
+.door-leaf{
+    position:absolute;
+    top:0;
+    width:50%;
+    height:100%;
+    background:
+        repeating-linear-gradient(90deg,#5d0916,#5d0916 26px,#6d0d1c 26px,#6d0d1c 30px),
+        linear-gradient(180deg,#7a0c20,#4a0713);
+    transition:transform 1.6s cubic-bezier(.76,0,.2,1);
+    transform-style:preserve-3d;
+    box-shadow:inset 0 0 90px rgba(0,0,0,.55);
 }
 
-.seal-lightning{
+.door-leaf .panel{
+    position:absolute;
+    left:12%;
+    right:12%;
+    border:3px solid var(--gold);
+    border-radius:8px;
+    box-shadow:inset 0 0 25px rgba(212,175,55,.35),0 0 15px rgba(0,0,0,.4);
+    background:rgba(212,175,55,.05);
+}
+
+.door-leaf .panel.top{ top:18%; height:32%; }
+.door-leaf .panel.bottom{ top:54%; height:32%; }
+
+.door-leaf .motif{
     position:absolute;
     left:50%;
     top:50%;
-    width:240px;
-    height:240px;
     transform:translate(-50%,-50%);
-    z-index:8;
+    font-size:2rem;
+    filter:drop-shadow(0 0 8px rgba(212,175,55,.6));
+}
+
+.door-leaf.left{ left:0; transform-origin:left center; border-right:2px solid rgba(212,175,55,.6); }
+.door-leaf.right{ right:0; transform-origin:right center; border-left:2px solid rgba(212,175,55,.6); }
+
+.door-handle{
+    position:absolute;
+    top:50%;
+    width:16px; height:16px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 35%,#fff2b0,var(--gold) 60%,#8a6a1c);
+    box-shadow:0 0 12px rgba(212,175,55,.8);
+    transform:translateY(-50%);
+}
+
+.door-leaf.left .door-handle{ right:6%; }
+.door-leaf.right .door-handle{ left:6%; }
+
+/* garland & bells hanging across the door threshold */
+.door-garland{
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(92vw,720px);
+    z-index:20;
     pointer-events:none;
-    overflow:visible;
+    filter:drop-shadow(0 6px 16px rgba(0,0,0,.5));
 }
 
-.seal-lightning .bolt{
-    fill:none;
-    stroke:#ffe18a;
-    stroke-width:2.5;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-    filter:drop-shadow(0 0 5px rgba(255,225,140,.95)) drop-shadow(0 0 12px rgba(212,175,55,.75));
-    stroke-dasharray:100;
-    stroke-dashoffset:100;
+.door-garland img{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+#doorOverlay.unlocking .door-leaf.left{ transform:rotateY(-108deg); }
+#doorOverlay.unlocking .door-leaf.right{ transform:rotateY(108deg); }
+
+#doorOverlay.unlocking .door-garland{
+    transition:opacity .6s ease, transform .8s ease;
     opacity:0;
-}
-
-#doorOverlay.unlocking .seal-lightning .bolt{
-    animation:boltStrike 2.4s ease-out forwards;
-}
-
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(2){ animation-delay:.08s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(3){ animation-delay:.16s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(4){ animation-delay:.05s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(5){ animation-delay:.2s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(6){ animation-delay:.1s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(7){ animation-delay:.24s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(8){ animation-delay:.13s; }
-
-@keyframes boltStrike{
-    0%{ stroke-dashoffset:100; opacity:1; }
-    75%{ stroke-dashoffset:0; opacity:1; }
-    90%{ opacity:.8; }
-    100%{ stroke-dashoffset:0; opacity:0; }
+    transform:translateX(-50%) translateY(-40px);
 }
 
 #doorOverlay.hide-overlay{
     opacity:0;
-    visibility:hidden;
     pointer-events:none;
-    transition:opacity .6s ease .5s, visibility .6s ease .5s;
+    transition:opacity .6s ease .3s;
 }
 
 .door-scroll-hint{
@@ -1031,26 +972,22 @@ section{
 </head>
 <body>
     <div id="doorOverlay">
-        <div class="envelope">
-            <div class="envelope-glow"></div>
-            <div class="envelope-flap top"></div>
-            <div class="envelope-flap bottom"></div>
-            <div class="envelope-flap left"></div>
-            <div class="envelope-flap right"></div>
-            <div class="wax-seal"><img src="Images/plate_logo_only.png" alt="S&amp;S monogram seal"></div>
-
-            <svg class="seal-lightning" viewBox="-100 -100 200 200" xmlns="http://www.w3.org/2000/svg">
-                <polyline class="bolt" pathLength="100" transform="rotate(0)"   points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(45)"  points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(90)"  points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(135)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(180)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(225)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(270)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(315)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-            </svg>
+        <div class="door-archway">
+            <div class="door-leaf left">
+                <div class="panel top"><span class="motif">🌼</span></div>
+                <div class="panel bottom"><span class="motif">🪔</span></div>
+                <div class="door-handle"></div>
+            </div>
+            <div class="door-leaf right">
+                <div class="panel top"><span class="motif">🌼</span></div>
+                <div class="panel bottom"><span class="motif">🪔</span></div>
+                <div class="door-handle"></div>
+            </div>
         </div>
-        <div class="door-scroll-hint">Tap or scroll to open your invitation</div>
+        <div class="door-garland">
+            <img src="Images/garland-bells.png" alt="">
+        </div>
+        <div class="door-scroll-hint">Scroll to open the doors</div>
     </div>
 
     <audio id="bgMusic" preload="auto">
@@ -1582,11 +1519,11 @@ function openDoors(){
     setTimeout(()=>{
         overlay.classList.add("hide-overlay");
         document.body.style.overflow = "auto";
-    }, 2900);
+    }, 1400);
 
     setTimeout(()=>{
         overlay.style.display = "none";
-    }, 4000);
+    }, 2200);
 }
 
 function handleDoorScrollIntent(e){

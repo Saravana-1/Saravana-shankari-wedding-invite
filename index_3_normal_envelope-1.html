@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sivashankari ❤️ SaravanaKumar | SS Wedding Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&family=Great+Vibes&family=Aguafina+Script&family=Betania+Patmos&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -77,16 +77,58 @@ h1,h2,h3{
     position:fixed;
     top:20px;
     right:20px;
-    width:55px;
-    height:55px;
+    width:56px;
+    height:56px;
+    padding:0;
     border-radius:50%;
-    border:none;
-    background:rgba(255,255,255,.15);
-    backdrop-filter:blur(10px);
-    color:white;
+    border:2px solid rgba(212,175,55,.75);
+    background:
+        linear-gradient(125deg,rgba(255,255,255,.4) 0%,rgba(255,255,255,0) 26%),
+        repeating-radial-gradient(circle at center,#1c1c1c 0px,#1c1c1c 2px,#2c2c2c 2px,#2c2c2c 4px),
+        radial-gradient(circle at center,#e8d9a8 0 8px,#161616 8px 9px,transparent 9px);
+    box-shadow:0 6px 16px rgba(0,0,0,.45);
     cursor:pointer;
-    font-size:22px;
     z-index:999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    animation:discSpin 4s linear infinite;
+    animation-play-state:paused;
+    transition:box-shadow .3s ease, border-color .3s ease;
+}
+
+.music-btn::before{
+    content:"";
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#7a0c20;
+    box-shadow:0 0 0 1px rgba(212,175,55,.6);
+    z-index:2;
+}
+
+.music-btn::after{
+    content:"";
+    position:absolute;
+    top:6px;
+    left:50%;
+    width:3px;
+    height:8px;
+    background:rgba(255,255,255,.55);
+    border-radius:2px;
+    transform:translateX(-50%);
+    filter:blur(.2px);
+}
+
+.music-btn.playing{
+    animation-play-state:running;
+    border-color:var(--gold);
+    box-shadow:0 6px 20px rgba(212,175,55,.55);
+}
+
+@keyframes discSpin{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
 }
 
 .venue-qr{
@@ -515,15 +557,43 @@ section{
     font-weight: bold;
 }
 
-/* Photo variant of the scratch reveal */
+/* Photo variant of the scratch reveal — now a swipeable gallery */
 .scratch-message.photo{
     padding:0;
+    overflow:hidden;
 }
 
-.scratch-message.photo img{
+.photo-scroll{
+    display:flex;
+    width:100%;
+    height:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+}
+
+.photo-scroll img{
+    flex:0 0 100%;
     width:100%;
     height:100%;
     object-fit:cover;
+    scroll-snap-align:center;
+}
+
+.photo-scroll-hint{
+    position:absolute;
+    bottom:8px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:.7rem;
+    letter-spacing:1px;
+    color:rgba(255,255,255,.85);
+    background:rgba(0,0,0,.35);
+    padding:3px 10px;
+    border-radius:10px;
+    pointer-events:none;
+    z-index:2;
 }
 
 /* The GOLD scratch layer */
@@ -764,9 +834,9 @@ section{
 
 .envelope{
     position:relative;
-    width:min(80vw,380px);
-    height:min(76vh,640px);
-    max-height:640px;
+    width:100vw;
+    height:100vh;
+    height:100dvh;
 }
 
 .envelope-glow{
@@ -774,7 +844,7 @@ section{
     left:50%;
     top:50%;
     width:40%;
-    height:40%;
+    height:24%;
     transform:translate(-50%,-50%) scale(.4);
     border-radius:50%;
     background:radial-gradient(circle,rgba(255,214,140,.95) 0%,rgba(255,180,90,.55) 35%,transparent 70%);
@@ -786,123 +856,267 @@ section{
 
 #doorOverlay.unlocking .envelope-glow{
     opacity:1;
-    transform:translate(-50%,-50%) scale(3.2);
+    transform:translate(-50%,-50%) scale(4.2);
 }
+
+/* ---- Envelope body: full-bleed back panel that frames the fold pattern ---- */
+
+.envelope-back{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(165deg,#fff9f0,#f0e0bb);
+    box-shadow:inset 0 0 0 1px rgba(212,175,55,.4);
+    overflow:hidden;
+    z-index:1;
+}
+
+.envelope-back::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:radial-gradient(circle at 1px 1px,rgba(122,12,32,.06) 1px,transparent 0);
+    background-size:18px 18px;
+    opacity:.5;
+}
+
+.envelope-back::after{
+    content:"";
+    position:absolute;
+    inset:16px;
+    border:1px solid rgba(212,175,55,.55);
+    pointer-events:none;
+}
+
+.envelope-monogram{
+    position:absolute;
+    left:50%;
+    top:14%;
+    transform:translateX(-50%);
+    font-family:'Great Vibes',cursive;
+    font-size:clamp(1.5rem,7vw,2.2rem);
+    color:var(--maroon);
+    letter-spacing:1px;
+    text-shadow:0 1px 0 rgba(255,255,255,.5);
+    white-space:nowrap;
+}
+
+.envelope-monogram span{ color:var(--gold); }
+
+/* ribbon band sitting under the seal, at the point where every flap meets */
+.envelope-ribbon{
+    position:absolute;
+    left:16px;
+    right:16px;
+    top:50%;
+    height:6.5%;
+    transform:translateY(-50%);
+    background:linear-gradient(180deg,#8f1329,#5d0718);
+    box-shadow:0 3px 10px rgba(0,0,0,.35);
+    z-index:5;
+    transition:opacity .5s ease .1s, transform .6s ease .1s;
+}
+
+#doorOverlay.unlocking .envelope-ribbon{
+    opacity:0;
+    transform:translateY(-50%) scaleY(.3);
+}
+
+/* ---- The four folds, meeting at dead centre like a diamond-flap envelope ---- */
 
 .envelope-flap{
     position:absolute;
-    inset:0;
+    inset:16px;
     background:
-        linear-gradient(rgba(255,255,255,.15),rgba(255,255,255,.15)),
-        url('Images/envelope-cover.jpg');
-    background-size:cover;
-    background-position:center;
-    box-shadow:inset 0 0 0 1px rgba(212,175,55,.55), inset 0 0 25px rgba(122,12,32,.06);
+        radial-gradient(circle at 1px 1px,rgba(122,12,32,.05) 1px,transparent 0) 0 0/16px 16px,
+        linear-gradient(200deg,#fff9f0,#f3e6c8);
+    box-shadow:inset 0 0 0 1px rgba(212,175,55,.5), inset 0 0 18px rgba(122,12,32,.07);
     transform-style:preserve-3d;
-    transition:transform 1.3s cubic-bezier(.76,0,.2,1);
-    z-index:3;
-    animation:seamGlow 2.4s ease-in-out infinite;
+    animation:seamGlow 2.6s ease-in-out infinite;
 }
 
 .envelope-flap.top{
     clip-path:polygon(0 0,100% 0,50% 50%);
     transform-origin:top center;
-    transition:transform 1.2s cubic-bezier(.76,0,.2,1) .2s;
-    z-index:3;
+    transition:transform 1.3s cubic-bezier(.76,0,.2,1);
+    background:
+        radial-gradient(circle at 1px 1px,rgba(122,12,32,.05) 1px,transparent 0) 0 0/16px 16px,
+        linear-gradient(200deg,#fffdf7,#f7e9cb);
+    z-index:7;
 }
 
 .envelope-flap.bottom{
     clip-path:polygon(0 100%,100% 100%,50% 50%);
-    transform-origin:bottom center;
+    background:
+        radial-gradient(circle at 1px 1px,rgba(122,12,32,.05) 1px,transparent 0) 0 0/16px 16px,
+        linear-gradient(20deg,#f1e0b4,#e3ca92);
+    z-index:3;
 }
 
 .envelope-flap.left{
     clip-path:polygon(0 0,0 100%,50% 50%);
-    transform-origin:left center;
+    background:
+        radial-gradient(circle at 1px 1px,rgba(122,12,32,.05) 1px,transparent 0) 0 0/16px 16px,
+        linear-gradient(115deg,#fdf7e8,#eeddb2);
+    z-index:3;
 }
 
 .envelope-flap.right{
     clip-path:polygon(100% 0,100% 100%,50% 50%);
-    transform-origin:right center;
+    background:
+        radial-gradient(circle at 1px 1px,rgba(122,12,32,.05) 1px,transparent 0) 0 0/16px 16px,
+        linear-gradient(65deg,#fdf7e8,#eeddb2);
+    z-index:3;
 }
 
+.envelope-flap::after{
+    content:"❀";
+    position:absolute;
+    left:50%;
+    top:50%;
+    color:rgba(122,12,32,.3);
+    font-size:1rem;
+    text-shadow:0 1px 0 rgba(255,255,255,.6);
+}
+
+.envelope-flap.top::after{ transform:translate(-50%,-320%); }
+.envelope-flap.bottom::after{ transform:translate(-50%,220%); }
+.envelope-flap.left::after{ transform:translate(-260%,-50%); }
+.envelope-flap.right::after{ transform:translate(160%,-50%); }
+
 @keyframes seamGlow{
-    0%,100%{ box-shadow:inset 0 0 0 1px rgba(212,175,55,.35), inset 0 0 25px rgba(122,12,32,.06); }
-    50%{ box-shadow:inset 0 0 0 1px rgba(212,175,55,.85), inset 0 0 25px rgba(122,12,32,.06); }
+    0%,100%{ box-shadow:inset 0 0 0 1px rgba(212,175,55,.3), inset 0 0 18px rgba(122,12,32,.07); }
+    50%{ box-shadow:inset 0 0 0 1px rgba(212,175,55,.8), inset 0 0 18px rgba(122,12,32,.07); }
 }
 
 #doorOverlay.unlocking .envelope-flap{
     animation:none;
-    box-shadow:inset 0 0 0 1px rgba(212,175,55,.85), inset 0 0 25px rgba(122,12,32,.06);
+    box-shadow:inset 0 0 0 1px rgba(212,175,55,.85), inset 0 0 18px rgba(122,12,32,.07);
 }
 
-#doorOverlay.unlocking .envelope-flap.top{ transform:rotateX(-175deg); }
+#doorOverlay.unlocking .envelope-flap.top{
+    transform:rotateX(-178deg);
+    z-index:0;
+}
+
+.envelope-creases{
+    position:absolute;
+    inset:16px;
+    z-index:8;
+    pointer-events:none;
+    transition:opacity .5s ease .1s;
+}
+
+.envelope-creases line{
+    stroke:rgba(122,12,32,.28);
+    vector-effect:non-scaling-stroke;
+    stroke-width:1.4;
+}
+
+.envelope-creases line.hi{
+    stroke:rgba(255,255,255,.55);
+    stroke-width:.8;
+}
+
+#doorOverlay.unlocking .envelope-creases{
+    opacity:0;
+}
 
 .wax-seal{
     position:absolute;
     left:50%;
     top:50%;
     transform:translate(-50%,-50%);
-    width:110px;
-    height:110px;
-    z-index:7;
-    filter:drop-shadow(0 6px 14px rgba(0,0,0,.5));
-    transition:transform .5s ease .1s,opacity .5s ease .1s;
+    width:25vw;
+    min-width:86px;
+    max-width:124px;
+    aspect-ratio:1;
+    z-index:9;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:radial-gradient(circle at 35% 28%,#fffdf7 0%,#fff9f0 45%,#f0e0bb 100%);
+    border:2px solid var(--gold);
+    box-shadow:
+        0 10px 22px rgba(0,0,0,.4),
+        inset 0 2px 4px rgba(255,255,255,.8),
+        inset 0 -4px 8px rgba(122,12,32,.12);
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .2s ease;
+}
+
+.wax-seal::before{
+    content:"";
+    position:absolute;
+    inset:-9px;
+    border-radius:50%;
+    border:1px solid rgba(212,175,55,.55);
+    animation:sealPulse 2.6s ease-out infinite;
+    pointer-events:none;
+}
+
+@keyframes sealPulse{
+    0%{ transform:scale(1); opacity:.75; }
+    70%{ transform:scale(1.32); opacity:0; }
+    100%{ opacity:0; }
+}
+
+.wax-seal:active{
+    transform:translate(-50%,-50%) scale(.9);
+    box-shadow:
+        0 4px 10px rgba(0,0,0,.4),
+        inset 0 2px 4px rgba(255,255,255,.8),
+        inset 0 -4px 8px rgba(122,12,32,.18);
 }
 
 .wax-seal img{
     display:block;
-    width:100%;
-    height:100%;
+    width:74%;
+    height:74%;
     object-fit:contain;
+    -webkit-mask-image:radial-gradient(circle,#000 68%,transparent 100%);
+    mask-image:radial-gradient(circle,#000 68%,transparent 100%);
 }
 
 #doorOverlay.unlocking .wax-seal{
     transform:translate(-50%,-50%) scale(.3) rotate(30deg);
     opacity:0;
+    transition:transform .5s ease .1s,opacity .5s ease .1s;
 }
 
-.seal-lightning{
-    position:absolute;
-    left:50%;
-    top:50%;
-    width:240px;
-    height:240px;
-    transform:translate(-50%,-50%);
-    z-index:8;
-    pointer-events:none;
-    overflow:visible;
-}
-
-.seal-lightning .bolt{
-    fill:none;
-    stroke:#ffe18a;
-    stroke-width:2.5;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-    filter:drop-shadow(0 0 5px rgba(255,225,140,.95)) drop-shadow(0 0 12px rgba(212,175,55,.75));
-    stroke-dasharray:100;
-    stroke-dashoffset:100;
+#doorOverlay.unlocking .wax-seal::before{
+    animation:none;
     opacity:0;
 }
 
-#doorOverlay.unlocking .seal-lightning .bolt{
-    animation:boltStrike 2.4s ease-out forwards;
+.seal-ripple{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:25vw;
+    min-width:86px;
+    max-width:124px;
+    aspect-ratio:1;
+    transform:translate(-50%,-50%) scale(1);
+    border-radius:50%;
+    border:2px solid rgba(212,175,55,.9);
+    box-shadow:0 0 14px rgba(212,175,55,.6);
+    opacity:0;
+    z-index:10;
+    pointer-events:none;
 }
 
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(2){ animation-delay:.08s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(3){ animation-delay:.16s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(4){ animation-delay:.05s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(5){ animation-delay:.2s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(6){ animation-delay:.1s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(7){ animation-delay:.24s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(8){ animation-delay:.13s; }
+#doorOverlay.unlocking .seal-ripple{
+    animation:sealRipple 1.8s ease-out forwards;
+}
 
-@keyframes boltStrike{
-    0%{ stroke-dashoffset:100; opacity:1; }
-    75%{ stroke-dashoffset:0; opacity:1; }
-    90%{ opacity:.8; }
-    100%{ stroke-dashoffset:0; opacity:0; }
+#doorOverlay.unlocking .seal-ripple:nth-child(2){ animation-delay:.3s; }
+#doorOverlay.unlocking .seal-ripple:nth-child(3){ animation-delay:.6s; }
+#doorOverlay.unlocking .seal-ripple:nth-child(4){ animation-delay:.9s; }
+
+@keyframes sealRipple{
+    0%{ transform:translate(-50%,-50%) scale(1); opacity:.85; }
+    100%{ transform:translate(-50%,-50%) scale(4.5); opacity:0; }
 }
 
 #doorOverlay.hide-overlay{
@@ -912,6 +1126,20 @@ section{
     transition:opacity .6s ease .5s, visibility .6s ease .5s;
 }
 
+/* ---- The actual website content: starts pushed below the screen,
+   then rises up into place like a letter being drawn out of the envelope ---- */
+#siteReveal{
+    position:relative;
+    z-index:3;
+    transform:translateY(100vh);
+    transition:transform 1.1s cubic-bezier(.19,1,.22,1);
+    will-change:transform;
+}
+
+#siteReveal.revealed{
+    transform:translateY(0);
+}
+
 .door-scroll-hint{
     position:absolute;
     bottom:6%;
@@ -919,9 +1147,11 @@ section{
     transform:translateX(-50%);
     z-index:20;
     color:#f9d97c;
-    font-size:.85rem;
-    letter-spacing:3px;
-    text-transform:uppercase;
+    font-family:'Aguafina Script',cursive;
+    font-size:1.5rem;
+    font-weight:400;
+    letter-spacing:.5px;
+    text-transform:none;
     text-align:center;
     animation:doorPulse 2s infinite;
 }
@@ -933,23 +1163,19 @@ section{
 
 .thoranam{
     position:fixed;
-    object-position: top;
     top:0;
     left:0;
     width:100vw;
     height:100vh;
     height:100dvh;   /* mobile-safe fallback */
     margin:0;
-    z-index:1;
+    z-index:6;
     pointer-events:none;
     overflow:hidden;
-}
-
-.thoranam img{
-    display:block;
-    width:100%;
-    height:100%;
-    object-fit:cover;
+    background-image:url('Images/thoranam.png');
+    background-repeat:no-repeat;
+    background-position:top center;
+    background-size:100% auto;
 }
 
 #doorOverlay.unlocking .door-scroll-hint{ opacity:0; }
@@ -1033,24 +1259,34 @@ section{
     <div id="doorOverlay">
         <div class="envelope">
             <div class="envelope-glow"></div>
-            <div class="envelope-flap top"></div>
+
+            <div class="envelope-back"></div>
+
+            <div class="envelope-ribbon"></div>
             <div class="envelope-flap bottom"></div>
             <div class="envelope-flap left"></div>
             <div class="envelope-flap right"></div>
+            <div class="envelope-flap top">
+                <div class="envelope-monogram">S <span>&amp;</span> S</div>
+            </div>
+
+            <svg class="envelope-creases" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0" y1="0" x2="50" y2="50"/>
+                <line x1="100" y1="0" x2="50" y2="50"/>
+                <line x1="0" y1="100" x2="50" y2="50"/>
+                <line x1="100" y1="100" x2="50" y2="50"/>
+                <line class="hi" x1="0" y1="0" x2="50" y2="50"/>
+                <line class="hi" x1="100" y1="0" x2="50" y2="50"/>
+            </svg>
+
             <div class="wax-seal"><img src="Images/plate_logo_only.png" alt="S&amp;S monogram seal"></div>
 
-            <svg class="seal-lightning" viewBox="-100 -100 200 200" xmlns="http://www.w3.org/2000/svg">
-                <polyline class="bolt" pathLength="100" transform="rotate(0)"   points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(45)"  points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(90)"  points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(135)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(180)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(225)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(270)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(315)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-            </svg>
+            <div class="seal-ripple"></div>
+            <div class="seal-ripple"></div>
+            <div class="seal-ripple"></div>
+            <div class="seal-ripple"></div>
         </div>
-        <div class="door-scroll-hint">Tap or scroll to open your invitation</div>
+        <div class="door-scroll-hint">Tap or scroll to open your envelope</div>
     </div>
 
     <audio id="bgMusic" preload="auto">
@@ -1065,15 +1301,13 @@ section{
 
 <div class="progress"></div>
 
-<button class="music-btn" id="musicBtn">🎵</button>
+<button class="music-btn" id="musicBtn" aria-label="Play background music"></button>
 
 <div class="petals" id="petals"></div>
 
-<section class="thoranam">
-    <div class="thoranam">
-        <img src="Images\thoranam.png" alt="garland">
-    </div>
-</section>
+<section class="thoranam"></section>
+
+<div id="siteReveal">
 
 <section class="hero">
 
@@ -1204,7 +1438,12 @@ section{
 
                 <!-- Hidden answer -->
                 <div class="scratch-message photo">
-                    <img src="Images/Bride reveal/sankari-1.jpeg" alt="Bride reveal photo">
+                    <div class="photo-scroll">
+                        <img src="Images/Bride reveal/sankari-1.jpeg" alt="Bride reveal photo 1">
+                        <img src="Images/Bride reveal/sankari-2.jpeg" alt="Bride reveal photo 2">
+                        <img src="Images/Bride reveal/sankari-3.jpeg" alt="Bride reveal photo 3">
+                    </div>
+                    <span class="photo-scroll-hint">Swipe for more →</span>
                 </div>
 
                 <!-- Scratch surface -->
@@ -1231,7 +1470,12 @@ section{
 
                 <!-- Hidden answer -->
                 <div class="scratch-message photo">
-                    <img src="Images/Groom reveal/saro-1.jpg" alt="Groom reveal photo">
+                    <div class="photo-scroll">
+                        <img src="Images/Groom reveal/saro-1.jpg" alt="Groom reveal photo 1">
+                        <img src="Images/Groom reveal/saro-2.jpg" alt="Groom reveal photo 2">
+                        <img src="Images/Groom reveal/saro-3.jpg" alt="Groom reveal photo 3">
+                    </div>
+                    <span class="photo-scroll-hint">Swipe for more →</span>
                 </div>
 
                 <!-- Scratch surface -->
@@ -1326,6 +1570,7 @@ section{
         Sivashankari ❤️ SaravanaKumar 
     </div>
 </section>
+</div>
 
 <script>
 
@@ -1581,6 +1826,7 @@ function openDoors(){
 
     setTimeout(()=>{
         overlay.classList.add("hide-overlay");
+        document.getElementById("siteReveal").classList.add("revealed");
         document.body.style.overflow = "auto";
     }, 2900);
 
@@ -1631,7 +1877,8 @@ async function startMusic() {
         if (hint) {
             hint.style.display = "none";
 }
-        musicBtn.innerHTML = "🔊";
+        musicBtn.classList.add("playing");
+        musicBtn.setAttribute("aria-label", "Pause background music");
 
     } catch (err) {
 
@@ -1646,18 +1893,25 @@ async function startMusic() {
 
 document.addEventListener("keydown", startMusic, { once: true });
 
-// Toggle button
+// Toggle button — tap to spin the disc and play, tap again to stop it
 musicBtn.addEventListener("click", async () => {
 
     if (bgMusic.paused) {
 
-        await bgMusic.play();
-        musicBtn.innerHTML = "🔊";
+        try {
+            await bgMusic.play();
+            musicStarted = true;
+            musicBtn.classList.add("playing");
+            musicBtn.setAttribute("aria-label", "Pause background music");
+        } catch (err) {
+            console.log("Music blocked:", err);
+        }
 
     } else {
 
         bgMusic.pause();
-        musicBtn.innerHTML = "🎵";
+        musicBtn.classList.remove("playing");
+        musicBtn.setAttribute("aria-label", "Play background music");
 
     }
 

@@ -102,32 +102,6 @@ h1,h2,h3{
     margin:15px auto;
 }
 
-.venue-reveal{
-    padding:60px 0;
-}
-
-.venue-section{
-    max-width:600px;
-    margin:auto;
-    text-align:center;
-
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(15px);
-
-    border-radius:25px;
-    padding:35px;
-
-    border:1px solid rgba(255,255,255,.15);
-}
-
-.venue-section h2{
-    font-family:'DM Sans', sans-serif;
-    font-weight:600;
-    font-size:1.4rem;
-    color:var(--gold);
-    margin-bottom:15px;
-}
-
 section{
     width:min(1200px,92%);
     margin:auto;
@@ -206,7 +180,7 @@ section{
 }
 
 .events{
-    padding:90px 0 80px;
+    padding:80px 0;
 }
 
 .grid{
@@ -240,7 +214,7 @@ section{
 }
 
 .countdown{
-    padding:40px 0;
+    padding:80px 0;
 }
 
 .timer{
@@ -257,10 +231,30 @@ section{
     backdrop-filter:blur(15px);
 }
 
+.secret-keys-card {
+    width: 90%;
+    max-width: 1400px;
+    margin: 30px auto;
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+
 /* Individual questions should NOT have their own card */
 .question-block {
     width: 100%;
 }
+
 
 /* Space between the two questions */
 .question-divider {
@@ -271,6 +265,7 @@ section{
     background: rgba(255, 255, 255, 0.25);
 }
 
+
 /* Question text */
 .question-block p {
     margin-bottom: 15px;
@@ -280,6 +275,7 @@ section{
     font-size: 20px;
     font-weight: 500;
 }
+
 
 /* Input */
 .question-block input {
@@ -297,6 +293,7 @@ section{
 
     margin-bottom: 15px;
 }
+
 
 /* Button */
 .question-block button {
@@ -326,7 +323,7 @@ section{
 }
 
 .secret{
-    padding:40px 0 40px;
+    padding:80px 0;
 }
 
 .clue-card{
@@ -357,8 +354,25 @@ section{
     font-weight:bold;
 }
 
+.reveal{
+    max-height:0;
+    overflow:hidden;
+    transition:.8s;
+    color:#ffe18a;
+    font-size:1.1rem;
+}
+
+.reveal.show{
+    max-height:150px;
+    margin-top:15px;
+    padding:15px;
+    border-radius:12px;
+    background:rgba(255,215,0,.15);
+    box-shadow:0 0 25px rgba(255,215,0,.5);
+}
+
 .footer{
-    padding:40px 0 100px;
+    padding:100px 0;
     text-align:center;
 }
 
@@ -387,6 +401,13 @@ section{
     transform:translateY(0);
 }
 
+.particle{
+    position:absolute;
+    font-size:20px;
+    pointer-events:none;
+    animation:burst 1.5s forwards;
+}
+
 @keyframes burst{
     from{
         opacity:1;
@@ -402,11 +423,6 @@ section{
 
 .hero h1{
     font-size:3rem;
-}
-
-.hero{
-    justify-content:flex-start;
-    padding-top:210px;
 }
 
 .timer{
@@ -466,17 +482,22 @@ section{
     width:100%;
     height:100%;
     object-fit:cover;
+    inset:0;
+    background:
+    linear-gradient(
+        rgba(122,12,32,.65),
+        rgba(18,71,52,.65)
+    );
 }
 
 /* ---------- SCRATCH CARD ---------- */
 
 .scratch-wrapper {
     position: relative;
-    width: 90vw;
-    max-width: 500px;
-    aspect-ratio: 4 / 3;
-    height: auto;
-    margin: 20px auto 0;
+    width: 100%;
+    height: 180px;
+    margin-top: 20px;
+
     border-radius: 15px;
     overflow: hidden;
 }
@@ -485,13 +506,6 @@ section{
     display: none;
 }
 
-/* Mobile-first: both bride and groom reveal cards use the same 4:3 size.
-   The width follows the phone screen while remaining capped on larger screens. */
-@media (min-width: 769px) {
-    .scratch-wrapper {
-        width: min(90vw, 500px);
-    }
-}
 
 /* The actual answer underneath */
 .scratch-message {
@@ -515,16 +529,6 @@ section{
     font-weight: bold;
 }
 
-/* Photo variant of the scratch reveal */
-.scratch-message.photo{
-    padding:0;
-}
-
-.scratch-message.photo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
 
 /* The GOLD scratch layer */
 .scratch-card {
@@ -545,11 +549,11 @@ section{
     touch-action: none;
 }
 
-.wishes{
+.rsvp{
     padding:80px 0;
 }
 
-.wishes-card{
+.rsvp-card{
     max-width:700px;
     margin:auto;
 
@@ -562,15 +566,15 @@ section{
     border:1px solid rgba(255,255,255,.15);
 }
 
-.wishes form{
+.rsvp form{
     display:flex;
     flex-direction:column;
     gap:15px;
 }
 
-.wishes input,
-.wishes select,
-.wishes textarea{
+.rsvp input,
+.rsvp select,
+.rsvp textarea{
 
     width:100%;
     padding:15px;
@@ -582,19 +586,18 @@ section{
 
     color:white;
     font-size:1rem;
-    font-family:inherit;
 }
 
-.wishes input::placeholder,
-.wishes textarea::placeholder{
+.rsvp input::placeholder,
+.rsvp textarea::placeholder{
     color:rgba(255,255,255,.7);
 }
 
-.wishes select option{
+.rsvp select option{
     color:black;
 }
 
-.wishes button{
+.rsvp button{
 
     padding:15px;
 
@@ -617,7 +620,7 @@ section{
     transition:.3s;
 }
 
-.wishes button:hover{
+.rsvp button:hover{
     transform:translateY(-3px);
 }
 
@@ -638,105 +641,6 @@ section{
     color:#ffe18a;
 }
 
-/* ---------- Selfie upload prompt (shown when guest can't attend) ---------- */
-.selfie-block{
-    padding:20px;
-    border-radius:14px;
-    background:rgba(212,175,55,.12);
-    border:1px dashed rgba(212,175,55,.5);
-    text-align:center;
-}
-
-.selfie-block p{
-    margin-bottom:12px;
-    line-height:1.6;
-}
-
-.selfie-btn{
-    display:inline-block;
-    padding:13px 22px;
-    border-radius:12px;
-    background:linear-gradient(135deg,#d4af37,#ffe18a);
-    color:black;
-    font-weight:bold;
-    text-decoration:none;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.selfie-btn:hover{
-    transform:translateY(-3px);
-}
-
-.selfie-filename{
-    margin-top:10px;
-    font-size:.9rem;
-    color:rgba(255,255,255,.8);
-}
-
-.selfie-status{
-    margin-top:10px;
-    font-size:.9rem;
-    font-weight:bold;
-}
-
-.selfie-status.uploading{
-    color:#ffe18a;
-}
-
-.selfie-status.success{
-    color:#8fd694;
-}
-
-.selfie-status.error{
-    color:#e88a8a;
-}
-
-/* ---------- Live streaming card ---------- */
-.live-card{
-    max-width:700px;
-    margin:35px auto 0;
-
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(15px);
-
-    border-radius:25px;
-    padding:30px 35px;
-
-    border:1px solid rgba(255,255,255,.15);
-    text-align:center;
-}
-
-.live-card h3{
-    color:var(--gold);
-    font-size:1.6rem;
-    margin-bottom:10px;
-}
-
-.live-card p{
-    line-height:1.7;
-}
-
-.live-btn{
-    display:inline-block;
-    margin-top:15px;
-    padding:14px 24px;
-    border-radius:12px;
-    background:linear-gradient(135deg,#7a0c20,#a30d2c);
-    color:white;
-    font-weight:bold;
-    text-decoration:none;
-    transition:.3s;
-}
-
-.live-btn:hover{
-    transform:translateY(-3px);
-}
-
-.hidden{
-    display:none !important;
-}
-
 .scratch-card{
     position:absolute;
     inset:0;
@@ -746,7 +650,7 @@ section{
     touch-action:none;
 }
 
-/* ---------- ENVELOPE OPENING INTRO ---------- */
+/* ---------- DOOR OPENING INTRO (with garland & bells) ---------- */
 
 #doorOverlay{
     position:fixed;
@@ -762,154 +666,95 @@ section{
     perspective:2200px;
 }
 
-.envelope{
+.door-archway{
     position:relative;
-    width:min(80vw,380px);
-    height:min(76vh,640px);
-    max-height:640px;
-}
-
-.envelope-glow{
-    position:absolute;
-    left:50%;
-    top:50%;
-    width:40%;
-    height:40%;
-    transform:translate(-50%,-50%) scale(.4);
-    border-radius:50%;
-    background:radial-gradient(circle,rgba(255,214,140,.95) 0%,rgba(255,180,90,.55) 35%,transparent 70%);
-    opacity:0;
-    z-index:2;
-    filter:blur(2px);
-    transition:opacity .9s ease, transform 1.6s ease;
-}
-
-#doorOverlay.unlocking .envelope-glow{
-    opacity:1;
-    transform:translate(-50%,-50%) scale(3.2);
-}
-
-.envelope-flap{
-    position:absolute;
-    inset:0;
-    background:
-        linear-gradient(rgba(255,255,255,.15),rgba(255,255,255,.15)),
-        url('Images/envelope-cover.jpg');
-    background-size:cover;
-    background-position:center;
-    box-shadow:inset 0 0 0 1px rgba(212,175,55,.55), inset 0 0 25px rgba(122,12,32,.06);
-    transform-style:preserve-3d;
-    transition:transform 1.3s cubic-bezier(.76,0,.2,1);
-    z-index:3;
-    animation:seamGlow 2.4s ease-in-out infinite;
-}
-
-.envelope-flap.top{
-    clip-path:polygon(0 0,100% 0,50% 50%);
-    transform-origin:top center;
-    transition:transform 1.2s cubic-bezier(.76,0,.2,1) .2s;
-    z-index:3;
-}
-
-.envelope-flap.bottom{
-    clip-path:polygon(0 100%,100% 100%,50% 50%);
-    transform-origin:bottom center;
-}
-
-.envelope-flap.left{
-    clip-path:polygon(0 0,0 100%,50% 50%);
-    transform-origin:left center;
-}
-
-.envelope-flap.right{
-    clip-path:polygon(100% 0,100% 100%,50% 50%);
-    transform-origin:right center;
-}
-
-@keyframes seamGlow{
-    0%,100%{ box-shadow:inset 0 0 0 1px rgba(212,175,55,.35), inset 0 0 25px rgba(122,12,32,.06); }
-    50%{ box-shadow:inset 0 0 0 1px rgba(212,175,55,.85), inset 0 0 25px rgba(122,12,32,.06); }
-}
-
-#doorOverlay.unlocking .envelope-flap{
-    animation:none;
-    box-shadow:inset 0 0 0 1px rgba(212,175,55,.85), inset 0 0 25px rgba(122,12,32,.06);
-}
-
-#doorOverlay.unlocking .envelope-flap.top{ transform:rotateX(-175deg); }
-
-.wax-seal{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    width:110px;
-    height:110px;
-    z-index:7;
-    filter:drop-shadow(0 6px 14px rgba(0,0,0,.5));
-    transition:transform .5s ease .1s,opacity .5s ease .1s;
-}
-
-.wax-seal img{
-    display:block;
     width:100%;
     height:100%;
-    object-fit:contain;
+    overflow:hidden;
 }
 
-#doorOverlay.unlocking .wax-seal{
-    transform:translate(-50%,-50%) scale(.3) rotate(30deg);
-    opacity:0;
+.door-leaf{
+    position:absolute;
+    top:0;
+    width:50%;
+    height:100%;
+    background:
+        repeating-linear-gradient(90deg,#5d0916,#5d0916 26px,#6d0d1c 26px,#6d0d1c 30px),
+        linear-gradient(180deg,#7a0c20,#4a0713);
+    transition:transform 1.6s cubic-bezier(.76,0,.2,1);
+    transform-style:preserve-3d;
+    box-shadow:inset 0 0 90px rgba(0,0,0,.55);
 }
 
-.seal-lightning{
+.door-leaf .panel{
+    position:absolute;
+    left:12%;
+    right:12%;
+    border:3px solid var(--gold);
+    border-radius:8px;
+    box-shadow:inset 0 0 25px rgba(212,175,55,.35),0 0 15px rgba(0,0,0,.4);
+    background:rgba(212,175,55,.05);
+}
+
+.door-leaf .panel.top{ top:18%; height:32%; }
+.door-leaf .panel.bottom{ top:54%; height:32%; }
+
+.door-leaf .motif{
     position:absolute;
     left:50%;
     top:50%;
-    width:240px;
-    height:240px;
     transform:translate(-50%,-50%);
-    z-index:8;
+    font-size:2rem;
+    filter:drop-shadow(0 0 8px rgba(212,175,55,.6));
+}
+
+.door-leaf.left{ left:0; transform-origin:left center; border-right:2px solid rgba(212,175,55,.6); }
+.door-leaf.right{ right:0; transform-origin:right center; border-left:2px solid rgba(212,175,55,.6); }
+
+.door-handle{
+    position:absolute;
+    top:50%;
+    width:16px; height:16px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 35%,#fff2b0,var(--gold) 60%,#8a6a1c);
+    box-shadow:0 0 12px rgba(212,175,55,.8);
+    transform:translateY(-50%);
+}
+
+.door-leaf.left .door-handle{ right:6%; }
+.door-leaf.right .door-handle{ left:6%; }
+
+/* garland & bells hanging across the door threshold */
+.door-garland{
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(92vw,720px);
+    z-index:20;
     pointer-events:none;
-    overflow:visible;
+    filter:drop-shadow(0 6px 16px rgba(0,0,0,.5));
 }
 
-.seal-lightning .bolt{
-    fill:none;
-    stroke:#ffe18a;
-    stroke-width:2.5;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-    filter:drop-shadow(0 0 5px rgba(255,225,140,.95)) drop-shadow(0 0 12px rgba(212,175,55,.75));
-    stroke-dasharray:100;
-    stroke-dashoffset:100;
+.door-garland img{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+#doorOverlay.unlocking .door-leaf.left{ transform:rotateY(-108deg); }
+#doorOverlay.unlocking .door-leaf.right{ transform:rotateY(108deg); }
+
+#doorOverlay.unlocking .door-garland{
+    transition:opacity .6s ease, transform .8s ease;
     opacity:0;
-}
-
-#doorOverlay.unlocking .seal-lightning .bolt{
-    animation:boltStrike 2.4s ease-out forwards;
-}
-
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(2){ animation-delay:.08s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(3){ animation-delay:.16s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(4){ animation-delay:.05s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(5){ animation-delay:.2s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(6){ animation-delay:.1s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(7){ animation-delay:.24s; }
-#doorOverlay.unlocking .seal-lightning .bolt:nth-child(8){ animation-delay:.13s; }
-
-@keyframes boltStrike{
-    0%{ stroke-dashoffset:100; opacity:1; }
-    75%{ stroke-dashoffset:0; opacity:1; }
-    90%{ opacity:.8; }
-    100%{ stroke-dashoffset:0; opacity:0; }
+    transform:translateX(-50%) translateY(-40px);
 }
 
 #doorOverlay.hide-overlay{
     opacity:0;
-    visibility:hidden;
     pointer-events:none;
-    transition:opacity .6s ease .5s, visibility .6s ease .5s;
+    transition:opacity .6s ease .3s;
 }
 
 .door-scroll-hint{
@@ -992,12 +837,12 @@ section{
 /* ---------- SAVE THE DATE CALENDAR ---------- */
 
 .save-date{
-    padding:15px 20px 70px;
+    padding:70px 20px;
     text-align:center;
 }
 
     .save-date .calendar-card{
-    max-width:500px;
+    max-width:560px;
     margin:30px auto 0;
     background:transparent;
     border:none;
@@ -1015,42 +860,55 @@ section{
     box-shadow:none;
 }
 
-.save-date .heading h2,
-.countdown .heading h2,
-.secret .heading h2,
-.wishes .heading h2,
-.footer .heading h2{
-    font-size:3.5rem;
+.save-date .cal-legend{
+    margin-top:18px;
+    font-size:.85rem;
+    color:rgba(255,249,240,.85);
+    line-height:1.6;
 }
 
-.with-love-heading{
-    margin-top:40px;
+.save-date .cal-legend b{ color:var(--gold); }
+
+.save-date .heading h2{
+    font-family:'Great Vibes', cursive;
+    font-size:3.5rem;
+    font-weight:400;
+    color:var(--gold);
+}
+
+.countdown .heading h2,
+.secret .heading h2,
+.footer .heading h2{
+    font-family:'Great Vibes', cursive;
+    font-size:3.5rem;
+    font-weight:400;
+    color:var(--gold);
+}
+
+.rsvp .heading h2{
+    font-family:'Cormorant Garamond', serif;
 }
 
 </style>
 </head>
 <body>
     <div id="doorOverlay">
-        <div class="envelope">
-            <div class="envelope-glow"></div>
-            <div class="envelope-flap top"></div>
-            <div class="envelope-flap bottom"></div>
-            <div class="envelope-flap left"></div>
-            <div class="envelope-flap right"></div>
-            <div class="wax-seal"><img src="Images/plate_logo_only.png" alt="S&amp;S monogram seal"></div>
-
-            <svg class="seal-lightning" viewBox="-100 -100 200 200" xmlns="http://www.w3.org/2000/svg">
-                <polyline class="bolt" pathLength="100" transform="rotate(0)"   points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(45)"  points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(90)"  points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(135)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(180)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(225)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(270)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-                <polyline class="bolt" pathLength="100" transform="rotate(315)" points="0,0 8,-15 -6,-30 10,-50 -8,-70 5,-85 0,-100"/>
-            </svg>
+        <div class="door-archway">
+            <div class="door-leaf left">
+                <div class="panel top"><span class="motif">🌼</span></div>
+                <div class="panel bottom"><span class="motif">🪔</span></div>
+                <div class="door-handle"></div>
+            </div>
+            <div class="door-leaf right">
+                <div class="panel top"><span class="motif">🌼</span></div>
+                <div class="panel bottom"><span class="motif">🪔</span></div>
+                <div class="door-handle"></div>
+            </div>
         </div>
-        <div class="door-scroll-hint">Tap or scroll to open your invitation</div>
+        <div class="door-garland">
+            <img src="Images/garland-bells.png" alt="">
+        </div>
+        <div class="door-scroll-hint">Scroll to open the doors</div>
     </div>
 
     <audio id="bgMusic" preload="auto">
@@ -1077,6 +935,10 @@ section{
 
 <section class="hero">
 
+    <div class="ambaari">
+        <img src="Images\ambaari.png" alt="SaravanaKumar and Sivashankari">
+    </div>
+
     <!-- <div class="rangoli">🪔 ✨ 🧡 ✨ 🪔</div> -->
     <!-- <div class="rangoli">🧡</div> -->
 
@@ -1090,10 +952,6 @@ section{
 
     <div class="hero-portrait">
         <img src="Images\Temple bg edited.jpg" alt="SaravanaKumar and Sivashankari">
-    </div>
-
-    <div class="ambaari">
-        <img src="Images\ambaari.png" alt="SaravanaKumar and Sivashankari">
     </div>
 
     <div class="date-card">
@@ -1138,20 +996,6 @@ section{
     </div>
 </section>
 
-<section class="venue-reveal animate">
-    <div class="venue-section">
-        <h2>📍 Venue: Alayamani Mahal</h2>
-        <a href="https://maps.app.goo.gl/dB3QYPMdqQ3eAYWR9"
-                target="_blank"
-                class="map-btn">
-                Open in Google Maps
-                </a>
-        <img src="Images/wedding_venue_qr.png"
-            alt="Venue QR Code"
-            class="venue-qr">
-    </div>
-</section>
-
 <section class="countdown animate">
     <div class="heading">
         <h2>Countdown To Forever</h2>
@@ -1183,7 +1027,7 @@ section{
 <section class="secret animate">
 
     <div class="heading">
-        <h2>Scratch to Meet the Little Us!</h2>
+        <h2>Event Revealer</h2>
     </div>
 
     <!-- ONE SINGLE BOX -->
@@ -1196,15 +1040,15 @@ section{
 
             <input id="c1">
 
-            <button onclick="unlockScratch('c1',['Papa', 'Paapa', 'Sankari', 'Shankari', 'Sivashankari'], 'scratch1', this)">
+            <button onclick="unlockScratch('c1',['Papa', 'Paapa', 'Sankari', 'Shankari', 'Sivashankari'], 'scratch1')">
                 Unlock Scratch Card
             </button>
 
             <div class="scratch-wrapper hidden" id="scratch1">
 
                 <!-- Hidden answer -->
-                <div class="scratch-message photo">
-                    <img src="Images/Bride reveal/sankari-1.jpeg" alt="Bride reveal photo">
+                <div class="scratch-message">
+                    Two souls, one journey — blessed by the golden bloom of togetherness! 🌼
                 </div>
 
                 <!-- Scratch surface -->
@@ -1223,15 +1067,15 @@ section{
 
             <input id="c4">
 
-            <button onclick="unlockScratch('c4', ['Saro', 'Saravana', 'Kumar'], 'scratch4', this)">
+            <button onclick="unlockScratch('c4', ['Saro', 'Saravana', 'Kumar'], 'scratch4')">
                 Unlock Scratch Card
             </button>
 
             <div class="scratch-wrapper hidden" id="scratch4">
 
                 <!-- Hidden answer -->
-                <div class="scratch-message photo">
-                    <img src="Images/Groom reveal/saro-1.jpg" alt="Groom reveal photo">
+                <div class="scratch-message">
+                    Two souls, one journey — blessed by the golden bloom of togetherness! 🌼
                 </div>
 
                 <!-- Scratch surface -->
@@ -1246,71 +1090,62 @@ section{
 </section>
 
 <section class="footer animate">
-    <section class="wishes animate">
-
-    <div class="heading">
-        <h2>Wedding Guestbook</h2>
-        <p style="font-size: 1.3rem;">Leave your blessings for us — near or far, you're part of our story</p>
+    <section class="rsvp animate">
+    <div class="venue-section">
+        <h2>📍 Venue: Alayamani Mahal</h2>
+        <a href="https://maps.app.goo.gl/dB3QYPMdqQ3eAYWR9"
+                target="_blank"
+                class="map-btn">
+                Open in Google Maps
+                </a>
+        <img src="Images/wedding_venue_qr.png"
+            alt="Venue QR Code"
+            class="venue-qr">
     </div>
 
-    <div class="wishes-card">
+    <div class="heading">
+        <h2>RSVP</h2>
+        <p>We would be delighted to celebrate with you</p>
+    </div>
 
-        <form id="wishesForm">
+    <div class="rsvp-card">
+
+        <form id="rsvpForm">
 
             <input type="text"
                    id="guestName"
                    placeholder="Your Name"
                    required>
 
-            <input type="email"
-                   id="guestEmail"
-                   placeholder="Your Email (optional)">
+            <input type="number"
+                   id="guestCount"
+                   placeholder="Number of Guests"
+                   min="1"
+                   required>
+
+            <select id="attendance" required>
+                <option value="">Will you attend?</option>
+                <option value="Yes">Yes, I'll be there</option>
+                <option value="No">Sorry, can't make it</option>
+            </select>
 
             <textarea id="message"
-                      placeholder="Your wishes for the couple"
-                      rows="4"
-                      required></textarea>
-
-            <textarea id="favoriteMemory"
-                      placeholder="A favorite memory with the couple (optional)"
-                      rows="3"></textarea>
-
-            <div class="selfie-block">
-                <p>📸 Have a selfie or video wish for the couple? Add it here — totally optional.</p>
-                <label for="selfieFile" class="selfie-btn">
-                    Choose a Photo or Video
-                </label>
-                <input type="file"
-                       id="selfieFile"
-                       accept="image/*,video/*"
-                       class="hidden">
-                <p id="selfieFileName" class="selfie-filename"></p>
-                <p id="selfieStatus" class="selfie-status hidden"></p>
-            </div>
+                      placeholder="Blessings / Message for the couple"
+                      rows="4"></textarea>
 
             <button type="submit">
-                Send Wishes
+                Send RSVP
             </button>
 
         </form>
 
-        <div id="wishesSuccess" class="rsvp-success">
-            🎉 Thank you for your beautiful wishes!
+        <div id="rsvpSuccess" class="rsvp-success">
+            🎉 Thank you for your response!
         </div>
 
     </div>
 
-    <div class="live-card">
-        <h3>📺 Wedding Live Stream</h3>
-        <p id="liveText">Can't be there in person? The live streaming link will appear here closer to the big day — check back soon!</p>
-        <a id="liveBtn" href="#" target="_blank" class="live-btn hidden">
-            ▶️ Watch Live on YouTube
-        </a>
-    </div>
-
-    </section>
-
-    <div class="heading with-love-heading">
+    <div class="heading">
         <h2>With Love</h2>
     </div>
 
@@ -1322,156 +1157,14 @@ section{
         </h3>
     </div>
 
+</section>
+
     <div class="signature">
         Sivashankari ❤️ SaravanaKumar 
     </div>
 </section>
 
 <script>
-
-/* ==============================
-   DIGITAL WISHES — CONFIG
-   Edit these three lines as your plans firm up. Everything below
-   reacts automatically to whatever you set here.
-============================== */
-
-// A place for guests who can't attend to drop a selfie or short video —
-// saved via a Google Apps Script Web App running under your own account,
-// so guests never need to sign in. Set MAX_BYTES to match the cap you
-// set in the script itself (default there is 15MB).
-const SELFIE_UPLOAD_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzkJsG4wkyhmiwY8IYeWR2W0TdRhrmzbsq_x7Qlj3VIyf7a1uPZ3BFdbfzfFYgMt2FXcQ/exec";
-const MAX_BYTES = 15 * 1024 * 1024;
-
-// Paste your YouTube live link here once you have it. Leave empty ("")
-// until then — the section will show a "coming soon" message instead.
-const YOUTUBE_LIVE_LINK = "";
-
-// Wishes are saved by silently submitting to this Google Form, which is
-// linked to a Google Sheet — so every wish lands in the Sheet automatically.
-// The selfie/video file is handled separately, uploaded straight to Drive
-// via the Apps Script backend configured above.
-const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSemrN049pG2Kt9s_1f0MohI6k2Hx-ZF75E3SIi0Pl2U-mRO9A/formResponse";
-const ENTRY_NAME = "entry.1704613668";
-const ENTRY_EMAIL = "entry.644863349";
-const ENTRY_MESSAGE = "entry.1734902209";
-const ENTRY_FAVORITE_MEMORY = "entry.1526010609";
-
-/* Selfie/video file picker — shows the chosen filename */
-const selfieFileInput = document.getElementById("selfieFile");
-const selfieFileName = document.getElementById("selfieFileName");
-const selfieStatus = document.getElementById("selfieStatus");
-
-selfieFileInput.addEventListener("change", () => {
-    const file = selfieFileInput.files[0];
-    selfieFileName.textContent = file ? `Selected: ${file.name}` : "";
-    selfieStatus.classList.add("hidden");
-});
-
-/* Reads the chosen file and uploads it to the Apps Script backend.
-   Returns true/false so the caller knows whether it actually saved. */
-function readFileAsDataURL(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
-    });
-}
-
-async function uploadSelfie(file, guestName) {
-    selfieStatus.classList.remove("hidden", "success", "error");
-    selfieStatus.classList.add("uploading");
-    selfieStatus.textContent = "Uploading...";
-
-    if (file.size > MAX_BYTES) {
-        selfieStatus.classList.remove("uploading");
-        selfieStatus.classList.add("error");
-        selfieStatus.textContent = "File is too large (max 15MB) — wish still sent without it.";
-        return false;
-    }
-
-    try {
-        const dataUrl = await readFileAsDataURL(file);
-        const response = await fetch(SELFIE_UPLOAD_SCRIPT_URL, {
-            method: "POST",
-            headers: { "Content-Type": "text/plain;charset=utf-8" },
-            body: JSON.stringify({
-                filename: file.name,
-                mimeType: file.type,
-                data: dataUrl,
-                guestName: guestName
-            })
-        });
-        const result = await response.json();
-
-        selfieStatus.classList.remove("uploading");
-        if (result.status === "ok") {
-            selfieStatus.classList.add("success");
-            selfieStatus.textContent = "Uploaded! 🎉";
-            return true;
-        } else {
-            selfieStatus.classList.add("error");
-            selfieStatus.textContent = `Upload failed: ${result.message || "unknown error"} — wish still sent.`;
-            return false;
-        }
-    } catch (err) {
-        selfieStatus.classList.remove("uploading");
-        selfieStatus.classList.add("error");
-        selfieStatus.textContent = "Upload failed — wish still sent without it.";
-        console.error("Selfie upload error:", err);
-        return false;
-    }
-}
-
-/* Live stream section reacts to YOUTUBE_LIVE_LINK above */
-const liveBtn = document.getElementById("liveBtn");
-const liveText = document.getElementById("liveText");
-
-if (YOUTUBE_LIVE_LINK) {
-    liveBtn.href = YOUTUBE_LIVE_LINK;
-    liveBtn.classList.remove("hidden");
-    liveText.textContent = "We're live! Tap below to join us as we begin our forever.";
-}
-
-/* Wishes form submit — saves text to the Sheet, and the file (if any) to Drive */
-document.getElementById("wishesForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const guestName = document.getElementById("guestName").value;
-    const selectedFile = selfieFileInput.files[0];
-    let selfieUploaded = null; // null = no file chosen, true/false = attempted
-
-    if (selectedFile) {
-        selfieUploaded = await uploadSelfie(selectedFile, guestName);
-    }
-
-    const formData = new URLSearchParams();
-    formData.append(ENTRY_NAME, guestName);
-    formData.append(ENTRY_EMAIL, document.getElementById("guestEmail").value);
-    formData.append(ENTRY_MESSAGE, document.getElementById("message").value);
-    formData.append(ENTRY_FAVORITE_MEMORY, document.getElementById("favoriteMemory").value);
-
-    try {
-        await fetch(GOOGLE_FORM_ACTION_URL, {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: formData
-        });
-    } catch (err) {
-        console.error("Could not save wish:", err);
-    }
-
-    const successBox = document.getElementById("wishesSuccess");
-    if (selfieUploaded === false) {
-        successBox.textContent = "🎉 Thank you for your beautiful wishes! (Your photo/video couldn't be uploaded — but your message was saved.)";
-    } else {
-        successBox.textContent = "🎉 Thank you for your beautiful wishes!";
-    }
-
-    document.getElementById("wishesForm").style.display = "none";
-    successBox.style.display = "block";
-});
 
 /* Scroll Progress */
 window.addEventListener('scroll',()=>{
@@ -1530,6 +1223,7 @@ for(let i=0;i<40;i++){
 //     document.getElementById("musicBtn").innerHTML=music?"🔊":"🎵";
 // });
 
+
 // const bgMusic = document.getElementById("bgMusic");
 // const musicBtn = document.getElementById("musicBtn");
 
@@ -1564,6 +1258,10 @@ for(let i=0;i<40;i++){
 // }, { once: true });
 
 /* ==============================
+   Background Music
+============================== */
+
+/* ==============================
    Door Opening Intro
 ============================== */
 
@@ -1582,11 +1280,11 @@ function openDoors(){
     setTimeout(()=>{
         overlay.classList.add("hide-overlay");
         document.body.style.overflow = "auto";
-    }, 2900);
+    }, 1400);
 
     setTimeout(()=>{
         overlay.style.display = "none";
-    }, 4000);
+    }, 2200);
 }
 
 function handleDoorScrollIntent(e){
@@ -1682,7 +1380,7 @@ slides[currentSlide].classList.add('active');
 
 /* ---------- SCRATCH CARD ---------- */
 
-function unlockScratch(inputId, correctAnswers, scratchId, btnEl) {
+function unlockScratch(inputId, correctAnswers, scratchId) {
 
     const input = document.getElementById(inputId);
 
@@ -1697,10 +1395,6 @@ function unlockScratch(inputId, correctAnswers, scratchId, btnEl) {
         return;
     }
 
-    // Correct answer — hide the button and input so this can't be triggered again
-    if (btnEl) btnEl.style.display = "none";
-    input.style.display = "none";
-
     // Correct answer
     const wrapper = document.getElementById(scratchId);
 
@@ -1712,6 +1406,7 @@ function unlockScratch(inputId, correctAnswers, scratchId, btnEl) {
         initializeScratchCard(wrapper);
     }, 50);
 }
+
 
 function initializeScratchCard(wrapper) {
 
@@ -1741,6 +1436,7 @@ function initializeScratchCard(wrapper) {
         canvas.height
     );
 
+
     // ------------------------------------------------
     // TEXT ON SCRATCH CARD
     // ------------------------------------------------
@@ -1759,11 +1455,13 @@ function initializeScratchCard(wrapper) {
         canvas.height / 2
     );
 
+
     // ------------------------------------------------
     // SCRATCHING
     // ------------------------------------------------
 
     let isScratching = false;
+
 
     function getPosition(event) {
 
@@ -1774,6 +1472,7 @@ function initializeScratchCard(wrapper) {
             y: event.clientY - rect.top
         };
     }
+
 
     function scratch(event) {
 
@@ -1798,6 +1497,7 @@ function initializeScratchCard(wrapper) {
         ctx.fill();
     }
 
+
     // Mouse / touch / pen
     canvas.addEventListener("pointerdown", function(event) {
 
@@ -1809,17 +1509,20 @@ function initializeScratchCard(wrapper) {
 
     });
 
+
     canvas.addEventListener("pointermove", function(event) {
 
         scratch(event);
 
     });
 
+
     canvas.addEventListener("pointerup", function() {
 
         isScratching = false;
 
     });
+
 
     canvas.addEventListener("pointercancel", function() {
 
