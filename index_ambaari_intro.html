@@ -99,17 +99,12 @@ h1,h2,h3{
 .music-btn.playing{
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='6' y='4' width='4' height='16' rx='1' fill='%23d4af37'/%3E%3Crect x='14' y='4' width='4' height='16' rx='1' fill='%23d4af37'/%3E%3C/svg%3E");
     border-color:var(--gold);
-    animation:musicPulse 1.4s ease-in-out infinite, musicRotate 4s linear infinite;
+    animation:musicPulse 1.4s ease-in-out infinite;
 }
 
 @keyframes musicPulse{
     0%,100%{ box-shadow:0 6px 16px rgba(0,0,0,.45); }
     50%{ box-shadow:0 6px 22px rgba(212,175,55,.65); }
-}
-
-@keyframes musicRotate{
-    from{ transform:rotate(0deg); }
-    to{ transform:rotate(360deg); }
 }
 
 .venue-qr{
@@ -207,6 +202,75 @@ section{
     backdrop-filter:blur(12px);
 }
 
+.date-scratch-title{
+    color:var(--gold);
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.35rem;
+    letter-spacing:.5px;
+    margin-bottom:16px;
+}
+
+.date-scratch-row{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:14px;
+    flex-wrap:nowrap;
+}
+
+.date-scratch-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    flex:1 1 0;
+    min-width:0;
+}
+
+.date-scratch-label{
+    font-size:.75rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#f9d97c;
+    font-weight:600;
+}
+
+.date-scratch-wrapper{
+    position:relative;
+    width:100%;
+    max-width:96px;
+    margin:0 auto;
+    aspect-ratio:1/1;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+}
+
+.date-scratch-message{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#fff8dc;
+    color:#7a0c20;
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;
+    font-size:clamp(1.1rem, 6.5vw, 1.7rem);
+}
+
+.date-scratch-canvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:2;
+    display:block;
+    cursor:crosshair;
+    touch-action:none;
+}
+
 .subtitle{
     color:#f9d97c;
     letter-spacing:2px;
@@ -218,7 +282,7 @@ section{
 }
 
 .hero-logo{
-    width:min(110px,28vw);
+    width:min(150px,38vw);
     margin:0 auto 18px;
     animation:float 4s ease-in-out infinite;
 }
@@ -245,32 +309,74 @@ section{
     padding:90px 0 80px;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
+.event-timeline{
+    position:relative;
+    max-width:600px;
+    margin:0 auto;
 }
 
-.card{
+.event-timeline::before{
+    content:'';
+    position:absolute;
+    top:8px;
+    bottom:8px;
+    left:19px;
+    border-left:3px dashed rgba(212,175,55,.55);
+}
+
+.event-item{
+    position:relative;
+    padding-left:62px;
+    margin-bottom:42px;
+}
+
+.event-item:last-child{
+    margin-bottom:0;
+}
+
+.event-dot{
+    position:absolute;
+    left:9px;
+    top:8px;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:var(--gold);
+    border:3px solid var(--maroon);
+    box-shadow:0 0 0 5px rgba(212,175,55,.15);
+    z-index:1;
+}
+
+.event-content{
     background:var(--card);
     border:1px solid rgba(255,255,255,.15);
-    border-radius:25px;
+    border-radius:22px;
+    padding:22px 24px;
     backdrop-filter:blur(15px);
-    padding:25px;
     transition:.4s;
 }
 
-.card:hover{
-    transform:translateY(-10px);
+.event-content:hover{
+    transform:translateY(-6px);
     box-shadow:0 15px 35px rgba(0,0,0,.3);
 }
 
-.card h3{
+.event-date{
+    display:inline-block;
     color:var(--gold);
-    font-size:2rem;
+    font-weight:700;
+    letter-spacing:1.5px;
+    font-size:.8rem;
+    text-transform:uppercase;
+    margin-bottom:8px;
 }
 
-.card p{
+.event-content h3{
+    color:var(--gold);
+    font-size:1.8rem;
+}
+
+.event-content p{
     margin-top:10px;
     line-height:1.7;
 }
@@ -434,6 +540,18 @@ section{
     }
 }
 
+.burst-particle{
+    position:fixed;
+    left:0;
+    top:0;
+    pointer-events:none;
+    z-index:100005;
+    color:#e0223d;
+    text-shadow:0 2px 6px rgba(0,0,0,.25);
+    animation:burst .9s ease-out forwards;
+    will-change:transform,opacity;
+}
+
 @media(max-width:768px){
 
 .hero h1{
@@ -451,6 +569,14 @@ section{
 
 .heading h2{
     font-size:2.3rem;
+}
+
+.date-card{
+    padding:18px 16px;
+}
+
+.date-scratch-row{
+    gap:10px;
 }
 }
 
@@ -495,7 +621,7 @@ section{
 }
 
 .slide:nth-child(4){
-    background-image:url('Images/photo4.jpg');
+    background-image:url('Images/photo4.jpeg');
 }
 
 .slide.active{
@@ -914,7 +1040,7 @@ section{
     background-repeat:no-repeat;
     background-position:top center;
     background-size:100% auto;
-    opacity:0.5;
+    opacity:0.7;
 }
 
 #doorOverlay.unlocking .door-scroll-hint,
@@ -1043,17 +1169,40 @@ section{
     </h1>
 
     <div class="hero-portrait">
-        <img src="Images\Temple bg edited.jpg" alt="SaravanaKumar and Sivashankari">
+        <img src="Images/Temple bg edited.jpg" alt="SaravanaKumar and Sivashankari">
     </div>
 
     <div class="ambaari">
-        <img src="Images\ambaari.png" alt="SaravanaKumar and Sivashankari">
+        <img src="Images/ambaari.png" alt="SaravanaKumar and Sivashankari">
     </div>
 
     <div class="date-card">
-        <p><strong>25th October 2026</strong></p>
-        <p>07:05 AM Onwards</p>
-        <p>Alayamani Mahal, Perundurai Road, Erode</p>
+        <div class="date-scratch-title">✨ Scratch to Unveil Our Big Day ✨</div>
+        <div class="date-scratch-row">
+            <div class="date-scratch-item">
+                <div class="date-scratch-label">Day</div>
+                <div class="date-scratch-wrapper">
+                    <div class="date-scratch-message">25</div>
+                    <canvas class="date-scratch-canvas"></canvas>
+                </div>
+            </div>
+            <div class="date-scratch-item">
+                <div class="date-scratch-label">Month</div>
+                <div class="date-scratch-wrapper">
+                    <div class="date-scratch-message">Oct</div>
+                    <canvas class="date-scratch-canvas"></canvas>
+                </div>
+            </div>
+            <div class="date-scratch-item">
+                <div class="date-scratch-label">Year</div>
+                <div class="date-scratch-wrapper">
+                    <div class="date-scratch-message">2026</div>
+                    <canvas class="date-scratch-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- <p style="margin-top:20px;">07:05 AM Onwards</p> -->
+        <!-- <p>Alayamani Mahal, Perundurai Road, Erode</p> -->
     </div>
 </section>
 
@@ -1061,24 +1210,44 @@ section{
     <div class="heading">
         <h2>Wedding Events</h2>
     </div>
-    <div class="grid">
-        <div class="card">
-            <h3>🎉 Reception</h3>
-            <p>
-                Date: 24th October 2026 (Saturday)<br>
-                Time: 07:00 PM Onwards<br>
-                Venue: Alayamani Mahal, Perundurai Road, Erode
-            </p>
+    <div class="event-timeline">
+
+        <div class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-content">
+                <span class="event-date">22nd October 2026 · Thursday</span>
+                <h3>🌿 Mehandhi</h3>
+                <p>
+                    Time: 05:00 PM Onwards<br>
+                    Venue: Alayamani Mahal, Perundurai Road, Erode
+                </p>
+            </div>
         </div>
 
-        <div class="card">
-            <h3>💍 Muhurtham</h3>
-            <p>
-                Date: 25th October 2026 (Sunday)<br>
-                Time: 07:05 AM Onwards<br>
-                Venue: Alayamani Mahal, Perundurai Road, Erode
-            </p>
+        <div class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-content">
+                <span class="event-date">24th October 2026 · Saturday</span>
+                <h3>🎉 Reception</h3>
+                <p>
+                    Time: 07:00 PM Onwards<br>
+                    Venue: Alayamani Mahal, Perundurai Road, Erode
+                </p>
+            </div>
         </div>
+
+        <div class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-content">
+                <span class="event-date">25th October 2026 · Sunday</span>
+                <h3>💍 Muhurtham</h3>
+                <p>
+                    Time: 07:05 AM Onwards<br>
+                    Venue: Alayamani Mahal, Perundurai Road, Erode
+                </p>
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -1088,7 +1257,7 @@ section{
     </div>
 
     <div class="calendar-card">
-        <img src="Images\October 2026.png" alt="October 2026 — 24th Reception, 25th Muhurtham" class="calendar-img">
+        <img src="Images/October 2026.png" alt="October 2026 — 24th Reception, 25th Muhurtham" class="calendar-img">
     </div>
 </section>
 
@@ -1764,6 +1933,7 @@ function initializeScratchCard(wrapper) {
     // ------------------------------------------------
 
     let isScratching = false;
+    let fullyRevealed = false;
 
     function getPosition(event) {
 
@@ -1775,9 +1945,31 @@ function initializeScratchCard(wrapper) {
         };
     }
 
+    // Checks how much of the gold layer has been cleared. Once most of it
+    // is gone, auto-clear the rest and fire a laughing-emoji burst so the
+    // reveal feels complete and playful.
+    function checkCompletion(){
+        if(fullyRevealed) return;
+
+        const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+        let cleared = 0;
+        const totalPixels = canvas.width * canvas.height;
+
+        for(let i = 3; i < data.length; i += 4){
+            if(data[i] < 40) cleared++;
+        }
+
+        if(cleared / totalPixels > 0.55){
+            fullyRevealed = true;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            canvas.style.pointerEvents = "none";
+            particleBurst(wrapper, "😂");
+        }
+    }
+
     function scratch(event) {
 
-        if (!isScratching) {
+        if (!isScratching || fullyRevealed) {
             return;
         }
 
@@ -1796,6 +1988,8 @@ function initializeScratchCard(wrapper) {
         );
 
         ctx.fill();
+
+        checkCompletion();
     }
 
     // Mouse / touch / pen
@@ -1827,6 +2021,115 @@ function initializeScratchCard(wrapper) {
 
     });
 }
+
+/* ---------- DATE SCRATCH CARDS ---------- */
+
+function particleBurst(originEl, emoji, count = 22){
+
+    const rect = originEl.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    for(let i = 0; i < count; i++){
+
+        const particle = document.createElement("span");
+        particle.className = "burst-particle";
+        particle.textContent = emoji;
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 55 + Math.random() * 90;
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance - 25;
+
+        particle.style.setProperty("--x", x + "px");
+        particle.style.setProperty("--y", y + "px");
+        particle.style.left = centerX + "px";
+        particle.style.top = centerY + "px";
+        particle.style.fontSize = (14 + Math.random() * 16) + "px";
+        particle.style.animationDuration = (0.7 + Math.random() * 0.5) + "s";
+
+        document.body.appendChild(particle);
+        particle.addEventListener("animationend", () => particle.remove());
+    }
+}
+
+function initDateScratchCards(){
+
+    document.querySelectorAll(".date-scratch-wrapper").forEach(wrapper => {
+
+        const canvas = wrapper.querySelector(".date-scratch-canvas");
+        const ctx = canvas.getContext("2d");
+
+        const width = wrapper.clientWidth;
+        const height = wrapper.clientHeight;
+
+        canvas.width = width;
+        canvas.height = height;
+
+        // Gold scratch surface
+        ctx.globalCompositeOperation = "source-over";
+        ctx.fillStyle = "#D4AF37";
+        ctx.fillRect(0, 0, width, height);
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = `bold ${Math.max(11, width * 0.13)}px 'DM Sans', Arial`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("Scratch", width / 2, height / 2 - height * 0.1);
+        ctx.fillText("✨", width / 2, height / 2 + height * 0.18);
+
+        let isScratching = false;
+        let fullyRevealed = false;
+
+        function getPosition(event){
+            const rect = canvas.getBoundingClientRect();
+            return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+        }
+
+        // Checks how much of the gold layer has been cleared. Once most of
+        // it is gone, auto-clear the rest and fire the heart burst so the
+        // reveal feels complete rather than leaving stray gold flecks.
+        function checkCompletion(){
+            if(fullyRevealed) return;
+
+            const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+            let cleared = 0;
+            const totalPixels = canvas.width * canvas.height;
+
+            for(let i = 3; i < data.length; i += 4){
+                if(data[i] < 40) cleared++;
+            }
+
+            if(cleared / totalPixels > 0.55){
+                fullyRevealed = true;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                canvas.style.pointerEvents = "none";
+                particleBurst(wrapper, "❤");
+            }
+        }
+
+        function scratch(event){
+            if(!isScratching || fullyRevealed) return;
+            const position = getPosition(event);
+            ctx.globalCompositeOperation = "destination-out";
+            ctx.beginPath();
+            ctx.arc(position.x, position.y, width * 0.18, 0, Math.PI * 2);
+            ctx.fill();
+            checkCompletion();
+        }
+
+        canvas.addEventListener("pointerdown", (event) => {
+            isScratching = true;
+            canvas.setPointerCapture(event.pointerId);
+            scratch(event);
+        });
+        canvas.addEventListener("pointermove", scratch);
+        canvas.addEventListener("pointerup", () => { isScratching = false; });
+        canvas.addEventListener("pointercancel", () => { isScratching = false; });
+    });
+}
+
+window.addEventListener("load", initDateScratchCards);
 
 </script>
 
