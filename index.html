@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sivashankari ❤️ SaravanaKumar | SS Wedding Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&family=Great+Vibes&family=Aguafina+Script&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -15,17 +17,14 @@
     --cream:#fff9f0;
     --card:rgba(255,255,255,0.12);
 }
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
-
 html{
     scroll-behavior:smooth;
 }
-
 body{
     background:
         radial-gradient(circle at top,#a30d2c 0%,#5d0718 45%,#29040b 100%);
@@ -33,11 +32,9 @@ body{
     overflow-x:hidden;
     font-family:'DM Sans',sans-serif;
 }
-
 h1,h2,h3{
     font-family:'Cormorant Garamond',serif;
 }
-
 .progress{
     position:fixed;
     top:0;
@@ -47,23 +44,19 @@ h1,h2,h3{
     width:0%;
     z-index:9999;
 }
-
 /* Floating Petals */
-
 .petals{
     position:fixed;
     inset:0;
     pointer-events:none;
     z-index:0;
 }
-
 .petal{
     position:absolute;
     color:#ffd86b;
     opacity:.8;
     animation:fall linear infinite;
 }
-
 @keyframes fall{
     from{
         transform:translateY(-120px) rotate(0deg);
@@ -72,69 +65,85 @@ h1,h2,h3{
         transform:translateY(120vh) rotate(360deg);
     }
 }
-
 .music-btn{
     position:fixed;
     top:20px;
     right:20px;
-    width:55px;
-    height:55px;
+    width:56px;
+    height:56px;
+    padding:12px;
     border-radius:50%;
-    border:none;
-    background:rgba(255,255,255,.15);
-    backdrop-filter:blur(10px);
-    color:white;
+    border:2px solid rgba(212,175,55,.75);
+    background-color:#2c0812;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d4af37' d='M9 3v10.55A4 4 0 1 0 11 17V7h6V3H9z'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:46%;
+    box-shadow:0 6px 16px rgba(0,0,0,.45);
     cursor:pointer;
-    font-size:22px;
     z-index:999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:box-shadow .3s ease, border-color .3s ease;
 }
-
+.music-btn.playing{
+    border-color:var(--gold);
+    animation:musicPulse 1.4s ease-in-out infinite, musicSpin 3s linear infinite;
+}
+@keyframes musicSpin{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+}
+@keyframes musicPulse{
+    0%,100%{ box-shadow:0 6px 16px rgba(0,0,0,.45); }
+    50%{ box-shadow:0 6px 22px rgba(212,175,55,.65); }
+}
 .venue-qr{
     width:160px;
     height:160px;
-
     background:white;
     padding:8px;
-
     border-radius:12px;
-
     display:block;
     margin:15px auto;
 }
-
 .venue-reveal{
     padding:60px 0;
 }
-
 .venue-section{
     max-width:600px;
     margin:auto;
     text-align:center;
-
     background:rgba(255,255,255,.08);
     backdrop-filter:blur(15px);
-
     border-radius:25px;
     padding:35px;
-
     border:1px solid rgba(255,255,255,.15);
 }
-
 .venue-section h2{
     font-family:'DM Sans', sans-serif;
     font-weight:600;
     font-size:1.4rem;
     color:var(--gold);
     margin-bottom:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
 }
-
+.venue-pin-icon{
+    width:1.1em;
+    height:1.1em;
+    flex-shrink:0;
+    display:inline-block;
+}
 section{
     width:min(1200px,92%);
     margin:auto;
     position:relative;
     z-index:2;
 }
-
 .hero{
     min-height:100vh;
     display:flex;
@@ -143,13 +152,11 @@ section{
     align-items:center;
     text-align:center;
 }
-
 .rangoli{
     font-size:55px;
     margin-bottom:20px;
     animation:float 4s ease-in-out infinite;
 }
-
 @keyframes float{
     0%,100%{
         transform:translateY(0);
@@ -158,23 +165,19 @@ section{
         transform:translateY(-12px);
     }
 }
-
 .hero h1{
     font-family:'Great Vibes', cursive;
     font-size:6rem;
     font-weight:400;
     color:#fff;
 }
-
 .hero .amp{
     color:var(--gold);
 }
-
 .hero p{
     margin-top:15px;
     font-size:1.2rem;
 }
-
 .date-card{
     margin-top:30px;
     padding:18px 35px;
@@ -183,7 +186,68 @@ section{
     background:rgba(255,255,255,.08);
     backdrop-filter:blur(12px);
 }
-
+.date-scratch-title{
+    color:var(--gold);
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.35rem;
+    letter-spacing:.5px;
+    margin-bottom:16px;
+}
+.date-scratch-row{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:14px;
+    flex-wrap:nowrap;
+}
+.date-scratch-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    flex:1 1 0;
+    min-width:0;
+}
+.date-scratch-label{
+    font-size:.75rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#f9d97c;
+    font-weight:600;
+}
+.date-scratch-wrapper{
+    position:relative;
+    width:100%;
+    max-width:96px;
+    margin:0 auto;
+    aspect-ratio:1/1;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+}
+.date-scratch-message{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#fff8dc;
+    color:#7a0c20;
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;
+    font-size:clamp(1.1rem, 6.5vw, 1.7rem);
+}
+.date-scratch-canvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:2;
+    display:block;
+    cursor:crosshair;
+    touch-action:none;
+}
 .subtitle{
     color:#f9d97c;
     letter-spacing:2px;
@@ -193,62 +257,112 @@ section{
     font-size:3.5rem;
     font-weight:400;
 }
-
+.hero-logo{
+    width:min(150px,38vw);
+    margin:0 auto 18px;
+    animation:float 4s ease-in-out infinite;
+}
+.hero-logo img{
+    display:block;
+    width:100%;
+    height:auto;
+    filter:drop-shadow(0 4px 12px rgba(0,0,0,.35));
+}
 .heading{
     text-align:center;
     margin-bottom:50px;
 }
-
+.heading h2::after{
+    content:"";
+    display:block;
+    width:220px;
+    max-width:60%;
+    height:24px;
+    margin:10px auto 0;
+    background-image:url('Images/heart-divider.webp');
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:contain;
+}
 .heading h2{
     font-size:3rem;
     color:var(--gold);
     font-family:'Great Vibes', cursive;
 }
-
 .events{
     padding:90px 0 80px;
 }
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
+.event-timeline{
+    position:relative;
+    max-width:600px;
+    margin:0 auto;
 }
-
-.card{
+.event-timeline::before{
+    content:'';
+    position:absolute;
+    top:8px;
+    bottom:8px;
+    left:19px;
+    border-left:3px dashed rgba(212,175,55,.55);
+}
+.event-item{
+    position:relative;
+    padding-left:34px;
+    margin-bottom:33px;
+}
+.event-item:last-child{
+    margin-bottom:0;
+}
+.event-dot{
+    position:absolute;
+    left:9px;
+    top:8px;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:var(--gold);
+    border:3px solid var(--maroon);
+    box-shadow:0 0 0 5px rgba(212,175,55,.15);
+    z-index:1;
+}
+.event-content{
     background:var(--card);
     border:1px solid rgba(255,255,255,.15);
-    border-radius:25px;
+    border-radius:16px;
+    padding:14px 16px;
     backdrop-filter:blur(15px);
-    padding:25px;
     transition:.4s;
 }
-
-.card:hover{
-    transform:translateY(-10px);
+.event-content:hover{
+    transform:translateY(-6px);
     box-shadow:0 15px 35px rgba(0,0,0,.3);
 }
-
-.card h3{
+.event-date{
+    display:inline-block;
     color:var(--gold);
-    font-size:2rem;
+    font-weight:700;
+    letter-spacing:1px;
+    font-size:.68rem;
+    text-transform:uppercase;
+    margin-bottom:6px;
 }
-
-.card p{
-    margin-top:10px;
-    line-height:1.7;
+.event-content h3{
+    color:var(--gold);
+    font-size:1.3rem;
 }
-
+.event-content p{
+    margin-top:6px;
+    font-size:.88rem;
+    line-height:1.5;
+}
 .countdown{
     padding:40px 0;
 }
-
 .timer{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:20px;
 }
-
 .time-box{
     text-align:center;
     padding:30px;
@@ -256,79 +370,57 @@ section{
     background:rgba(255,255,255,.09);
     backdrop-filter:blur(15px);
 }
-
 /* Individual questions should NOT have their own card */
 .question-block {
     width: 100%;
 }
-
 /* Space between the two questions */
 .question-divider {
     height: 1px;
-
     margin: 30px 0;
-
     background: rgba(255, 255, 255, 0.25);
 }
-
 /* Question text */
 .question-block p {
     margin-bottom: 15px;
-
     color: white;
-
     font-size: 20px;
     font-weight: 500;
 }
-
 /* Input */
 .question-block input {
     width: 100%;
     box-sizing: border-box;
-
     padding: 15px;
-
     border: none;
     border-radius: 12px;
-
     font-size: 16px;
-
     outline: none;
-
     margin-bottom: 15px;
 }
-
 /* Button */
 .question-block button {
     padding: 14px 22px;
-
     border: none;
     border-radius: 12px;
-
     background: #d9ae2f;
     color: #000;
-
     font-weight: bold;
     font-size: 16px;
-
     cursor: pointer;
 }
-
 .question-block button:hover {
     transform: translateY(-2px);
 }
-
 .time-box span{
     display:block;
     font-size:3rem;
     color:var(--gold);
     font-weight:bold;
 }
-
-.secret {
-    padding: 40px 0 0; /* Reduced bottom padding from 40px to 10px */
+.secret{
+    padding:40px 0 40px;
 }
-
 .clue-card{
     margin-bottom:25px;
     padding:25px;
@@ -336,7 +428,6 @@ section{
     background:rgba(255,255,255,.08);
     backdrop-filter:blur(12px);
 }
-
 .clue-card input{
     width:100%;
     margin-top:15px;
@@ -345,7 +436,6 @@ section{
     border-radius:10px;
     outline:none;
 }
-
 .clue-card button{
     margin-top:12px;
     padding:12px 20px;
@@ -356,37 +446,31 @@ section{
     cursor:pointer;
     font-weight:bold;
 }
-
 .footer{
-    padding:0px 0 0px;
+    padding:40px 0 100px;
     text-align:center;
 }
-
 .footer-message{
     max-width:850px;
     margin:auto;
     font-size:1.15rem;
     line-height:1.9;
 }
-
 .signature{
     margin-top:25px;
     color:var(--gold);
     font-size:2rem;
     font-family:'Cormorant Garamond',serif;
 }
-
 .animate{
     opacity:0;
     transform:translateY(60px);
     transition:1s;
 }
-
 .animate.visible{
     opacity:1;
     transform:translateY(0);
 }
-
 @keyframes burst{
     from{
         opacity:1;
@@ -397,30 +481,44 @@ section{
         transform:translate(var(--x),var(--y)) scale(2);
     }
 }
-
+.burst-particle{
+    position:fixed;
+    left:0;
+    top:0;
+    pointer-events:none;
+    z-index:100005;
+    color:#e0223d;
+    text-shadow:0 2px 6px rgba(0,0,0,.25);
+    animation:burst .9s ease-out forwards;
+    will-change:transform,opacity;
+}
 @media(max-width:768px){
-
 .hero h1{
     font-size:3rem;
 }
-
+.hero{
+    justify-content:flex-start;
+    padding-top:110px;
+}
 .timer{
     grid-template-columns:repeat(2,1fr);
 }
-
 .heading h2{
     font-size:2.3rem;
 }
+.date-card{
+    padding:18px 16px;
 }
-
+.date-scratch-row{
+    gap:10px;
+}
+}
 /* ---------- BACKGROUND SLIDESHOW ---------- */
-
 .slideshow{
     position:fixed;
     inset:0;
     z-index:-5;
 }
-
 .slide{
     position:absolute;
     inset:0;
@@ -429,7 +527,6 @@ section{
     background-size:cover;
     background-position:center;
 }
-
 .slide::after{
     content:'';
     position:absolute;
@@ -440,180 +537,175 @@ section{
         rgba(18,71,52,.70)
     );
 }
-
 .slide:nth-child(1){
-    background-image:url('Images/photo1.jpg');
+    background-image:url('Images/photo1.webp');
 }
-
 .slide:nth-child(2){
-    background-image:url('Images/photo2.jpg');
+    background-image:url('Images/photo2.webp');
 }
-
 .slide:nth-child(3){
-    background-image:url('Images/photo3.jpg');
+    background-image:url('Images/photo3.webp');
 }
-
+.slide:nth-child(4){
+    background-image:url('Images/photo4.webp');
+}
 .slide.active{
     opacity:1;
 }
-
 .slide img{
     width:100%;
     height:100%;
     object-fit:cover;
 }
-
 /* ---------- SCRATCH CARD ---------- */
-
 .scratch-wrapper {
     position: relative;
-    width: 100%;
-    height: 180px;
-    margin-top: 20px;
-
+    width: 74vw;
+    max-width: 320px;
+    aspect-ratio: 3 / 4;
+    height: auto;
+    margin: 20px auto 0;
     border-radius: 15px;
     overflow: hidden;
 }
-
 .scratch-wrapper.hidden {
     display: none;
 }
-
+/* Mobile-first: both bride and groom reveal cards use the same portrait 3:4 size.
+   The width follows the phone screen while remaining capped on larger screens. */
+@media (min-width: 769px) {
+    .scratch-wrapper {
+        width: min(74vw, 320px);
+    }
+}
 /* The actual answer underneath */
 .scratch-message {
     position: absolute;
     inset: 0;
-
     z-index: 1;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 25px;
-
     text-align: center;
-
     background: #fff8dc;
     color: #8a6500;
-
     font-size: 20px;
     font-weight: bold;
 }
-
+/* Photo variant of the scratch reveal — now a swipeable gallery */
+.scratch-message.photo{
+    padding:0;
+    overflow:hidden;
+}
+.photo-scroll{
+    display:flex;
+    width:100%;
+    height:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+}
+.photo-scroll picture{
+    display:contents;
+}
+.photo-scroll img{
+    flex:0 0 100%;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    background:#fff9f0;
+    scroll-snap-align:center;
+}
+.photo-scroll-hint{
+    position:absolute;
+    bottom:8px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:.7rem;
+    letter-spacing:1px;
+    color:rgba(255,255,255,.85);
+    background:rgba(0,0,0,.35);
+    padding:3px 10px;
+    border-radius:10px;
+    pointer-events:none;
+    z-index:2;
+}
 /* The GOLD scratch layer */
 .scratch-card {
     position: absolute;
-
     left: 0;
     top: 0;
-
     width: 100%;
     height: 100%;
-
     z-index: 2;
-
     display: block;
-
     cursor: crosshair;
-
     touch-action: none;
 }
-
 .wishes{
-    padding:80px 0;   /* change to: padding:20px 0; */
+    padding:80px 0;
 }
-
-.wishes .heading {
-    margin-bottom: 15px; /* Reduced from 50px to 15px to bring card closer to title */
+.wishes-card{
+    max-width:700px;
+    margin:auto;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    border-radius:25px;
+    padding:35px;
+    border:1px solid rgba(255,255,255,.15);
 }
-
-.wishes-card {
-    max-width: 700px;
-    margin: 0px auto; /* Changed top margin from auto to 10px auto */
-    background: rgba(255, 255, 255, .08);
-    backdrop-filter: blur(15px);
-    border-radius: 25px;
-    padding: 35px;
-    border: 1px solid rgba(255, 255, 255, .15);
-}
-
 .wishes form{
     display:flex;
     flex-direction:column;
     gap:15px;
 }
-
 .wishes input,
 .wishes select,
 .wishes textarea{
-
     width:100%;
     padding:15px;
-
     border:none;
     border-radius:12px;
-
     background:rgba(255,255,255,.12);
-
     color:white;
     font-size:1rem;
     font-family:inherit;
 }
-
 .wishes input::placeholder,
 .wishes textarea::placeholder{
     color:rgba(255,255,255,.7);
 }
-
 .wishes select option{
     color:black;
 }
-
 .wishes button{
-
     padding:15px;
-
     border:none;
-
     border-radius:12px;
-
     background:linear-gradient(
         135deg,
         #d4af37,
         #ffe18a
     );
-
     color:black;
-
     font-weight:bold;
-
     cursor:pointer;
-
     transition:.3s;
 }
-
 .wishes button:hover{
     transform:translateY(-3px);
 }
-
 .rsvp-success{
-
     display:none;
-
     margin-top:20px;
-
     text-align:center;
-
     padding:15px;
-
     border-radius:12px;
-
     background:rgba(212,175,55,.2);
-
     color:#ffe18a;
 }
-
 /* ---------- Selfie upload prompt (shown when guest can't attend) ---------- */
 .selfie-block{
     padding:20px;
@@ -622,12 +714,10 @@ section{
     border:1px dashed rgba(212,175,55,.5);
     text-align:center;
 }
-
 .selfie-block p{
     margin-bottom:12px;
     line-height:1.6;
 }
-
 .selfie-btn{
     display:inline-block;
     padding:13px 22px;
@@ -639,60 +729,47 @@ section{
     cursor:pointer;
     transition:.3s;
 }
-
 .selfie-btn:hover{
     transform:translateY(-3px);
 }
-
 .selfie-filename{
     margin-top:10px;
     font-size:.9rem;
     color:rgba(255,255,255,.8);
 }
-
 .selfie-status{
     margin-top:10px;
     font-size:.9rem;
     font-weight:bold;
 }
-
 .selfie-status.uploading{
     color:#ffe18a;
 }
-
 .selfie-status.success{
     color:#8fd694;
 }
-
 .selfie-status.error{
     color:#e88a8a;
 }
-
 /* ---------- Live streaming card ---------- */
 .live-card{
     max-width:700px;
     margin:35px auto 0;
-
     background:rgba(255,255,255,.08);
     backdrop-filter:blur(15px);
-
     border-radius:25px;
     padding:30px 35px;
-
     border:1px solid rgba(255,255,255,.15);
     text-align:center;
 }
-
 .live-card h3{
     color:var(--gold);
     font-size:1.6rem;
     margin-bottom:10px;
 }
-
 .live-card p{
     line-height:1.7;
 }
-
 .live-btn{
     display:inline-block;
     margin-top:15px;
@@ -704,26 +781,13 @@ section{
     text-decoration:none;
     transition:.3s;
 }
-
 .live-btn:hover{
     transform:translateY(-3px);
 }
-
 .hidden{
     display:none !important;
 }
-
-.scratch-card{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    cursor:crosshair;
-    touch-action:none;
-}
-
-/* ---------- DOOR OPENING INTRO (with garland & bells) ---------- */
-
+/* ---------- VIDEO OPENING INTRO ---------- */
 #doorOverlay{
     position:fixed;
     top:0; left:0; right:0; bottom:0;
@@ -735,100 +799,49 @@ section{
     align-items:center;
     justify-content:center;
     background:#1a0308;
-    perspective:2200px;
-}
-
-.door-archway{
-    position:relative;
-    width:100%;
-    height:100%;
     overflow:hidden;
 }
-
-.door-leaf{
+.intro-video{
     position:absolute;
-    top:0;
-    width:50%;
-    height:100%;
-    background:
-        repeating-linear-gradient(90deg,#5d0916,#5d0916 26px,#6d0d1c 26px,#6d0d1c 30px),
-        linear-gradient(180deg,#7a0c20,#4a0713);
-    transition:transform 1.6s cubic-bezier(.76,0,.2,1);
-    transform-style:preserve-3d;
-    box-shadow:inset 0 0 90px rgba(0,0,0,.55);
-}
-
-.door-leaf .panel{
-    position:absolute;
-    left:12%;
-    right:12%;
-    border:3px solid var(--gold);
-    border-radius:8px;
-    box-shadow:inset 0 0 25px rgba(212,175,55,.35),0 0 15px rgba(0,0,0,.4);
-    background:rgba(212,175,55,.05);
-}
-
-.door-leaf .panel.top{ top:18%; height:32%; }
-.door-leaf .panel.bottom{ top:54%; height:32%; }
-
-.door-leaf .motif{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    font-size:2rem;
-    filter:drop-shadow(0 0 8px rgba(212,175,55,.6));
-}
-
-.door-leaf.left{ left:0; transform-origin:left center; border-right:2px solid rgba(212,175,55,.6); }
-.door-leaf.right{ right:0; transform-origin:right center; border-left:2px solid rgba(212,175,55,.6); }
-
-.door-handle{
-    position:absolute;
-    top:50%;
-    width:16px; height:16px;
-    border-radius:50%;
-    background:radial-gradient(circle at 35% 35%,#fff2b0,var(--gold) 60%,#8a6a1c);
-    box-shadow:0 0 12px rgba(212,175,55,.8);
-    transform:translateY(-50%);
-}
-
-.door-leaf.left .door-handle{ right:6%; }
-.door-leaf.right .door-handle{ left:6%; }
-
-/* garland & bells hanging across the door threshold */
-.door-garland{
-    position:absolute;
-    top:0;
-    left:50%;
-    transform:translateX(-50%);
-    width:min(92vw,720px);
-    z-index:20;
-    pointer-events:none;
-    filter:drop-shadow(0 6px 16px rgba(0,0,0,.5));
-}
-
-.door-garland img{
-    display:block;
+    inset:0;
     width:100%;
-    height:auto;
+    height:100%;
+    object-fit:cover;
 }
-
-#doorOverlay.unlocking .door-leaf.left{ transform:rotateY(-108deg); }
-#doorOverlay.unlocking .door-leaf.right{ transform:rotateY(108deg); }
-
-#doorOverlay.unlocking .door-garland{
-    transition:opacity .6s ease, transform .8s ease;
+/* Solid white layer sitting on top of the video. The instant the doors
+   start to part, this fades in to cover the video's plain interior, so
+   visitors never see a mismatched/blank frame - just a clean white flash
+   that then gives way to the real site. */
+.white-flash{
+    position:absolute;
+    inset:0;
+    background:#fff9f0;
     opacity:0;
-    transform:translateX(-50%) translateY(-40px);
+    z-index:5;
+    pointer-events:none;
+    transition:opacity .45s ease;
 }
-
+#doorOverlay.flash-white .white-flash{
+    opacity:1;
+}
 #doorOverlay.hide-overlay{
     opacity:0;
+    visibility:hidden;
     pointer-events:none;
-    transition:opacity .6s ease .3s;
+    transition:opacity .6s ease, visibility .6s ease;
 }
-
+/* ---- The actual website content: fades cleanly into view once the
+   white flash has covered the video, instead of sliding up from below ---- */
+#siteReveal{
+    position:relative;
+    z-index:3;
+    opacity:0;
+    transition:opacity .9s ease;
+    will-change:opacity;
+}
+#siteReveal.revealed{
+    opacity:1;
+}
 .door-scroll-hint{
     position:absolute;
     bottom:6%;
@@ -836,41 +849,37 @@ section{
     transform:translateX(-50%);
     z-index:20;
     color:#f9d97c;
-    font-size:.85rem;
-    letter-spacing:3px;
-    text-transform:uppercase;
+    font-family:'Aguafina Script',cursive;
+    font-size:1.5rem;
+    font-weight:400;
+    letter-spacing:.5px;
+    text-transform:none;
     text-align:center;
     animation:doorPulse 2s infinite;
 }
-
 @keyframes doorPulse{
     0%,100%{ opacity:.55; }
     50%{ opacity:1; }
 }
-
 .thoranam{
     position:fixed;
-    object-position: top;
     top:0;
     left:0;
     width:100vw;
     height:100vh;
     height:100dvh;   /* mobile-safe fallback */
     margin:0;
-    z-index:1;
+    z-index:6;
     pointer-events:none;
     overflow:hidden;
+    background-image:url('Images/thoranam.webp');
+    background-repeat:no-repeat;
+    background-position:top center;
+    background-size:100% auto;
+    opacity:0.5;
 }
-
-.thoranam img{
-    display:block;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-#doorOverlay.unlocking .door-scroll-hint{ opacity:0; }
-
+#doorOverlay.unlocking .door-scroll-hint,
+#doorOverlay.flash-white .door-scroll-hint{ opacity:0; transition:opacity .3s ease; }
 .ambaari{
     position:relative;
     width:min(88vw,770px);
@@ -878,15 +887,12 @@ section{
     border-radius:16px;
     overflow:hidden;
 }
-
 .ambaari img{
     display:block;
     width:100%;
     height:200px;
 }
-
 /* ---------- ILLUSTRATED COUPLE PORTRAIT ---------- */
-
 .hero-portrait{
     position:relative;
     width:min(88vw,720px);
@@ -896,23 +902,18 @@ section{
     /* border:2px solid var(--gold);
     box-shadow:0 12px 34px rgba(0,0,0,.45),0 0 0 6px rgba(212,175,55,.12); */
 }
-
 .hero-portrait img{
     display:block;
     width:100%;
     height:auto;
-
     -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
     mask-image: radial-gradient(circle, rgba(0,0,0,1) 37%, rgba(0,0,0,0) 90%);
 }
-
 /* ---------- SAVE THE DATE CALENDAR ---------- */
-
 .save-date{
     padding:15px 20px 70px;
     text-align:center;
 }
-
     .save-date .calendar-card{
     max-width:500px;
     margin:30px auto 0;
@@ -922,7 +923,6 @@ section{
     padding:0;
     box-shadow:none;
 }
-
 .calendar-img{
     display:block;
     width:100%;
@@ -931,7 +931,6 @@ section{
     background:transparent;
     box-shadow:none;
 }
-
 .save-date .heading h2,
 .countdown .heading h2,
 .secret .heading h2,
@@ -939,34 +938,21 @@ section{
 .footer .heading h2{
     font-size:3.5rem;
 }
-
 .with-love-heading{
     margin-top:40px;
 }
-
 </style>
 </head>
 <body>
     <div id="doorOverlay">
-        <div class="door-archway">
-            <div class="door-leaf left">
-                <div class="panel top"><span class="motif">🌼</span></div>
-                <div class="panel bottom"><span class="motif">🪔</span></div>
-                <div class="door-handle"></div>
-            </div>
-            <div class="door-leaf right">
-                <div class="panel top"><span class="motif">🌼</span></div>
-                <div class="panel bottom"><span class="motif">🪔</span></div>
-                <div class="door-handle"></div>
-            </div>
-        </div>
-        <div class="door-garland">
-            <img src="Images/garland-bells.png" alt="">
-        </div>
-        <div class="door-scroll-hint">Scroll to open the doors</div>
+        <video id="introVideo" class="intro-video" autoplay muted playsinline preload="auto">
+            <source src="video/door-intro.mp4" type="video/mp4">
+        </video>
+        <div class="white-flash"></div>
+        <div class="door-scroll-hint" id="introSkipHint">Tap to skip</div>
     </div>
 
-    <audio id="bgMusic" preload="auto">
+    <audio id="bgMusic" preload="none">
         <source src="music/wedding_invite_audio.mp3" type="audio/mpeg">
     </audio>
 
@@ -974,24 +960,24 @@ section{
     <div class="slide active"></div>
     <div class="slide"></div>
     <div class="slide"></div>
+    <div class="slide"></div>
 </div>
 
 <div class="progress"></div>
 
-<button class="music-btn" id="musicBtn">🎵</button>
+<button class="music-btn" id="musicBtn" aria-label="Play background music"></button>
 
 <div class="petals" id="petals"></div>
 
-<section class="thoranam">
-    <div class="thoranam">
-        <img src="Images\thoranam.png" alt="garland">
-    </div>
-</section>
+<section class="thoranam"></section>
+
+<div id="siteReveal">
 
 <section class="hero">
 
-    <!-- <div class="rangoli">🪔 ✨ 🧡 ✨ 🪔</div> -->
-    <!-- <div class="rangoli">🧡</div> -->
+    <div class="hero-logo">
+        <img src="Images/ss-logo.webp" alt="SaravanaKumar & Sivashankari Logo" decoding="async">
+    </div>
 
     <div class="subtitle">Wedding Invitation</div>
 
@@ -1002,13 +988,38 @@ section{
     </h1>
 
     <div class="hero-portrait">
-        <img src="Images\Temple bg edited.jpg" alt="SaravanaKumar and Sivashankari">
+        <img src="Images/temple-bg-edited.webp" alt="SaravanaKumar and Sivashankari" fetchpriority="high" decoding="async">
+    </div>
+
+    <div class="ambaari">
+        <img src="Images/ambaari.webp" alt="SaravanaKumar and Sivashankari" decoding="async">
     </div>
 
     <div class="date-card">
-        <p><strong>25th October 2026</strong></p>
-        <p>07:05 AM Onwards</p>
-        <p>Alayamani Mahal, Perundurai Road, Erode</p>
+        <div class="date-scratch-title">✨ Scratch to Unveil Our Big Day ✨</div>
+        <div class="date-scratch-row">
+            <div class="date-scratch-item">
+                <div class="date-scratch-label">Day</div>
+                <div class="date-scratch-wrapper">
+                    <div class="date-scratch-message">25</div>
+                    <canvas class="date-scratch-canvas"></canvas>
+                </div>
+            </div>
+            <div class="date-scratch-item">
+                <div class="date-scratch-label">Month</div>
+                <div class="date-scratch-wrapper">
+                    <div class="date-scratch-message">Oct</div>
+                    <canvas class="date-scratch-canvas"></canvas>
+                </div>
+            </div>
+            <div class="date-scratch-item">
+                <div class="date-scratch-label">Year</div>
+                <div class="date-scratch-wrapper">
+                    <div class="date-scratch-message">2026</div>
+                    <canvas class="date-scratch-canvas"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -1016,30 +1027,44 @@ section{
     <div class="heading">
         <h2>Wedding Events</h2>
     </div>
-    <div class="grid">
-        <div class="card">
-            <h3>🎉 Reception</h3>
-            <p>
-                Date: 24th October 2026 (Saturday)<br>
-                Time: 07:00 PM Onwards<br>
-                Venue: Alayamani Mahal, Perundurai Road, Erode
-            </p>
+    <div class="event-timeline">
+
+        <div class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-content">
+                <span class="event-date">22nd October 2026 · Thursday</span>
+                <h3>🌿 Mehandhi</h3>
+                <p>
+                    Time: 05:00 PM Onwards<br>
+                    Venue: Bride's & Groom's home
+                </p>
+            </div>
         </div>
 
-        <div class="card">
-            <h3>💍 Muhurtham</h3>
-            <p>
-                Date: 25th October 2026 (Sunday)<br>
-                Time: 07:05 AM Onwards<br>
-                Venue: Alayamani Mahal, Perundurai Road, Erode
-            </p>
+        <div class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-content">
+                <span class="event-date">24th October 2026 · Saturday</span>
+                <h3>🎉 Reception</h3>
+                <p>
+                    Time: 07:00 PM Onwards<br>
+                    Venue: Alayamani Mahal, Perundurai Road, Erode
+                </p>
+            </div>
         </div>
-    </div>
-</section>
 
-<section class="ambaari-design">
-    <div class="ambaari">
-        <img src="Images\ambaari.png" alt="SaravanaKumar and Sivashankari">
+        <div class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-content">
+                <span class="event-date">25th October 2026 · Sunday</span>
+                <h3>💍 Muhurtham</h3>
+                <p>
+                    Time: 07:05 AM Onwards<br>
+                    Venue: Alayamani Mahal, Perundurai Road, Erode
+                </p>
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -1049,21 +1074,24 @@ section{
     </div>
 
     <div class="calendar-card">
-        <img src="Images\October 2026.png" alt="October 2026 — 24th Reception, 25th Muhurtham" class="calendar-img">
+        <img src="Images/october-2026.webp" alt="October 2026 — 24th Reception, 25th Muhurtham" class="calendar-img" loading="lazy">
     </div>
 </section>
 
 <section class="venue-reveal animate">
     <div class="venue-section">
-        <h2>📍 Venue: Alayamani Mahal</h2>
+        <h2>
+            <img src="Images/destination.webp" alt="Venue pin" class="venue-pin-icon" loading="lazy">
+            Venue: Alayamani Mahal
+        </h2>
         <a href="https://maps.app.goo.gl/dB3QYPMdqQ3eAYWR9"
                 target="_blank"
                 class="map-btn">
                 Open in Google Maps
                 </a>
-        <img src="Images/wedding_venue_qr.png"
-            alt="Venue QR Code"
-            class="venue-qr">
+        <img src="Images/wedding-venue-qr.webp" alt="Venue QR Code"
+                class="venue-qr"
+                loading="lazy">
     </div>
 </section>
 
@@ -1098,7 +1126,7 @@ section{
 <section class="secret animate">
 
     <div class="heading">
-        <h2>Event Revealer</h2>
+        <h2>Scratch to Meet the Little Us!</h2>
     </div>
 
     <!-- ONE SINGLE BOX -->
@@ -1111,15 +1139,25 @@ section{
 
             <input id="c1">
 
-            <button onclick="unlockScratch('c1',['Papa', 'Paapa', 'Sankari', 'Shankari', 'Sivashankari'], 'scratch1')">
+            <button onclick="unlockScratch('c1',['Papa', 'Paapa', 'Sankari', 'Shankari', 'Sivashankari'], 'scratch1', this)">
                 Unlock Scratch Card
             </button>
 
             <div class="scratch-wrapper hidden" id="scratch1">
 
                 <!-- Hidden answer -->
-                <div class="scratch-message">
-                    Two souls, one journey — blessed by the golden bloom of togetherness! 🌼
+                <div class="scratch-message photo">
+                    <div class="photo-scroll">
+                        <img src="Images/Bride reveal/sankari-1.webp" alt="Bride reveal photo 1" loading="lazy">
+                        <img src="Images/Bride reveal/sankari-2.webp" alt="Bride reveal photo 2" loading="lazy">
+                        <img src="Images/Bride reveal/sankari-3.webp" alt="Bride reveal photo 3" loading="lazy">
+                        <img src="Images/Bride reveal/sankari-4.webp" alt="Bride reveal photo 4" loading="lazy">
+                        <img src="Images/Bride reveal/sankari-5.webp" alt="Bride reveal photo 5" loading="lazy">
+                        <img src="Images/Bride reveal/sankari-6.webp" alt="Bride reveal photo 6" loading="lazy">
+                        <img src="Images/Bride reveal/sankari-7.webp" alt="Bride reveal photo 7" loading="lazy">
+                        <img src="Images/Bride reveal/sankari-8.webp" alt="Bride reveal photo 8" loading="lazy">
+                    </div>
+                    <span class="photo-scroll-hint">Swipe for more →</span>
                 </div>
 
                 <!-- Scratch surface -->
@@ -1138,15 +1176,24 @@ section{
 
             <input id="c4">
 
-            <button onclick="unlockScratch('c4', ['Saro', 'Saravana', 'Kumar'], 'scratch4')">
+            <button onclick="unlockScratch('c4', ['Saro', 'Saravana', 'Kumar'], 'scratch4', this)">
                 Unlock Scratch Card
             </button>
 
             <div class="scratch-wrapper hidden" id="scratch4">
 
                 <!-- Hidden answer -->
-                <div class="scratch-message">
-                    Two souls, one journey — blessed by the golden bloom of togetherness! 🌼
+                <div class="scratch-message photo">
+                    <div class="photo-scroll">
+                        <img src="Images/Groom reveal/saro-2.webp" alt="Groom reveal photo 2" loading="lazy">
+                        <img src="Images/Groom reveal/saro-3.webp" alt="Groom reveal photo 3" loading="lazy">
+                        <img src="Images/Groom reveal/saro-4.webp" alt="Groom reveal photo 4" loading="lazy">
+                        <img src="Images/Groom reveal/saro-5.webp" alt="Groom reveal photo 5" loading="lazy">
+                        <img src="Images/Groom reveal/saro-6.webp" alt="Groom reveal photo 6" loading="lazy">
+                        <img src="Images/Groom reveal/saro-7.webp" alt="Groom reveal photo 7" loading="lazy">
+                        <img src="Images/Groom reveal/saro-8.webp" alt="Groom reveal photo 8" loading="lazy">
+                    </div>
+                    <span class="photo-scroll-hint">Swipe for more →</span>
                 </div>
 
                 <!-- Scratch surface -->
@@ -1165,7 +1212,7 @@ section{
 
     <div class="heading">
         <h2>Wedding Guestbook</h2>
-        <p>Leave your blessings for us — near or far, you're part of our story</p>
+        <p style="font-size: 1.3rem;">Leave your blessings for us — near or far, you're part of our story</p>
     </div>
 
     <div class="wishes-card">
@@ -1241,6 +1288,7 @@ section{
         Sivashankari ❤️ SaravanaKumar 
     </div>
 </section>
+</div>
 
 <script>
 
@@ -1438,48 +1486,8 @@ for(let i=0;i<40;i++){
     petals.appendChild(p);
 }
 
-/* Music Toggle Visual */
-// let music=false;
-// document.getElementById("musicBtn").addEventListener("click",()=>{
-//     music=!music;
-//     document.getElementById("musicBtn").innerHTML=music?"🔊":"🎵";
-// });
-
-// const bgMusic = document.getElementById("bgMusic");
-// const musicBtn = document.getElementById("musicBtn");
-
-// musicBtn.addEventListener("click", async () => {
-
-//     try {
-
-//         if (bgMusic.paused) {
-
-//             await bgMusic.play();
-//             musicBtn.innerHTML = "🔊";
-
-//         } else {
-
-//             bgMusic.pause();
-//             musicBtn.innerHTML = "🎵";
-
-//         }
-
-//     } catch (err) {
-
-//         console.error("Music error:", err);
-
-//     }
-
-// });
-
-// document.addEventListener("pointerdown", function () {
-
-//     bgMusic.play().catch(err => console.log(err));
-
-// }, { once: true });
-
 /* ==============================
-   Door Opening Intro
+   Video Opening Intro
 ============================== */
 
 let doorsOpened = false;
@@ -1490,38 +1498,60 @@ function openDoors(){
     doorsOpened = true;
 
     const overlay = document.getElementById("doorOverlay");
+    const video = document.getElementById("introVideo");
 
-    overlay.classList.add("unlocking");
     if (typeof startMusic === "function") startMusic();
 
-    setTimeout(()=>{
-        overlay.classList.add("hide-overlay");
+    // Step 1: the instant the doors start to part, flash to a clean white
+    // screen. This covers the video's plain interior so visitors never see
+    // a mismatched frame behind the doors.
+    overlay.classList.add("flash-white");
+    overlay.classList.add("unlocking");
+
+    // Step 2: once the white flash has fully covered the video, swap in
+    // the real site (fading in) and start fading the whole overlay away.
+    setTimeout(() => {
+        video.pause();
         document.body.style.overflow = "auto";
-    }, 1400);
+        document.getElementById("siteReveal").classList.add("revealed");
+        overlay.classList.add("hide-overlay");
 
-    setTimeout(()=>{
-        overlay.style.display = "none";
-    }, 2200);
-}
-
-function handleDoorScrollIntent(e){
-    if(doorsOpened) return;
-    e.preventDefault();
-    openDoors();
+        setTimeout(() => {
+            overlay.style.display = "none";
+        }, 700);
+    }, 450);
 }
 
 document.body.style.overflow = "hidden";
 
-window.addEventListener("wheel", handleDoorScrollIntent, { passive:false });
-window.addEventListener("touchmove", handleDoorScrollIntent, { passive:false });
+const introVideo = document.getElementById("introVideo");
+const introSkipHint = document.getElementById("introSkipHint");
 
-window.addEventListener("keydown", (e)=>{
-    if(["ArrowDown","PageDown"," ","Spacebar"].includes(e.key)){
-        handleDoorScrollIntent(e);
+// Reveal the site right as the doors begin to part - before any of the
+// video's baked-in background/text becomes visible through the gap.
+introVideo.addEventListener("timeupdate", () => {
+    if (introVideo.currentTime >= 12.4) openDoors();
+});
+introVideo.addEventListener("ended", openDoors);
+
+// If autoplay is blocked by the browser, show a tap-to-play prompt
+// instead of leaving the visitor stuck on a frozen frame.
+const playAttempt = introVideo.play();
+if (playAttempt && typeof playAttempt.catch === "function") {
+    playAttempt.catch(() => {
+        introSkipHint.textContent = "Tap to begin";
+        introSkipHint.style.opacity = "1";
+    });
+}
+
+// Let visitors skip the intro early with a tap.
+document.getElementById("doorOverlay").addEventListener("click", () => {
+    if (introVideo.paused) {
+        introVideo.play().catch(()=>{});
+    } else {
+        openDoors();
     }
 });
-
-document.getElementById("doorOverlay").addEventListener("click", openDoors);
 
 /* ==============================
    Background Music
@@ -1546,7 +1576,8 @@ async function startMusic() {
         if (hint) {
             hint.style.display = "none";
 }
-        musicBtn.innerHTML = "🔊";
+        musicBtn.classList.add("playing");
+        musicBtn.setAttribute("aria-label", "Pause background music");
 
     } catch (err) {
 
@@ -1556,23 +1587,32 @@ async function startMusic() {
 
 }
 
-// Works on desktop and mobile
-// document.addEventListener("pointerdown", startMusic, { once: true });
+// Works on desktop and mobile — the very first tap/click anywhere starts it.
+// (True autoplay-with-sound on page load isn't allowed by any modern
+// mobile browser without this kind of user-gesture trigger.)
+document.addEventListener("pointerdown", startMusic, { once: true });
 
 document.addEventListener("keydown", startMusic, { once: true });
 
-// Toggle button
+// Toggle button — tap to spin the disc and play, tap again to stop it
 musicBtn.addEventListener("click", async () => {
 
     if (bgMusic.paused) {
 
-        await bgMusic.play();
-        musicBtn.innerHTML = "🔊";
+        try {
+            await bgMusic.play();
+            musicStarted = true;
+            musicBtn.classList.add("playing");
+            musicBtn.setAttribute("aria-label", "Pause background music");
+        } catch (err) {
+            console.log("Music blocked:", err);
+        }
 
     } else {
 
         bgMusic.pause();
-        musicBtn.innerHTML = "🎵";
+        musicBtn.classList.remove("playing");
+        musicBtn.setAttribute("aria-label", "Play background music");
 
     }
 
@@ -1597,7 +1637,7 @@ slides[currentSlide].classList.add('active');
 
 /* ---------- SCRATCH CARD ---------- */
 
-function unlockScratch(inputId, correctAnswers, scratchId) {
+function unlockScratch(inputId, correctAnswers, scratchId, btnEl) {
 
     const input = document.getElementById(inputId);
 
@@ -1611,6 +1651,10 @@ function unlockScratch(inputId, correctAnswers, scratchId) {
         alert("Incorrect key. Try again!");
         return;
     }
+
+    // Correct answer — hide the button and input so this can't be triggered again
+    if (btnEl) btnEl.style.display = "none";
+    input.style.display = "none";
 
     // Correct answer
     const wrapper = document.getElementById(scratchId);
@@ -1675,6 +1719,7 @@ function initializeScratchCard(wrapper) {
     // ------------------------------------------------
 
     let isScratching = false;
+    let fullyRevealed = false;
 
     function getPosition(event) {
 
@@ -1686,9 +1731,31 @@ function initializeScratchCard(wrapper) {
         };
     }
 
+    // Checks how much of the gold layer has been cleared. Once most of it
+    // is gone, auto-clear the rest and fire a laughing-emoji burst so the
+    // reveal feels complete and playful.
+    function checkCompletion(){
+        if(fullyRevealed) return;
+
+        const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+        let cleared = 0;
+        const totalPixels = canvas.width * canvas.height;
+
+        for(let i = 3; i < data.length; i += 4){
+            if(data[i] < 40) cleared++;
+        }
+
+        if(cleared / totalPixels > 0.55){
+            fullyRevealed = true;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            canvas.style.pointerEvents = "none";
+            particleBurst(wrapper, "😂");
+        }
+    }
+
     function scratch(event) {
 
-        if (!isScratching) {
+        if (!isScratching || fullyRevealed) {
             return;
         }
 
@@ -1707,6 +1774,8 @@ function initializeScratchCard(wrapper) {
         );
 
         ctx.fill();
+
+        checkCompletion();
     }
 
     // Mouse / touch / pen
@@ -1738,6 +1807,115 @@ function initializeScratchCard(wrapper) {
 
     });
 }
+
+/* ---------- DATE SCRATCH CARDS ---------- */
+
+function particleBurst(originEl, emoji, count = 22){
+
+    const rect = originEl.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    for(let i = 0; i < count; i++){
+
+        const particle = document.createElement("span");
+        particle.className = "burst-particle";
+        particle.textContent = emoji;
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 55 + Math.random() * 90;
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance - 25;
+
+        particle.style.setProperty("--x", x + "px");
+        particle.style.setProperty("--y", y + "px");
+        particle.style.left = centerX + "px";
+        particle.style.top = centerY + "px";
+        particle.style.fontSize = (14 + Math.random() * 16) + "px";
+        particle.style.animationDuration = (0.7 + Math.random() * 0.5) + "s";
+
+        document.body.appendChild(particle);
+        particle.addEventListener("animationend", () => particle.remove());
+    }
+}
+
+function initDateScratchCards(){
+
+    document.querySelectorAll(".date-scratch-wrapper").forEach(wrapper => {
+
+        const canvas = wrapper.querySelector(".date-scratch-canvas");
+        const ctx = canvas.getContext("2d");
+
+        const width = wrapper.clientWidth;
+        const height = wrapper.clientHeight;
+
+        canvas.width = width;
+        canvas.height = height;
+
+        // Gold scratch surface
+        ctx.globalCompositeOperation = "source-over";
+        ctx.fillStyle = "#D4AF37";
+        ctx.fillRect(0, 0, width, height);
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = `bold ${Math.max(11, width * 0.13)}px 'DM Sans', Arial`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("Scratch", width / 2, height / 2 - height * 0.1);
+        ctx.fillText("✨", width / 2, height / 2 + height * 0.18);
+
+        let isScratching = false;
+        let fullyRevealed = false;
+
+        function getPosition(event){
+            const rect = canvas.getBoundingClientRect();
+            return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+        }
+
+        // Checks how much of the gold layer has been cleared. Once most of
+        // it is gone, auto-clear the rest and fire the heart burst so the
+        // reveal feels complete rather than leaving stray gold flecks.
+        function checkCompletion(){
+            if(fullyRevealed) return;
+
+            const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+            let cleared = 0;
+            const totalPixels = canvas.width * canvas.height;
+
+            for(let i = 3; i < data.length; i += 4){
+                if(data[i] < 40) cleared++;
+            }
+
+            if(cleared / totalPixels > 0.55){
+                fullyRevealed = true;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                canvas.style.pointerEvents = "none";
+                particleBurst(wrapper, "❤");
+            }
+        }
+
+        function scratch(event){
+            if(!isScratching || fullyRevealed) return;
+            const position = getPosition(event);
+            ctx.globalCompositeOperation = "destination-out";
+            ctx.beginPath();
+            ctx.arc(position.x, position.y, width * 0.18, 0, Math.PI * 2);
+            ctx.fill();
+            checkCompletion();
+        }
+
+        canvas.addEventListener("pointerdown", (event) => {
+            isScratching = true;
+            canvas.setPointerCapture(event.pointerId);
+            scratch(event);
+        });
+        canvas.addEventListener("pointermove", scratch);
+        canvas.addEventListener("pointerup", () => { isScratching = false; });
+        canvas.addEventListener("pointercancel", () => { isScratching = false; });
+    });
+}
+
+window.addEventListener("load", initDateScratchCards);
 
 </script>
 
